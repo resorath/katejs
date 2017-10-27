@@ -1,3 +1,5 @@
+'use strict'
+
 // Init the editor
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/twilight");
@@ -19,9 +21,34 @@ editor.session.setMode("ace/mode/javascript");
     };
 })();
 
+/*if (!('toJSON' in Error.prototype))
+Object.defineProperty(Error.prototype, 'toJSON', {
+    value: function () {
+        var alt = {};
+
+        Object.getOwnPropertyNames(this).forEach(function (key) {
+            alt[key] = this[key];
+        }, this);
+
+        return alt;
+    },
+    configurable: true,
+    writable: true
+});*/
+
 $('#run').click(function() {
 
-	var result = window.eval(editor.getValue());
+	var result;
+
+	try
+	{
+		result = window.eval(editor.getValue());
+	}
+	catch(e)
+	{
+		var stringy = "Oops! Code problem:  " + e.name + ": " + e.message;
+		$('#output').append(stringy + '\n');
+	}
 
 	if(result != undefined)
 	{
