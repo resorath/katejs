@@ -15,16 +15,19 @@ editor.session.setMode("ace/mode/javascript");
 (function(){
     var oldLog = console.log;
     console.log = function (message) {
-        $('#output').append(String(message) + "\n");
+        $('#output').append(JSON.stringify(message) + "\n");
     };
 })();
 
 $('#run').click(function() {
 
-	//console.log(editor.getValue());
 	var result = window.eval(editor.getValue());
+
 	if(result != undefined)
-		$('#output').append(String(result));
+	{
+		var stringy = JSON.stringify(result);
+		$('#output').append(stringy + '\n');
+	}
 
 });
 
