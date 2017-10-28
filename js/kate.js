@@ -5,15 +5,7 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
 
-// init the terminal
-/*var term = $('#term').terminal(function(command) {
-
-	var result = window.eval(command);
-	if(result != undefined)
-		term.echo(String(result));
-
-}, { prompt: '> ', greetings: false}); */
-
+// Capture the console
 (function(){
     var oldLog = console.log;
     console.log = function (message) {
@@ -21,20 +13,6 @@ editor.session.setMode("ace/mode/javascript");
     };
 })();
 
-/*if (!('toJSON' in Error.prototype))
-Object.defineProperty(Error.prototype, 'toJSON', {
-    value: function () {
-        var alt = {};
-
-        Object.getOwnPropertyNames(this).forEach(function (key) {
-            alt[key] = this[key];
-        }, this);
-
-        return alt;
-    },
-    configurable: true,
-    writable: true
-});*/
 
 $('#run').click(function() {
 
@@ -63,3 +41,41 @@ $('#clear').click(function() {
 	$('#output').html('');
 
 });
+
+// Simple routing
+if(window.location.hash.substr(2))
+{
+	var load = window.location.hash.substr(2);
+
+	$('#content').load("courses/" + load + "/instructions.html");
+
+	$.ajax({
+		url: 'courses/' + load + '/startcode.js',
+		async: true,
+		dataType: "text",
+		success: function(data) {
+			editor.setValue(data);
+		}
+	});
+}
+else
+{
+	// default
+}
+
+const Intro = { 
+	template: undefined,
+	data: function() {
+
+	},
+	mounted: function() {
+		var path = this.$route.path.substring(1);
+
+		$('#content').load("courses/" + path + ".html");
+
+		editor.setValue("catdoghorse");
+	},
+	methods: {
+
+	}
+}
