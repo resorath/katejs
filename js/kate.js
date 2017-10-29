@@ -47,34 +47,35 @@ $('#clear').click(function() {
 
 // Simple routing
 function route() {
+
+	var load = undefined;
+
 	if(window.location.hash.substr(2))
 	{
-		var load = window.location.hash.substr(2);
-
-		//$('#content').load("courses/" + load + "/instructions.html");
-
-		$.ajax({
-			url: 'courses/' + load + '/instructions.html',
-			async: false,
-			dataType: "html",
-			success: function(data) {
-				$('#content').html(data);
-			}
-		});
-
-		$.ajax({
-			url: 'courses/' + load + '/startcode.js',
-			async: true,
-			dataType: "text",
-			success: function(data) {
-				editor.setValue(data, 1);
-			}
-		});
+		load = window.location.hash.substr(2);	
 	}
 	else
 	{
-		// default
+		load = "Home";
 	}
+
+	$.ajax({
+		url: 'courses/' + load + '/instructions.html',
+		async: false,
+		dataType: "html",
+		success: function(data) {
+			$('#content').html(data);
+		}
+	});
+
+	$.ajax({
+		url: 'courses/' + load + '/startcode.js',
+		async: true,
+		dataType: "text",
+		success: function(data) {
+			editor.setValue(data, 1);
+		}
+	});
 };
 
 $(window).on('hashchange', function() {
@@ -84,7 +85,7 @@ route();
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div :id="editorId" style="width: 500px; height: 150px;"></div>',
+  template: '<div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div>',
   props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {

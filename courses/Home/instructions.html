@@ -1,0 +1,25 @@
+<h1>Welcome!</h1>
+
+<p>Lets learn JavaScript!</p>
+
+<p>You don't need to know any JavaScript, we will start from the beginning. First lets learn how to use this website.</p>
+
+<p>You can try any code in the bottom left editor. Press the big green "Run" button to see the result in the bottom right.</p>
+
+<p>Sometimes you will be given some code. You can copy code from the example area and paste it into the editor at the bottom. Don't forget to press run. Lets practice:</p>
+
+<editor editor-id="home1" :content="lessonEditorPayloads.home1"></editor>
+
+<p>Lets try some code that pops up a message. Copy this code and replace the code below. Then press "Run":</p>
+
+<editor editor-id="home2" :content="lessonEditorPayloads.home2"></editor>
+
+<p>Your progress will be automatically saved at this computer. When your ready to move on, press Next.</p>
+
+<button class="btnNext">Next</button>
+
+
+<script>
+lessonEditorPayloads.home1 = "\"You can copy me and paste me below.\"";
+lessonEditorPayloads.home2 = "alert(\"This is an alert, press OK to continue\");";
+</script>

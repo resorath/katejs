@@ -5,59 +5,92 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#editor {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-}
-
-#topheader
-{
-    width: 100%;
-    height: 40px;
-    margin: 0;
-}
-
-#topheader h1
-{
-    display: inline-block;
-    font-size: 30px;
-    font-family: 'Indie Flower', cursive;
-    font-weight: bold;
-    margin: 0px;
-    margin-left: 20px;
-}
-
-#outputarea {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    background-color: #001b58;
-} 
-
+/* Structural bigwigs */
 #instruction {
     margin: 0;
-    padding: 10px;
+    padding: 0px;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: 50%;
-    background-color: #FFEFD5;
+    height: 60%;
+    background-color: #fff;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+#editor {
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 40%;
+    z-index: 20;
+
+    border-top: 4px solid #fff;
+}
+
+#outputarea {
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    width: 50%;
+    height: 40%;
+    background-color: #001b58;
+    z-index: 20;
+
+
+    border-top: 4px solid #fff;
+} 
+/* ENDS Structural bigwigs */
+
+.btnNext
+{
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 24px;
+    background: #00d498;
+    padding: 5px 25px 5px 25px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnNext:hover {
+    background: #148c68;
+    background-image: -webkit-linear-gradient(top, #148c68, #00bf8f);
+    background-image: -moz-linear-gradient(top, #148c68, #00bf8f);
+    background-image: -ms-linear-gradient(top, #148c68, #00bf8f);
+    background-image: -o-linear-gradient(top, #148c68, #00bf8f);
+    background-image: linear-gradient(to bottom, #148c68, #00bf8f);
+    text-decoration: none;
+    }
+
+.editor
+{
+    font-size: 14px !important;
+}
+
+#content
+{
+    padding: 30px;
+}
+
+.inlineeditor
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 #controls {
@@ -69,6 +102,24 @@ body {
     right: 0;
     width: 100%;
     height: 10%;
+}
+
+
+#topheader
+{
+    width: 100%;
+    height: 20px;
+    margin: 0;
+}
+
+#topheader h1
+{
+    display: inline-block;
+    font-size: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    margin: 0px;
+    margin-left: 20px;
 }
 
 #run
