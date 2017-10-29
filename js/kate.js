@@ -85,7 +85,7 @@ route();
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div>',
+  template: '<div><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
   props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {
@@ -114,6 +114,11 @@ Vue.component('Editor', {
       this.beforeContent = this.editor.getValue()
       this.$emit('change-content', this.editor.getValue())
     })
+  },
+  methods: {
+  	loadIntoBottom() {
+  		editor.setValue(this.content, 1)
+  	}
   }
 })
 

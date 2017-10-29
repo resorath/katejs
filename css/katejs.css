@@ -52,6 +52,17 @@ body {
 } 
 /* ENDS Structural bigwigs */
 
+.loadButton
+{
+    margin-left: 20px;
+    margin-top: -22px;
+}
+
+.loadButton button
+{
+    width: 500px;
+}
+
 .btnNext
 {
     -webkit-border-radius: 8;
