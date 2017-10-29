@@ -1,5 +1,8 @@
 'use strict'
 
+
+var lessonEditorPayloads = {};
+
 // Init the editor
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/twilight");
@@ -53,7 +56,7 @@ function route() {
 		$.ajax({
 			url: 'courses/' + load + '/instructions.html',
 			async: false,
-			dataType: "text",
+			dataType: "html",
 			success: function(data) {
 				$('#content').html(data);
 			}
@@ -113,9 +116,7 @@ Vue.component('Editor', {
   }
 })
 
-var lessonEditorPayloads = {};
 
-lessonEditorPayloads.testcontent = "\"horses\"";
 
 const app = new Vue({
   el: "#instruction",
