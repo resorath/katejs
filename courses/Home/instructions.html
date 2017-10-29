@@ -6,11 +6,11 @@
 
 <p>You can try any code in the bottom left editor. Press the big green "Run" button to see the result in the bottom right.</p>
 
-<p>Sometimes you will be given some code. You can copy code from the example area and paste it into the editor at the bottom. Don't forget to press run. Lets practice:</p>
+<p>Sometimes you will be given some code. You can copy code from the example area into the editor to try it. Don't forget to press run. Lets practice:</p>
 
 <editor editor-id="home1" :content="lessonEditorPayloads.home1"></editor>
 
-<p>Lets try some code that pops up a message. Copy this code and replace the code below. Then press "Run":</p>
+<p>Lets try some code that pops up a message. Copy this code by pressing the 'Copy into editor' button below it. Then press "Run":</p>
 
 <editor editor-id="home2" :content="lessonEditorPayloads.home2"></editor>
 
@@ -20,6 +20,6 @@
 
 
 <script>
-lessonEditorPayloads.home1 = "\"You can copy me and paste me below.\"";
+lessonEditorPayloads.home1 = "\"Press 'Copy into editor' below me to copy me\"\n\"into the editor below.\"";
 lessonEditorPayloads.home2 = "alert(\"This is an alert, press OK to continue\");";
 </script>
