@@ -48,14 +48,23 @@ function route() {
 	{
 		var load = window.location.hash.substr(2);
 
-		$('#content').load("courses/" + load + "/instructions.html");
+		//$('#content').load("courses/" + load + "/instructions.html");
+
+		$.ajax({
+			url: 'courses/' + load + '/instructions.html',
+			async: false,
+			dataType: "text",
+			success: function(data) {
+				$('#content').html(data);
+			}
+		});
 
 		$.ajax({
 			url: 'courses/' + load + '/startcode.js',
 			async: true,
 			dataType: "text",
 			success: function(data) {
-				editor.setValue(data);
+				editor.setValue(data, 1);
 			}
 		});
 	}
@@ -70,26 +79,9 @@ $(window).on('hashchange', function() {
 });
 route();
 
-const Intro = { 
-	template: undefined,
-	data: function() {
-
-	},
-	mounted: function() {
-		var path = this.$route.path.substring(1);
-
-		$('#content').load("courses/" + path + ".html");
-
-		editor.setValue("catdoghorse");
-	},
-	methods: {
-
-	}
-}
-
 // Vue Component
 Vue.component('Editor', {
-	template: '<div :id="editorId" style="width: 100%; height: 100%;"></div>',
+  template: '<div :id="editorId" style="width: 500px; height: 150px;"></div>',
   props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {
@@ -104,7 +96,7 @@ Vue.component('Editor', {
       }
     }
   },
-  mounted () {
+  mounted: function() {
   	const lang = this.lang || 'javascript'
     const theme = this.theme || 'twilight'
   
@@ -115,35 +107,21 @@ Vue.component('Editor', {
     this.editor.setTheme(`ace/theme/${theme}`)
 
     this.editor.on('change', () => {
-    	this.beforeContent = this.editor.getValue()
+      this.beforeContent = this.editor.getValue()
       this.$emit('change-content', this.editor.getValue())
     })
   }
 })
 
+var lessonEditorPayloads = {};
+
+lessonEditorPayloads.testcontent = "\"horses\"";
 
 const app = new Vue({
   el: "#instruction",
   data () {
   	return {
-      contentA: 'default content for Editor A',
-      contentB: 'default content for Editor B'
-    }
-  },
-  methods: {
-  	reset () {
-      this.contentA = 'reset content for Editor A'
-      this.contentB = 'reset content for Editor B'
-    },
-    changeContentA (val) {
-    	if (this.contentA !== val) {
-      	this.contentA = val
-      }
-    },
-    changeContentB (val) {
-    	if (this.contentB !== val) {
-      	this.contentB = val
-      }
+      lessonEditorPayloads
     }
   }
-})
+});
