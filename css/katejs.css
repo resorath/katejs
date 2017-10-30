@@ -2,6 +2,11 @@
 
 body {
     overflow: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1em;
+}
+
+h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
