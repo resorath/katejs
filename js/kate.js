@@ -21,6 +21,8 @@ $('#run').click(function() {
 
 	var result;
 
+	$('#output').html('');
+
 	try
 	{
 		result = window.eval(editor.getValue());
@@ -33,7 +35,7 @@ $('#run').click(function() {
 
 	if(result != undefined)
 	{
-		var stringy = JSON.stringify(result);
+		var stringy = JSON.stringify(result);	
 		$('#output').append(stringy + '\n');
 	}
 
@@ -57,6 +59,14 @@ function route() {
 	else
 	{
 		load = "Home";
+	}
+
+	if(load == 'undefined')
+	{
+		$('#content').html("No more lessons... yet. <a href=\"javascript: advance()\">restart</a>");
+		setCookie("lesson", -1);
+
+		return;
 	}
 
 	$.ajax({
@@ -88,7 +98,10 @@ route();
 
 var lessons = [
 	'Home',
-	'Intro'
+	'Intro',
+	'HelloWorld',
+	'StoryTime'
+
 
 ]
 
@@ -132,9 +145,11 @@ function getCookie(key) {
 }
 
 $('#run').click(function() {
+	
+	// matchToAdvance needs to be set
 	if(matchMode == "editor")
 	{
-		if(editor.getValue().indexOf(matchToAdvance) >= 0)
+		if(matchToAdvance.test(editor.getValue()))
 		{
 			window.setTimeout(function() {
 
@@ -145,7 +160,7 @@ $('#run').click(function() {
 	}
 	if(matchMode == "output")
 	{
-		if($('#output').html().indexOf(matchToAdvance) >= 0)
+		if(matchToAdvance.test($('#output').html()))
 		{
 			window.setTimeout(function() {
 
@@ -180,7 +195,7 @@ toastr.options.onclick = function() {
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 200px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
+  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
   props: {
   	'editorId': String, 
   	'content': String,
