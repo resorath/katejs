@@ -65,6 +65,9 @@ function route() {
 		dataType: "html",
 		success: function(data) {
 			$('#content').html(data);
+		},
+		error: function(data) {
+			$('#content').html("lesson not found :(");
 		}
 	});
 
@@ -154,7 +157,7 @@ $('#run').click(function() {
 })
 
 toastr.options = {
-  "closeButton": true,
+  "closeButton": false,
   "debug": false,
   "newestOnTop": false,
   "progressBar": false,
@@ -177,8 +180,16 @@ toastr.options.onclick = function() {
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
-  props: ['editorId', 'content', 'lang', 'theme'],
+  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
+  props: {
+  	'editorId': String, 
+  	'content': String,
+  	'lang': String,
+  	'theme': String, 
+  	'noloadbutton': Boolean,
+  	'canwrite': Boolean
+
+  },
   data () {
     return {
       editor: Object,
@@ -195,12 +206,15 @@ Vue.component('Editor', {
   mounted: function() {
   	const lang = this.lang || 'javascript'
     const theme = this.theme || 'twilight'
+    const loadbutton = this.loadbutton || true;
   
 	this.editor = window.ace.edit(this.editorId)
     this.editor.setValue(this.content, 1)
     
     this.editor.getSession().setMode(`ace/mode/${lang}`)
     this.editor.setTheme(`ace/theme/${theme}`)
+
+    this.editor.setReadOnly(!this.canwrite)
 
     this.editor.on('change', () => {
       this.beforeContent = this.editor.getValue()
