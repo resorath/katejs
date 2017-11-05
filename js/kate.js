@@ -187,7 +187,8 @@ Vue.component('Editor', {
   	'lang': String,
   	'theme': String, 
   	'noloadbutton': Boolean,
-  	'canwrite': Boolean
+  	'canwrite': Boolean,
+  	'noselect': Boolean
 
   },
   data () {
@@ -215,6 +216,16 @@ Vue.component('Editor', {
     this.editor.setTheme(`ace/theme/${theme}`)
 
     this.editor.setReadOnly(!this.canwrite)
+
+    if(this.noselect)
+    {
+    	var thiseditor = this.editor;
+    	thiseditor.getSession().selection.on('changeSelection', function (e)
+		{
+			if(!thiseditor.getSelection().isEmpty())
+		    	thiseditor.getSession().selection.clearSelection();
+		});
+    }
 
     this.editor.on('change', () => {
       this.beforeContent = this.editor.getValue()
