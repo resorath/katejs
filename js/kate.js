@@ -100,7 +100,9 @@ var lessons = [
 	'Home',
 	'Intro',
 	'HelloWorld',
-	'StoryTime'
+	'StoryTime',
+	'Variables',
+	'Greetings'
 
 
 ]
@@ -129,7 +131,7 @@ function setCookie(key, value)
 }
 
 function getCookie(key) {
-    var name = key + "=";
+    var kname = key + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -137,8 +139,8 @@ function getCookie(key) {
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+        if (c.indexOf(kname) == 0) {
+            return c.substring(kname.length, c.length);
         }
     }
     return null;

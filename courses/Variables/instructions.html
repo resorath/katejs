@@ -1,0 +1,25 @@
+<h1>Variables</h1>
+
+<p>A big part of programming is interacting with the people using it.</p>
+
+<p>We can have the computer remember things for us, and then we can use it later. We do this with variables.</p>
+
+<p>All variables have a name, this is how we put things in and take things out. Here is some code that puts "Hello World!" into a variable. We then get the contents of the variable and print it to the screen.</p>
+
+<editor editor-id="home1" :content="lessonEditorPayloads.variables1"></editor>
+
+<p>Press "Copy into editor", then "Run" to see what happens.</p>
+
+<p>Notice how we don't put quotes around the variable's name. We put quotes around words that don't have any meaning to the computer, however variable names do have meaning.</p>
+
+<p><strong>Note:</strong> The "+" symbol here combines the "Hello" with the variable "myname".</p>
+
+<p>Now, change the message to greet Thomas instead.</p>
+
+
+<script>
+lessonEditorPayloads.variables1 = "var myname = \"Kate\"\nconsole.log(\"Hello \" + myname);\n";
+
+var matchToAdvance = new RegExp(/Hello Thomas/i);
+var matchMode = "output"; // either editor or output
+</script>
