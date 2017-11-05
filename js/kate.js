@@ -153,25 +153,26 @@ $('#run').click(function() {
 	{
 		if(matchToAdvance.test(editor.getValue()))
 		{
-			window.setTimeout(function() {
-
-				toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
-
-			}, 200);
+			canAdvance();
 		}
 	}
 	if(matchMode == "output")
 	{
 		if(matchToAdvance.test($('#output').html()))
 		{
-			window.setTimeout(function() {
-
-				toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
-
-			}, 200);
+			canAdvance();
 		}
 	}
 })
+
+function canAdvance()
+{
+	window.setTimeout(function() {
+
+		toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
+
+	}, 200);
+}
 
 toastr.options = {
   "closeButton": false,
