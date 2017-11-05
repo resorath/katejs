@@ -57,6 +57,12 @@ h1, h2, h3 {
 } 
 /* ENDS Structural bigwigs */
 
+.heighttransition
+{
+    transition: height 2s;
+    -webkit-transition: height 2s;  
+}
+
 .loadButton
 {
     margin-left: 20px;
@@ -90,7 +96,26 @@ h1, h2, h3 {
     background-image: -o-linear-gradient(top, #148c68, #00bf8f);
     background-image: linear-gradient(to bottom, #148c68, #00bf8f);
     text-decoration: none;
-    }
+}
+
+.btnAction
+{
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 24px;
+    background: #E4287C;
+    padding: 5px 25px 5px 25px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnAction:hover {
+    background: #C12283;
+    text-decoration: none;
+}
 
 .editor
 {

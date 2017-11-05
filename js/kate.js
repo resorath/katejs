@@ -83,9 +83,54 @@ $(window).on('hashchange', function() {
 });
 route();
 
+var lessons = [
+	'Home',
+	'Intro'
+
+]
+
+// go to the next lesson
+function advance()
+{
+	var lesson = getCookie("lesson");
+	if(lesson == null)
+		lesson = 0;
+
+	lesson++;
+
+	setCookie("lesson", lesson);
+
+	window.location.hash = "#/" + lessons[lesson];
+	location.reload();
+}
+
+function setCookie(key, value)
+{
+	var d = new Date();
+	d.setTime(d.getTime() + 1000*24*60*60*1000);
+	var expires = d.toUTCString();
+	document.cookie = key+"="+value+"; expires="+  expires +";"
+}
+
+function getCookie(key) {
+    var name = key + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return null;
+}
+
 // Vue Component
 Vue.component('Editor', {
-  template: '<div><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
+  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
   props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {

@@ -2,24 +2,46 @@
 
 <p>Lets learn <strong>JavaScript</strong>!</p>
 
-<p>You don't need to know any JavaScript or programming at all, we will start from the beginning. First lets learn how to use this website.</p>
+<p>No programming experience required.</p>
 
-<p>You can try any code in the bottom left editor. Press the big green "Run" button to see the result in the bottom right.</p>
+<p>There is a built in place to try your code. When your ready to see it, press "show editor"</p>
 
-<p>Sometimes you will be given some code. You can copy code from the example area into the editor to try it. Don't forget to press run. Lets practice:</p>
+<button class="btnAction" onclick="showeditor()">Show Editor</button>
 
-<editor editor-id="home1" :content="lessonEditorPayloads.home1"></editor>
+<div id="doneshoweditor" style="display: none">
 
-<p>Lets try some code that pops up a message. Copy this code by pressing the 'Copy into editor' button below it. Then press "Run":</p>
+	<p style="margin-top: 70px;">Great! To move to the next lesson, press "Next Lesson"</p>
 
-<editor editor-id="home2" :content="lessonEditorPayloads.home2"></editor>
+	<button class="btnNext" onclick="advance()">Next Lesson</button>
 
-<p>Your progress will be automatically saved at this computer. When your ready to move on, press Next.</p>
-
-<button class="btnNext">Next</button>
+</div>
 
 
 <script>
 lessonEditorPayloads.home1 = "\"Press 'Copy into editor' below me to copy me\"\n\"into the editor below.\"";
 lessonEditorPayloads.home2 = "alert(\"This is an alert, press OK to continue\");";
+
+$(document).ready(function() {
+	$('#outputarea, #editor').hide();
+
+
+});
+
+function showeditor() {
+	$('#outputarea, #editor').fadeIn();
+
+	window.setTimeout(function() {
+		$('#doneshoweditor').fadeIn();
+
+		window.setTimeout(function() {
+
+			$('#instruction').stop().animate({
+			  scrollTop: $('#instruction')[0].scrollHeight
+			}, 800);
+
+		}, 500);
+
+	}, 1500);
+}
+
 </script>
