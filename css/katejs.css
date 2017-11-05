@@ -57,6 +57,13 @@ h1, h2, h3 {
 } 
 /* ENDS Structural bigwigs */
 
+.code
+{
+    display: inline;
+    background-color: #EAEAEA;
+    padding: 5px;
+    font-family: monospace;
+}
 
 .heighttransition
 {

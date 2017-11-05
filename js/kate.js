@@ -180,12 +180,13 @@ toastr.options.onclick = function() {
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
+  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 200px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
   props: {
   	'editorId': String, 
   	'content': String,
   	'lang': String,
   	'theme': String, 
+  	'autoheight': Boolean,
   	'noloadbutton': Boolean,
   	'canwrite': Boolean,
   	'noselect': Boolean,
@@ -208,6 +209,7 @@ Vue.component('Editor', {
   mounted: function() {
   	const lang = this.lang || 'javascript'
     var theme = this.theme || 'twilight'
+    const height = this.height || 200;
 
     if(this.disable)
     {
@@ -223,6 +225,12 @@ Vue.component('Editor', {
     this.editor.setTheme(`ace/theme/${theme}`)
 
     this.editor.setReadOnly(!this.canwrite)
+
+    if(this.autoheight)
+    {
+    	this.editor.setAutoScrollEditorIntoView(true);
+    	this.editor.setOption("maxLines", 20);
+    }
 
     if(this.noselect)
     {
