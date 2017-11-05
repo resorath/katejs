@@ -22,8 +22,10 @@ lessonEditorPayloads.home1 = "\"Press 'Copy into editor' below me to copy me\"\n
 lessonEditorPayloads.home2 = "alert(\"This is an alert, press OK to continue\");";
 
 $(document).ready(function() {
-	$('#outputarea, #editor').hide();
 
+	window.setTimeout(function() {	
+		$('#outputarea, #editor').hide();
+	}, 0);
 
 });
 
