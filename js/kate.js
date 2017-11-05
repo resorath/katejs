@@ -188,7 +188,8 @@ Vue.component('Editor', {
   	'theme': String, 
   	'noloadbutton': Boolean,
   	'canwrite': Boolean,
-  	'noselect': Boolean
+  	'noselect': Boolean,
+  	'disable': Boolean
 
   },
   data () {
@@ -206,8 +207,14 @@ Vue.component('Editor', {
   },
   mounted: function() {
   	const lang = this.lang || 'javascript'
-    const theme = this.theme || 'twilight'
-    const loadbutton = this.loadbutton || true;
+    var theme = this.theme || 'twilight'
+
+    if(this.disable)
+    {
+    	this.canwrite = false;
+    	this.noselect = true;
+    	theme = 'solarized_light';
+    }
   
 	this.editor = window.ace.edit(this.editorId)
     this.editor.setValue(this.content, 1)
