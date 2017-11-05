@@ -8,13 +8,13 @@
 
 <button class="btnAction" onclick="showeditor()">Show Editor</button>
 
-<div id="doneshoweditor" style="display: none">
+<!--<div id="doneshoweditor" style="display: none">
 
-	<p style="margin-top: 70px;">Great! To move to the next lesson, press "Next Lesson"</p>
+	<p style="margin-top: 70px;">Great! To move to the next lesson, press "Next Lesson". We will save your progress on this computer.</p>
 
 	<button class="btnNext" onclick="advance()">Next Lesson</button>
 
-</div>
+</div>-->
 
 
 <script>
@@ -31,7 +31,7 @@ function showeditor() {
 	$('#outputarea, #editor').fadeIn();
 
 	window.setTimeout(function() {
-		$('#doneshoweditor').fadeIn();
+		/*$('#doneshoweditor').fadeIn();
 
 		window.setTimeout(function() {
 
@@ -39,7 +39,9 @@ function showeditor() {
 			  scrollTop: $('#instruction')[0].scrollHeight
 			}, 800);
 
-		}, 500);
+		}, 500);+*/
+
+		toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
 
 	}, 1500);
 }

@@ -128,6 +128,53 @@ function getCookie(key) {
     return null;
 }
 
+$('#run').click(function() {
+	if(matchMode == "editor")
+	{
+		if(editor.getValue().indexOf(matchToAdvance) >= 0)
+		{
+			window.setTimeout(function() {
+
+				toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
+
+			}, 200);
+		}
+	}
+	if(matchMode == "output")
+	{
+		if($('#output').html().indexOf(matchToAdvance) >= 0)
+		{
+			window.setTimeout(function() {
+
+				toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
+
+			}, 200);
+		}
+	}
+})
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "0",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
+toastr.options.onclick = function() {
+	advance();
+}
+
+
 // Vue Component
 Vue.component('Editor', {
   template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',

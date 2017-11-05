@@ -57,6 +57,7 @@ h1, h2, h3 {
 } 
 /* ENDS Structural bigwigs */
 
+
 .heighttransition
 {
     transition: height 2s;
@@ -72,6 +73,16 @@ h1, h2, h3 {
 .loadButton button
 {
     width: 500px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-family: Arial;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    background: #FFC04C;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btnNext
