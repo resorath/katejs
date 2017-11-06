@@ -92,6 +92,7 @@ function route() {
 };
 
 $(window).on('hashchange', function() {
+	location.reload();
 	route();
 });
 route();
@@ -119,7 +120,7 @@ function advance()
 	setCookie("lesson", lesson);
 
 	window.location.hash = "#/" + lessons[lesson];
-	location.reload();
+	//location.reload();
 }
 
 function setCookie(key, value)
