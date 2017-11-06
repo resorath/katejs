@@ -164,6 +164,13 @@ $('#run').click(function() {
 			canAdvance();
 		}
 	}
+	if(matchMode == "custom" && typeof matchToAdvance === 'function')
+	{
+		if(matchToAdvance())
+		{
+			canAdvance();
+		}
+	}
 })
 
 function canAdvance()

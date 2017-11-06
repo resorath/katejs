@@ -11,6 +11,16 @@
 <script>
 lessonEditorPayloads.greetings1 = "var myname = prompt(\"What is your name?\");";
 
-var matchToAdvance = new RegExp(/prompt/i);
-var matchMode = "editor"; // either editor or output
+
+var matchMode = "custom"; // either editor or output (or custom)
+
+var matchToAdvance = function() {
+
+	var matchEditor = new RegExp(/prompt/i);
+	var matchOutput = new RegExp(/Hello [\S ]+/i);
+	if(matchEditor.test(editor.getValue()) && matchOutput.test($('#output').html()))
+			return true;
+	return false;
+}
+
 </script>
