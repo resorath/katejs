@@ -164,7 +164,7 @@ $('#run').click(function() {
 			canAdvance();
 		}
 	}
-	if(matchMode == "custom" && typeof matchToAdvance === 'function')
+	if(matchMode == "callback" && typeof matchToAdvance === 'function')
 	{
 		if(matchToAdvance())
 		{
