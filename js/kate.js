@@ -20,6 +20,7 @@ editor.session.setMode("ace/mode/javascript");
 $('#run').click(function() {
 
 	var result;
+	var codeok = true;
 
 	$('#output').html('');
 
@@ -31,12 +32,43 @@ $('#run').click(function() {
 	{
 		var stringy = "Oops! Code problem:  " + e.name + ": " + e.message;
 		$('#output').append(stringy + '\n');
+		codeok = false;
 	}
 
 	if(result != undefined)
 	{
 		var stringy = JSON.stringify(result);	
 		$('#output').append(stringy + '\n');
+	}
+
+	// CHECK
+	if(typeof matchMode == 'undefined')
+		return;
+
+	if(!codeok)
+		return;
+
+	// matchToAdvance needs to be set
+	if(matchMode == "editor")
+	{
+		if(matchToAdvance.test(editor.getValue()))
+		{
+			canAdvance();
+		}
+	}
+	if(matchMode == "output")
+	{
+		if(matchToAdvance.test($('#output').html()))
+		{
+			canAdvance();
+		}
+	}
+	if(matchMode == "callback" && typeof matchToAdvance === 'function')
+	{
+		if(matchToAdvance())
+		{
+			canAdvance();
+		}
 	}
 
 });
@@ -169,31 +201,6 @@ function getCookie(key) {
     return null;
 }
 
-$('#run').click(function() {
-	
-	// matchToAdvance needs to be set
-	if(matchMode == "editor")
-	{
-		if(matchToAdvance.test(editor.getValue()))
-		{
-			canAdvance();
-		}
-	}
-	if(matchMode == "output")
-	{
-		if(matchToAdvance.test($('#output').html()))
-		{
-			canAdvance();
-		}
-	}
-	if(matchMode == "callback" && typeof matchToAdvance === 'function')
-	{
-		if(matchToAdvance())
-		{
-			canAdvance();
-		}
-	}
-})
 
 function canAdvance()
 {

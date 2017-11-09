@@ -37,6 +37,17 @@ lessonEditorPayloads.numbers3 = "var myage = 14;\nvar myagenextyear = myage + 1;
 lessonEditorPayloads.numbers4 = "var firstnumber = 5;\nvar secondnumber = 8;\n";
 
 
-var matchToAdvance = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
-var matchMode = "editor"; // either editor or output
+var matchToAdvance = new RegExp();
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof firstnumber != "number" || typeof secondnumber != "number")
+		return false;
+
+	var matchEditor = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
+	if(matchEditor.test(editor.getValue()) && ($('#output').html().indexOf(String(firstnumber + secondnumber)) > -1) )
+			return true;
+	return false;
+}
 </script>
