@@ -1,0 +1,67 @@
+<h1>Booleans</h1>
+
+<p>Booleans are another type of variable which can be either one of two possible things: true or false.</p>
+
+<p>We can think of these two possibiltiies in any number of ways:</p>
+
+<ul>
+	<li>On or off</li>
+	<li>Yes or no</li>
+	<li>correct or not correct</li>
+	<li>valid or invalid</li>
+</ul>
+
+<p>Think of a light switch that has these two states, a light switch can be.</p>
+
+<ul>
+	<li>On or off</li>
+	<li>lit or unlit</li>
+	<li>Giving light or not giving light</li>
+</ul>
+
+<p>All of these questions can be turned into a true or false question.</p>
+
+<ul>
+	<li>Is the light on? (true or false)</li>
+	<li>Is the switch up? (true or false)</li>
+</ul>
+
+<p>A boolean looks like this:</p>
+
+
+<editor editor-id="boolean1" :content="lessonEditorPayloads.boolean1"  disable noloadbutton autoheight></editor>
+
+<p>Numbers are more interesting than Strings because we can do arithmetic on them. For example, add two numbers together. Try this out:</p>
+
+<editor editor-id="numbers2" :content="lessonEditorPayloads.numbers2"></editor>
+
+<p><strong>Note:</strong> for numbers, using <span class="code">+</span> adds the numbers together. For Strings, it simply puts the two strings side by side (called <em>concatenation</em>).</p>
+
+<p>You can also add numbers to variables, or variables to other variables:
+
+<editor editor-id="numbers3" :content="lessonEditorPayloads.numbers3"></editor>
+
+<p>Try creating your own calculator that adds two numbers together that are found in <em>firstnumber</em> and <em>secondnumber</em>. Here is some sample code to get you started (press "Copy into editor", and then add your own code below it).</p>
+
+<p><strong>Hint: </strong> you might need to create another variable to hold the total, and a print statement to show it.</p>
+
+<editor editor-id="numbers4" :content="lessonEditorPayloads.numbers4"></editor>
+
+<script>
+lessonEditorPayloads.boolean1 = "var lightison = true;";
+lessonEditorPayloads.numbers2 = "var myage = 14 + 1;\nprint(\"Next year I will be \" + myage + \" years old.\");";
+lessonEditorPayloads.numbers3 = "var myage = 14;\nvar myagenextyear = myage + 1;\nprint(\"Next year I will be \" + myagenextyear + \" years old.\");";
+lessonEditorPayloads.numbers4 = "var firstnumber = 5;\nvar secondnumber = 8;\n";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof firstnumber != "number" || typeof secondnumber != "number")
+		return false;
+
+	var matchEditor = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
+	if(matchEditor.test(editor.getValue()) && ($('#output').html().indexOf(String(firstnumber + secondnumber)) > -1) )
+			return true;
+	return false;
+}
+</script>
