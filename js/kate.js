@@ -108,7 +108,8 @@ var lessons = [
 	'StoryTime',
 	'Variables',
 	'Greetings',
-	'VariablesTwo'
+	'VariablesTwo',
+	'Numbers'
 
 
 ]
@@ -227,7 +228,7 @@ toastr.options.onclick = function() {
 
 // Vue Component
 Vue.component('Editor', {
-  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 500px; height: 150px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
+  template: '<div style="margin-bottom: 40px;"><div :id="editorId" class="inlineeditor editor" style="width: 600px; height: 150px;"></div><div class="loadButton" v-if="!noloadbutton"><button v-on:click="loadIntoBottom">Copy into editor</button></div></div>',
   props: {
   	'editorId': String, 
   	'content': String,

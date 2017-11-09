@@ -1,0 +1,42 @@
+<h1>Numbers</h1>
+
+<p>Variables come in many different types. So far we have been using <em>Strings</em></p>
+
+<p>A <em>String</em> is a bunch of letters, numbers, and symbols. They have no significance to JavaScript. These are all strings, because we put them between double quotes:</p>
+
+<ul>
+	<li>"Kate"</li>
+	<li>"The brown horse went to the stable."</li>
+	<li>"37"</li>
+</ul>
+
+<p>However we can have other types of variables as well.</p>
+
+<p>Numbers are used without quotes:</p>
+
+<editor editor-id="numbers1" :content="lessonEditorPayloads.numbers1"  disable noloadbutton autoheight></editor>
+
+<p>Numbers are more interesting than Strings because we can do arithmetic on them. For example, add two numbers together. Try this out:</p>
+
+<editor editor-id="numbers2" :content="lessonEditorPayloads.numbers2"></editor>
+
+<p>You can also add numbers to variables, or variables to other variables:
+
+<editor editor-id="numbers3" :content="lessonEditorPayloads.numbers3"></editor>
+
+<p>Try creating your own calculator that adds two numbers together that are found in <em>firstnumber</em> and <em>secondnumber</em>. Here is some sample code to get you started (press "Copy into editor", and then add your own code below it).</p>
+
+<p><strong>Hint: </strong> you might need to create another variable, and a print statement.</p>
+
+<editor editor-id="numbers4" :content="lessonEditorPayloads.numbers4"></editor>
+
+<script>
+lessonEditorPayloads.numbers1 = "var myage = 14;";
+lessonEditorPayloads.numbers2 = "var myage = 14 + 1;\nprint(\"Next year I will be \" + myage + \" years old.\");";
+lessonEditorPayloads.numbers3 = "var myage = 14;\nvar myagenextyear = myage + 1;\nprint(\"Next year I will be \" + myagenextyear + \" years old.\");";
+lessonEditorPayloads.numbers4 = "var firstnumber = 5;\nvar secondnumber = 8;\n";
+
+
+var matchToAdvance = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
+var matchMode = "editor"; // either editor or output
+</script>
