@@ -310,3 +310,20 @@ const app = new Vue({
     }
   }
 });
+
+
+// Lets register some helpful functions
+
+// print is mostly an alias to console.log
+// however strings are stripped of their double quotes
+function print(s)
+{
+	if(typeof s == "string")
+	{
+		$('#output').append(s + "\n");
+	}
+	else
+	{
+		console.log(s);
+	}
+}
