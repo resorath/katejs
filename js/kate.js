@@ -107,7 +107,8 @@ var lessons = [
 	'HelloWorld',
 	'StoryTime',
 	'Variables',
-	'Greetings'
+	'Greetings',
+	'VariablesTwo'
 
 
 ]
