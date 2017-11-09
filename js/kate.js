@@ -47,6 +47,10 @@ $('#clear').click(function() {
 
 });
 
+$('#previous').click(function() {
+	recede();
+})
+
 // Simple routing
 function route() {
 
@@ -121,6 +125,22 @@ function advance()
 
 	window.location.hash = "#/" + lessons[lesson];
 	//location.reload();
+}
+
+function recede()
+{
+	var lesson = getCookie("lesson");
+	if(lesson == null)
+		lesson = 1;
+
+	if(lesson != null && lesson <= 0)
+		lesson = 1;
+
+	lesson--;
+
+	setCookie("lesson", lesson);
+
+	window.location.hash = "#/" + lessons[lesson];
 }
 
 function setCookie(key, value)
