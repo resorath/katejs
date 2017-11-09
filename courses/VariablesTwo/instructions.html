@@ -1,0 +1,33 @@
+<h1>Variables Two</h1>
+
+<p>Variables are important to master. You can't write a useful program without them.</p>
+
+<p>Lets analyze the syntax (the parts that are important) of variables. Lets look at this example again:</p>
+
+<editor editor-id="variablestwo1" :content="lessonEditorPayloads.variablestwo1"  disable noloadbutton autoheight></editor>
+
+<p><span class="code">var</span> is a <em>keyword</em> in JavaScript, you must always spell it exactly like this. It means that you want to create a new variable. The word <em>myname</em> is the name of the variable, we can name it whatever we want. </p>
+
+<p>The equals sign <span class="code">=</span> means that we want to set the contents of the <em>myname</em> variable (left hand side) to <em>"Kate"</em> (right hand side).</p>
+
+<p>We put "Kate" in double quotes, because it has no special meaning to JavaScript, however <span class="code">var</span> (a keyword) and <span class="code">myname</span> (the name of a variable) do have special meaning.</p>
+
+<p>If we said this line in english, we would replace "equal sign" with "is". So this line is pronounced:</p>
+
+<p style="margin-left: 20px;">The variable myname is Kate.</p>
+
+<p>We follow <strong>most</strong> lines of JavaScript with a semi-colon <span class="code">;</span> meaning that we are done with that line of code. This is like a period in english. Remember, <strong>each line of code only does one thing</strong>.</p>
+
+<p>We can also change the contents of a variable whenever we want, but we don't use <span class="code">var</span> when re-using a variable. Try out this example:</p>
+
+<editor editor-id="variablestwo2" :content="lessonEditorPayloads.variablestwo2"></editor>
+
+<p>Did you notice how lines 2 and 4 are the same, but printed different messages?</p>
+
+<script>
+lessonEditorPayloads.variablestwo1 = "var myname = \"Kate\";";
+lessonEditorPayloads.variablestwo2 = "var myname = \"Kate\";\nprint(\"My name is \" + myname);\nmyname = \"Thomas\";\nprint(\"My name is \" + myname);";
+
+var matchToAdvance = new RegExp(/My name is Thomas/i);
+var matchMode = "output"; // either editor or output
+</script>
