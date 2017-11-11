@@ -1,2 +1,2 @@
-var myname = "Thomas"
+var myname = "Thomas";
 print("Hello " + myname);

@@ -1,5 +1,16 @@
 'use strict'
 
+var lessons = [
+	'Home',
+	'Intro',
+	'HelloWorld',
+	'StoryTime',
+	'Variables',
+	'Greetings',
+	'Strings',
+	'Numbers',
+	'Booleans',
+]
 
 var lessonEditorPayloads = {};
 
@@ -94,13 +105,21 @@ function route() {
 	}
 	else
 	{
-		load = "Home";
+		var lesson = getCookie("lesson");
+		if(lesson == null)
+		{
+			lesson = 0;
+			load = "Home";
+		}
+		else
+		{
+			load = lessons[lesson];
+		}
 	}
 
 	if(load == 'undefined')
 	{
-		$('#content').html("No more lessons... yet. <a href=\"javascript: advance()\">restart</a>");
-		setCookie("lesson", -1);
+		$('#content').html("No more lessons... yet. <a href=\"javascript:restart();\">restart</a>");
 
 		return;
 	}
@@ -133,19 +152,6 @@ $(window).on('hashchange', function() {
 });
 route();
 
-var lessons = [
-	'Home',
-	'Intro',
-	'HelloWorld',
-	'StoryTime',
-	'Variables',
-	'Greetings',
-	'VariablesTwo',
-	'Numbers'
-
-
-]
-
 // go to the next lesson
 function advance()
 {
@@ -175,6 +181,12 @@ function recede()
 	setCookie("lesson", lesson);
 
 	window.location.hash = "#/" + lessons[lesson];
+}
+
+function restart()
+{
+	setCookie('lesson', 0);
+	window.location.hash = "#/" + lessons[0];
 }
 
 function setCookie(key, value)
