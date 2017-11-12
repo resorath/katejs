@@ -10,6 +10,7 @@ var lessons = [
 	'Strings',
 	'Numbers',
 	'Operators',
+	'FtoC'
 ]
 
 var lessonEditorPayloads = {};
