@@ -57,6 +57,47 @@ h1, h2, h3 {
 } 
 /* ENDS Structural bigwigs */
 
+#drawer {
+    position: fixed;
+    margin: 0;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 500px;
+    height: 100%;
+    background-color: #ccc;
+    z-index: 10;
+    padding: 10px;
+    display: none;
+}
+
+#drawer h2
+{
+    padding: 0px;
+    margin: 0px
+}
+
+#drawer ul
+{
+    list-style: square;
+} 
+
+#drawer ul a
+{
+    text-decoration: none;
+    color: blue;
+}
+
+#currentlesson
+{
+    font-weight: bold;
+}
+
+#toplesson a
+{
+    font-style: oblique;
+}
+
 .code
 {
     display: inline;
@@ -207,13 +248,26 @@ h1, h2, h3 {
     background-color: #55aa00;
 }
 
-#previous
+#hint
 {
     margin: 0;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 40%;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background-color: #55aa00;
+}
+
+#history
+{
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 60%;
     right: 0;
     width: 20%;
     height: 100%;

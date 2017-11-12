@@ -16,7 +16,7 @@
 
 
 <script>
-lessonEditorPayloads.ftoc1 = "var fahrenheight = 23";
+lessonEditorPayloads.ftoc1 = "var fahrenheit = 23";
 
 function FtoC(f) 
 {
@@ -30,7 +30,7 @@ var matchToAdvance = function() {
 		return;
 
 	var matchEditor = new RegExp(/var fahrenheit[\S ]+[\S\\n ]*[3259]+[\S ]*[3259]+[\S ]*[3259]+[\S ]*[3259]+[\S ]*[\S\\n ]*/gi);
-	var matchResult = new RegExp("the temperature in celcius is " + FtoC(fahrenheit), "gi");
+	var matchResult = new RegExp("the temperature in celcius is[\S ]*" + FtoC(fahrenheit), "gi");
 	if(matchEditor.test(JSON.stringify(editor.getValue())) && matchResult.test($('#output').html()))
 		return true;
 	return false;

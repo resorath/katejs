@@ -1,24 +1,70 @@
 'use strict'
 
 var lessons = [
-	'Home',
-	'Intro',
-	'HelloWorld',
-	'StoryTime',
-	'Variables',
-	'Greetings',
-	'Strings',
-	'Numbers',
-	'Operators',
-	'FtoC'
+	{ url: 'Home', title: "Welcome!" },
+	{ url: 'Intro', title: "Using the editor" },
+	{ url: 'HelloWorld', title: "Hello World!" },
+	{ url: 'StoryTime', title: "Story Time" },
+	{ url: 'Variables', title: "Variables" },
+	{ url: 'Greetings', title: "Greetings" },
+	{ url: 'Strings', title: "Strings" },
+	{ url: 'Numbers', title: "Numbers" },
+	{ url: 'Operators', title: "Operators" },
+	{ url: 'FtoC', title: "Chapter Boss: Temperature Conversion" },
 ]
 
 var lessonEditorPayloads = {};
 
-// Init the editor
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/twilight");
-editor.session.setMode("ace/mode/javascript");
+var editor = null;
+
+$(document).ready(function() {
+
+	// init the editor
+	editor = ace.edit("editor");
+	editor.setTheme("ace/theme/twilight");
+	editor.session.setMode("ace/mode/javascript");
+
+	// build the navigation
+	var historylesson = getCookie('lesson');
+	var historyEl = $('#lessonhistory');
+	var currentlesson = getCurrentIndex();
+	for(var i=0; i<lessons.length; i++)
+	{
+		if(i > historylesson) // lesson not reached
+		{
+			historyEl.append('<li>' + lessons[i].title + '</li>\n');
+		}
+		else if(i < historylesson) // lesson passed
+		{
+			if(i == currentlesson)
+				historyEl.append('<li id="currentlesson">' + lessons[i].title + '</li>\n');
+			else
+				historyEl.append('<li><a href="#/' + lessons[i].url + '">' + lessons[i].title + '</a></li>\n');
+		}
+		else if(i == historylesson) // current lesson
+		{
+			if(i == currentlesson)
+				historyEl.append('<li id="currentlesson">' + lessons[i].title + '</li>\n');
+			else
+				historyEl.append('<li id="toplesson"><a href="#/' + lessons[i].url + '">' + lessons[i].title + '</a></li>\n');
+		}
+	}
+
+});
+
+function getCurrentIndex()
+{
+	var hash = window.location.hash.substr(2);
+	for(var i=0; i<lessons.length; i++)
+	{
+		if(lessons[i].url.toLowerCase() == hash.toLowerCase())
+		{
+			return i;
+		}
+	}
+
+	return null;
+}
 
 // Capture the console
 (function(){
@@ -95,6 +141,13 @@ $('#previous').click(function() {
 	recede();
 })
 
+$('#history').click(function() {
+	if($('#drawer').is(":visible"))
+		$('#drawer').hide();
+	else
+		$('#drawer').show();
+})
+
 // Simple routing
 function route() {
 
@@ -114,7 +167,7 @@ function route() {
 		}
 		else
 		{
-			load = lessons[lesson];
+			load = lessons[lesson].url;
 		}
 	}
 
@@ -164,7 +217,7 @@ function advance()
 
 	setCookie("lesson", lesson);
 
-	window.location.hash = "#/" + lessons[lesson];
+	window.location.hash = "#/" + lessons[lesson].url;
 	//location.reload();
 }
 
@@ -181,13 +234,13 @@ function recede()
 
 	setCookie("lesson", lesson);
 
-	window.location.hash = "#/" + lessons[lesson];
+	window.location.hash = "#/" + lessons[lesson].url;
 }
 
 function restart()
 {
 	setCookie('lesson', 0);
-	window.location.hash = "#/" + lessons[0];
+	window.location.hash = "#/" + lessons[0].url;
 }
 
 function cleareditor()
@@ -239,7 +292,7 @@ toastr.options = {
   "showDuration": "300",
   "hideDuration": "1000",
   "timeOut": "0",
-  "extendedTimeOut": "1000",
+  "extendedTimeOut": "0",
   "showEasing": "swing",
   "hideEasing": "linear",
   "showMethod": "fadeIn",
