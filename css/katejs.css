@@ -77,6 +77,14 @@ h1, h2, h3 {
     margin: 0px
 }
 
+.chaptermarker
+{
+    list-style: none;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
 #drawer ul
 {
     list-style: square;

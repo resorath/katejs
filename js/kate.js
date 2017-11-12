@@ -1,16 +1,18 @@
 'use strict'
 
 var lessons = [
-	{ url: 'Home', title: "Welcome!" },
-	{ url: 'Intro', title: "Using the editor" },
-	{ url: 'HelloWorld', title: "Hello World!" },
-	{ url: 'StoryTime', title: "Story Time" },
-	{ url: 'Variables', title: "Variables" },
-	{ url: 'Greetings', title: "Greetings" },
-	{ url: 'Strings', title: "Strings" },
-	{ url: 'Numbers', title: "Numbers" },
-	{ url: 'Operators', title: "Operators" },
-	{ url: 'FtoC', title: "Chapter Boss: Temperature Conversion" },
+	{ url: 'Home', title: "Welcome!", chapter: 1 },
+	{ url: 'Intro', title: "Using the editor", chapter: 1 },
+	{ url: 'HelloWorld', title: "Hello World!", chapter: 1 },
+	{ url: 'StoryTime', title: "Story Time", chapter: 1 },
+	{ url: 'Variables', title: "Variables", chapter: 1 },
+	{ url: 'Greetings', title: "Greetings", chapter: 1 },
+	{ url: 'Strings', title: "Strings", chapter: 1 },
+	{ url: 'Numbers', title: "Numbers", chapter: 1 },
+	{ url: 'Operators', title: "Operators", chapter: 1 },
+	{ url: 'FtoC', title: "Chapter Boss: Temperature Conversion", chapter: 1 },
+
+	{ url: 'Branching', title: "Branching", chapter: 2},
 ]
 
 var lessonEditorPayloads = {};
@@ -30,6 +32,11 @@ $(document).ready(function() {
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
 	{
+		if(i == 0 || lessons[i].chapter != lessons[i-1].chapter)
+		{
+			historyEl.append('<li class="chaptermarker">Chapter ' + lessons[i].chapter + '</li>');
+		}
+
 		/*if(i > historylesson) // lesson not reached
 		{
 			historyEl.append('<li>' + lessons[i].title + '</li>\n');
