@@ -1,0 +1,46 @@
+<h1>Operators</h1>
+
+<p>We saw that numbers can be added together, but they can also do other things.</p>
+
+<p>We can subtract two numbers:
+
+<editor editor-id="operators1" :content="lessonEditorPayloads.operators1" autoheight></editor>
+
+<p>We can multiply two numbers:
+
+<editor editor-id="operators2" :content="lessonEditorPayloads.operators2" autoheight></editor>
+
+<p>We can divide two numbers:
+
+<editor editor-id="operators3" :content="lessonEditorPayloads.operators3" autoheight></editor>
+
+<p>We can find the modulus of two numbers (the remainder after dividing two numbers):
+
+<editor editor-id="operators4" :content="lessonEditorPayloads.operators4" autoheight></editor>
+
+<p>You can use brackets as well. Brackets change the order of operation:
+
+<editor editor-id="operators5" :content="lessonEditorPayloads.operators5" autoheight></editor>
+
+<p>Write a program that uses the numbers: 4, 7, and 13 in an equation that is stored in a variable called "total". Total should equal 5 when it is run. Don't forget to print out the total. Here is some starter code:
+
+<editor editor-id="operators6" :content="lessonEditorPayloads.operators6" ></editor>
+
+<script>
+lessonEditorPayloads.operators1 = "var firstnumber = 8;\nvar secondnumber = 5;\nvar difference = firstnumber - secondnumber;\nprint(difference);";
+lessonEditorPayloads.operators2 = "var firstnumber = 8;\nvar secondnumber = 5;\nvar product = firstnumber * secondnumber;\nprint(product);";
+lessonEditorPayloads.operators3 = "var firstnumber = 8;\nvar secondnumber = 5;\nvar quotient = firstnumber / secondnumber;\nprint(quotient);";
+lessonEditorPayloads.operators4 = "var firstnumber = 8;\nvar secondnumber = 5;\nvar modulus = firstnumber % secondnumber;\nprint(modulus);";
+lessonEditorPayloads.operators5 = "var firstnumber = 8;\nvar secondnumber = 5;\nvar thirdnumber = 3;\nvar total = firstnumber * (secondnumber - thirdnumber);\nprint(total);";
+lessonEditorPayloads.operators6 = "var total = ";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var matchEditor = new RegExp(/[\S ]*var total[\S ]+[1347]{1,2}[\S ]+[1347]{1,2}[\S ]+[1347]{1,2}[\S ]+[\\n]+print\([\S ]*total[\S ]*\)[\S ]*/ig);
+	var matchResult = new RegExp(/[\S ]*5[\S ]*/i);
+	if(matchEditor.test(JSON.stringify(editor.getValue())) && matchResult.test($('#output').html()))
+		return true;
+	return false;
+}
+</script>

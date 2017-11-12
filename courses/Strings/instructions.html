@@ -2,9 +2,9 @@
 
 <p>Variables are important to master. You can't write a useful program without them.</p>
 
-<p>Variables come in many different types. So far we have been using <em>Strings</em> with our variables.</p>
+<p>Variables come in many different types. So far we have been using <em>Strings</em> with our variables, <em>Strings</em> are a type of variable.</p>
 
-<p>A <em>String</em> is a bunch of letters, numbers, and symbols. They have no special meaning in JavaScript. These are all Strings, because we put them between double quotes:</p>
+<p>A <em>String</em> is a bunch of letters, numbers, and symbols that have no special meaning in JavaScript. These are all Strings, because we put them between double quotes:</p>
 
 <ul>
 	<li>"Kate"</li>
@@ -16,22 +16,28 @@
 
 <editor editor-id="variablestwo1" :content="lessonEditorPayloads.variablestwo1"  disable noloadbutton autoheight></editor>
 
-
 <p>If we said this line in English, we can pronounce it as:</p>
 
 <p style="margin-left: 20px;">The variable myname is Kate.</p>
 
-<p>We can also change the contents of a variable whenever we want, but we don't use <span class="code">var</span> when re-using a variable. Try out this example:</p>
+<p>We can also change the contents of a variable whenever we want, but we don't use <span class="code">var</span> when re-using a variable. We only use <span class="code">var</span> when making new variables for the first time.</p>
+
+<p>Try out this example:</p>
 
 <editor editor-id="variablestwo3" :content="lessonEditorPayloads.variablestwo3"></editor>
 
 <p>Did you notice how lines 2 and 4 are the same, but printed different messages?</p>
 
+<p>Use the same example, but fill in line 5 so that the program also says <i>My name is Sarah</i>. Make sure to "Copy into editor" first.</p>
+
+<editor editor-id="variablestwo4" :content="lessonEditorPayloads.variablestwo4"></editor>
+
 <script>
 lessonEditorPayloads.variablestwo1 = "var myname = \"Kate\";";
 lessonEditorPayloads.variablestwo2 = "var myname = prompt(\"What is your name?\");";
 lessonEditorPayloads.variablestwo3 = "var myname = \"Kate\";\nprint(\"My name is \" + myname);\nmyname = \"Thomas\";\nprint(\"My name is \" + myname);";
+lessonEditorPayloads.variablestwo4 = "var myname = \"Kate\";\nprint(\"My name is \" + myname);\nmyname = \"Thomas\";\nprint(\"My name is \" + myname);\n\nprint(\"My name is \" + myname);";
 
-var matchToAdvance = new RegExp(/My name is Thomas/i);
+var matchToAdvance = new RegExp(/My name is Kate\nMy name is Thomas\nMy name is Sarah/i);
 var matchMode = "output"; // either editor or output
 </script>

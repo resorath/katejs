@@ -189,6 +189,11 @@ function restart()
 	window.location.hash = "#/" + lessons[0];
 }
 
+function cleareditor()
+{
+	editor.setValue('', 1);
+}
+
 function setCookie(key, value)
 {
 	var d = new Date();
