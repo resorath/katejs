@@ -1,0 +1,26 @@
+<h1>If...Else</h1>
+
+<p>When we use an <span class="code">if</span> statement, the code inside the curly braces is only used if the <span class="code">if</span> statement is true. We can also run code when it is not true. We use <span class="code">else</span> for this:</p>
+
+<editor editor-id="ifelse1" :content="lessonEditorPayloads.ifelse1" autoheight></editor>
+
+<p>Write some code that determines if someone is the legal driving age. We will assume the legal driving age is 16.</p>
+
+<p>Print "You can drive!" if the person is 16 or older, otherwise print "Still have to wait!".  Here is some starter code:</p>
+
+<editor editor-id="ifelse2" :content="lessonEditorPayloads.ifelse2"></editor>
+
+
+
+<script>
+lessonEditorPayloads.ifelse1 = "var temperature = 0;\nprint(\"The temperature is \" + temperature + \"c.\");\nif(temperature < 10)\n{\n\tprint(\"It is really cold!\");\n}\nelse\n{\n\tprint(\"It is warm!\");\n}"
+lessonEditorPayloads.ifelse2 = "var age = prompt(\"What is your age?\");\n"
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	var t = new RegExp(/var age[ ]*=[ ]*prompt\(\"What is your age\?\"\)[ ;]*if\(age[\S ]*16\)\{[ ]*print\([\S ]+\)[ ;]*\}[ ]*else[ ]*{[ ]*print\([\S ]+\)[ ;]*\}/ig);
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	return t.test(e);
+}
+</script>

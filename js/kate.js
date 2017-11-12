@@ -14,6 +14,7 @@ var lessons = [
 
 	{ url: 'Branching', title: "Branching", chapter: 2},
 	{ url: 'Conditions', title: "Conditions", chapter: 2},
+	{ url: 'IfElse', title: "If...Else", chapter: 2},
 ]
 
 var lessonEditorPayloads = {};
@@ -28,12 +29,12 @@ $(document).ready(function() {
 	editor.session.setMode("ace/mode/javascript");
 
 	// build the navigation
-	var historylesson = getCookie('lesson');
+	var historylesson = getCookie('lesson') || 0;
 	var historyEl = $('#lessonhistory');
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
 	{
-		if(i == 0 || lessons[i].chapter != lessons[i-1].chapter)
+		if(i == 0 || (lessons[i].chapter != lessons[i-1].chapter && i < historylesson))
 		{
 			historyEl.append('<li class="chaptermarker">Chapter ' + lessons[i].chapter + '</li>');
 		}
