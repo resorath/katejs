@@ -9,7 +9,7 @@ var lessons = [
 	'Greetings',
 	'Strings',
 	'Numbers',
-	'Booleans',
+	'Operators',
 ]
 
 var lessonEditorPayloads = {};
