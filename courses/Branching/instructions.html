@@ -1,0 +1,24 @@
+<h1>Branching</h1>
+
+<p>So far we've seen JavaScript's ability to do calculations faster than anyone can do themselves. Another thing it can do is run different code based on what is in variables.</p>
+
+<p>We use <span class="code">if</span> statements to decide which code to run. Consider this example:</p>
+
+<editor editor-id="branching1" :content="lessonEditorPayloads.branching1"></editor>
+
+<p>Press "Copy into editor", then "Run" to see what happens.</p>
+
+<p>What happens if you change the temperature variable to 20?</p>
+
+<script>
+lessonEditorPayloads.branching1 = "var temperature = 0;\nprint(\"The temperature is \" + temperature + \"c.\");\nif(temperature < 10)\n{\n\tprint(\"It is really cold!\");\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof temperature != 'number')
+		return;
+
+	return(temperature == 20)
+}
+</script>

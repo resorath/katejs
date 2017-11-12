@@ -1,0 +1,31 @@
+<h1>Conditions</h1>
+
+<p>We can run, or not run code, based on if a condition is true or false. Consider this example again:</p>
+
+<editor editor-id="conditions1" :content="lessonEditorPayloads.conditions1"></editor>
+
+<p>The <span class="code">if</span> statement is followed by paranthesis, and inside those paranthesis is a statement that can either be true or false. </p>
+
+<p>In our case, we compare the <em>temperature</em> variable (which is 0), and ask if it less than 10. In this case, 0 is less than 10, and the code inside the curley braces runs.</p>
+
+<p>When we changed temperature to 20, 20 is <strong>not</strong> less than 10, so the code inside the curley braces is skipped over, and we keep running code after the braces. </p>
+
+<p>Write some code to determine if water will freeze. We will assume water freezes at 0. Here is some code to get started:</p>
+
+<editor editor-id="conditions2" :content="lessonEditorPayloads.conditions2"></editor>
+
+<p><strong>Hint: </strong>You can use <span class="code">&lt;=</span> to say "Less than or equal to".</p>
+
+<script>
+lessonEditorPayloads.conditions1 = "var temperature = 0;\nprint(\"The temperature is \" + temperature + \"c.\");\nif(temperature < 10)\n{\n\tprint(\"It is really cold!\");\n}";
+
+lessonEditorPayloads.conditions2 = "var temperature = -5;\nprint(\"The water temperature is \" + temperature + \"c.\")\n";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	var t = new RegExp(/if[ ]*\([ ]*temperature[ ]*<=[ ]*0[ ]*\)\{[\S ]*print\([\S ]+\}/ig);
+	var e = editor.getValue().replace(/\n/g, '').replace(/\r/g, '').replace(/\t/g, '');
+
+	return t.test(e);
+}
+</script>

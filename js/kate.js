@@ -13,6 +13,7 @@ var lessons = [
 	{ url: 'FtoC', title: "Chapter Boss: Temperature Conversion", chapter: 1 },
 
 	{ url: 'Branching', title: "Branching", chapter: 2},
+	{ url: 'Conditions', title: "Conditions", chapter: 2},
 ]
 
 var lessonEditorPayloads = {};
