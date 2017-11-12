@@ -30,11 +30,11 @@ $(document).ready(function() {
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
 	{
-		if(i > historylesson) // lesson not reached
+		/*if(i > historylesson) // lesson not reached
 		{
 			historyEl.append('<li>' + lessons[i].title + '</li>\n');
 		}
-		else if(i < historylesson) // lesson passed
+		else */if(i < historylesson) // lesson passed
 		{
 			if(i == currentlesson)
 				historyEl.append('<li id="currentlesson">' + lessons[i].title + '</li>\n');
