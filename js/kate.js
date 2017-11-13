@@ -15,6 +15,7 @@ var lessons = [
 	{ url: 'Branching', title: "Branching", chapter: 2},
 	{ url: 'Conditions', title: "Conditions", chapter: 2},
 	{ url: 'IfElse', title: "If...Else", chapter: 2},
+	{ url: 'IfElseIfElse', title: "If...Else If...Else", chapter: 2},
 ]
 
 var lessonEditorPayloads = {};
@@ -180,7 +181,7 @@ function route() {
 		}
 	}
 
-	if(load == 'undefined')
+	if(load == 'undefined' || load == 'end')
 	{
 		$('#content').html("No more lessons... yet. <a href=\"javascript:restart();\">restart</a>");
 
@@ -226,7 +227,10 @@ function advance()
 
 	setCookie("lesson", lesson);
 
-	window.location.hash = "#/" + lessons[lesson].url;
+	if(typeof lessons[lesson] == 'undefined')
+		window.location.hash = "#/end";
+	else
+		window.location.hash = "#/" + lessons[lesson].url;
 	//location.reload();
 }
 
