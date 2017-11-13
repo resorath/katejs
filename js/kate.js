@@ -35,7 +35,7 @@ $(document).ready(function() {
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
 	{
-		if(i == 0 || (lessons[i].chapter != lessons[i-1].chapter && i < historylesson))
+		if(i == 0 || (lessons[i].chapter != lessons[i-1].chapter && i <= historylesson))
 		{
 			historyEl.append('<li class="chaptermarker">Chapter ' + lessons[i].chapter + '</li>');
 		}
