@@ -1,0 +1,32 @@
+<h1>This and That</h1>
+
+<p>We can compare more than one thing when we use <span class="code">if</span> statements.</p>
+
+<p>If we want to evaluate if a water temperature is liquid (instead of ice or steam) we need to see if the temperature is higher than 0, but lower than 100.</p>
+
+<p>We can do this using AND (<span class="code">&amp;&amp;</span>), which looks like this:</p>
+
+<editor editor-id="thisandthat1" :content="lessonEditorPayloads.thisandthat1"></editor>
+
+The following lines:
+
+<editor editor-id="thisandthat2" :content="lessonEditorPayloads.thisandthat2" disable noloadbutton autoheight></editor>
+
+<p>can be read as: <em>"If temperature is greater than 0 and temperature is less than 100, then print The water is liquid."</em></p>
+
+<p>Try changing the temperature to -30, or 130 to see what happens.</p>
+
+<p>Expand upon the example above to add additional <span class="code">else if</span> and <span class="code">else</span> statements to print "The water is ice" when the temperature is 0 or lower and "The water is steam" when the temperature is 100 or higher.</p>
+
+<script>
+lessonEditorPayloads.thisandthat1 = "var temperature = 10;\nprint(\"The temperature is \" + temperature + \"c.\");\nif(temperature > 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}";
+lessonEditorPayloads.thisandthat2 = "if(temperature > 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	var t = new RegExp(/else if[ ]*\([ ]*temperature[\S ][\<\>\=]+[ ]*[10]+[ ]*\)[\S ]*else/ig);
+	var e = editor.getValue().replace(/\n/g, '').replace(/\r/g, '').replace(/\t/g, '');
+
+	return t.test(e);
+}
+</script>

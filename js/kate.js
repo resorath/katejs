@@ -16,6 +16,7 @@ var lessons = [
 	{ url: 'Conditions', title: "Conditions", chapter: 2},
 	{ url: 'IfElse', title: "If...Else", chapter: 2},
 	{ url: 'IfElseIfElse', title: "If...Else If...Else", chapter: 2},
+	{ url: 'ThisAndThat', title: "This and That", chapter: 2},
 ]
 
 var lessonEditorPayloads = {};
@@ -329,7 +330,8 @@ Vue.component('Editor', {
   	'noloadbutton': Boolean,
   	'canwrite': Boolean,
   	'noselect': Boolean,
-  	'disable': Boolean
+  	'disable': Boolean,
+  	'nowarn': Boolean
 
   },
   data () {
@@ -356,6 +358,7 @@ Vue.component('Editor', {
     	this.noselect = true;
     	theme = 'solarized_light';
     }
+
   
 	this.editor = window.ace.edit(this.editorId)
     this.editor.setValue(this.content, 1)
@@ -364,6 +367,9 @@ Vue.component('Editor', {
     this.editor.setTheme(`ace/theme/${theme}`)
 
     this.editor.setReadOnly(!this.canwrite)
+
+    if(this.nowarn)
+    	this.editor.getSession().setUseWorker(false)
 
     if(this.autoheight)
     {
