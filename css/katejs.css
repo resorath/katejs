@@ -77,6 +77,43 @@ h1, h2, h3 {
     margin: 0px
 }
 
+.exercise
+{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.exercise:before
+{
+    content: 'Try this';
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.9em;
+    border-bottom: 1px solid #000;
+}
+
+.exercise:after
+{
+    content: '\25A2';
+    position: absolute;
+    left: 0;
+    top: 40px;
+}
+
+.exercisecomplete:after
+{
+    content: '\2713';
+    color: #00FF00;
+}
+
 .chaptermarker
 {
     list-style: none;

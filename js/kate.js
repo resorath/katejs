@@ -289,6 +289,9 @@ function getCookie(key) {
 
 function canAdvance()
 {
+	$('.exercise').addClass('exercisecomplete');
+
+
 	window.setTimeout(function() {
 
 		toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
