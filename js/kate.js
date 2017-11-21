@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     if (isMobile) {
     	var phoneOkayCookie = getCookie('phoneokay');
-    	if(phoneOkayCookie == null || !phoneOkayCookie)
+    	if(phoneOkayCookie == null || (phoneOkayCookie != null && phoneOkayCookie == "false"))
     	{
     		$('#phonebad').show();
     	}
