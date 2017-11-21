@@ -279,6 +279,7 @@ function phoneokay()
 {
 	setCookie('phoneokay', true);
 	$('#phonebad').hide();
+	alert('If you can turn your device horizontally, that would help.');
 }
 
 function setCookie(key, value)
