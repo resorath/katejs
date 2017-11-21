@@ -300,7 +300,7 @@ noscript p
     margin: 0;
 }
 
-#topheader h1
+#topheader h1, #phonebad h1
 {
     display: inline-block;
     font-size: 30px;
