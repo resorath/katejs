@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>KateJS</title>
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans|Source+Sans+Pro|Russo+One" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -13,13 +14,33 @@
 </head>
 <body>
 
+<div id="mdetect"></div>
+<div id="phonebad">
+  <p>Welcome to Kate.JS, this website teaches programming through JavaScript. For the most comfortable experience, we recommend using a desktop or laptop computer, or a tablet with an external keyboard.</p>
+  <p>You can visit us at:</p>
+  <p id="phonebadurl">katejs.com</p>
+  <p><a href="#" onclick="phoneokay();">Click here to continue using your small device.</a></p>
+</div>
+
 <div id="instruction">
 
   <div id="topheader">
     <h1>Kate.JS</h1>
   </div>
 
-  <div id="content">Loading...</div>
+  <div id="content">One moment...</div>
+
+  <noscript>
+
+    <h2>JavaScript disabled</h2>
+    <p>
+    Welcome to Kate.JS, this website teaches programming through JavaScript, and by it's nature requires JavaScript to function. Your browser either does not allow or does not support JavaScript. Please enable JavaScript, or switch to a browser that supports JavaScript.
+   </p>
+   <p>Here is a webpage that can help you enable JavaScript, it is not affiliated with Kate.JS:</p>
+   <p><a href="https://www.enable-javascript.com/" target="_blank">enable-javascript.com</a>
+  </noscript>
+
+
 
   <div id="drawer">
     <div style="overflow-y: scroll; height: 100%">

@@ -61,6 +61,19 @@ $(document).ready(function() {
 		}
 	}
 
+	var isMobile = false;
+	if( $('#mdetect').css('display')=='none') {
+        isMobile = true;       
+    }
+
+    if (isMobile) {
+    	var phoneOkayCookie = getCookie('phoneokay');
+    	if(phoneOkayCookie == null || !phoneOkayCookie)
+    	{
+    		$('#phonebad').show();
+    	}
+    }
+
 });
 
 function getCurrentIndex()
@@ -260,6 +273,12 @@ function restart()
 function cleareditor()
 {
 	editor.setValue('', 1);
+}
+
+function phoneokay()
+{
+	setCookie('phoneokay', true);
+	$('#phonebad').hide();
 }
 
 function setCookie(key, value)
