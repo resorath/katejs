@@ -36,7 +36,72 @@ var matchToAdvance = function() {
 	var r5 = new RegExp("your number is[\\S ]*5", "i");
 
 	// test cases
+	var newoutput = 0;
 	var number = 0;
+	var result = true;
+
+	for(var i=0; i<=100; i++)
+	{
+		number = i;
+		$('#output').html('');
+		eval(code);
+		var newoutput = $('#output').html();
+
+		if(number % 2 == 0)
+		{
+		    if(!r2.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }
+		}
+		if(number % 2 != 0)
+		{
+			if(r2.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }
+		}
+
+		if(number % 3 == 0)
+		{
+		    if(!r3.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }
+		}
+		if(number % 3 != 0)
+		{
+			if(r3.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }	
+		}
+
+		if(number % 5 == 0)
+		{
+		    if(!r5.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }
+		}
+		if(number % 5 != 0)
+		{
+			if(r5.test(newoutput))
+		    {
+		    	result = false;
+		    	break;
+		    }	
+		}
+	}
+
+	$('#output').html(output);
+	return result;
+/*
 
 	number = 6;
 	$('#output').html('');
@@ -72,8 +137,7 @@ var matchToAdvance = function() {
 	var newoutput = $('#output').html();
 	if(!(!r2.test(newoutput) && !r3.test(newoutput) && !r5.test(newoutput)))
 		return false;
-
-	return true;
+*/
 		
 
 }
