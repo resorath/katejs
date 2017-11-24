@@ -24,12 +24,73 @@ lessonEditorPayloads.branchingboss1 = "6 % 3";
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
-	if(typeof firstnumber != "number" || typeof secondnumber != "number")
+	var output = $('#output').html();
+	$('#output').html('');
+
+	// load user code (except prompt line, we will put a harness on that)
+	var code = editor.getValue().substring(editor.getValue().indexOf('\n'));
+
+	// potential values
+	var r2 = new RegExp("your number is[\\S ]*2", "i");
+	var r3 = new RegExp("your number is[\\S ]*3", "i");
+	var r5 = new RegExp("your number is[\\S ]*5", "i");
+
+	// test cases
+	var number = 0;
+
+	number = 6;
+	$('#output').html('');
+	eval(code);
+	var newoutput = $('#output').html();
+	if(!(r2.test(newoutput) && r3.test(newoutput) && !r5.test(newoutput)))
 		return false;
 
-	var matchEditor = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
-	if(matchEditor.test(editor.getValue()) && ($('#output').html().indexOf(String(firstnumber + secondnumber)) > -1) )
-			return true;
-	return false;
+	number = 3;
+	$('#output').html('');
+	eval(code);
+	var newoutput = $('#output').html();
+	if(!(!r2.test(newoutput) && r3.test(newoutput) && !r5.test(newoutput)))
+		return false;
+
+	number = 10;
+	$('#output').html('');
+	eval(code);
+	var newoutput = $('#output').html();
+	if(!(r2.test(newoutput) && !r3.test(newoutput) && r5.test(newoutput)))
+		return false;
+
+	number = 30;
+	$('#output').html('');
+	eval(code);
+	var newoutput = $('#output').html();
+	if(!(r2.test(newoutput) && r3.test(newoutput) && r5.test(newoutput)))
+		return false;
+
+	number = 31;
+	$('#output').html('');
+	eval(code);
+	var newoutput = $('#output').html();
+	if(!(!r2.test(newoutput) && !r3.test(newoutput) && !r5.test(newoutput)))
+		return false;
+
+	return true;
+		
+
 }
 </script>
+
+<!--
+var number = prompt("Input a number");
+if(number % 2 == 0)
+{
+    print("Your number is divisible by 2");
+}
+if(number % 3 == 0)
+{
+    print("Your number is divisible by 3");
+}
+if(number % 5 == 0)
+{
+    print("Your number is divisible by 5");
+}
+-->
