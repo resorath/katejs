@@ -10,7 +10,7 @@ var lessons = [
 	{ url: 'Strings', title: "Strings", chapter: 1 },
 	{ url: 'Numbers', title: "Numbers", chapter: 1 },
 	{ url: 'Operators', title: "Operators", chapter: 1 },
-	{ url: 'FtoC', title: "Chapter Boss: Temperature Conversion", chapter: 1 },
+	{ url: 'VariableBoss', title: "Chapter Boss: Temperature Conversion", chapter: 1 },
 
 	{ url: 'Branching', title: "Branching", chapter: 2},
 	{ url: 'Conditions', title: "Conditions", chapter: 2},
@@ -191,7 +191,10 @@ function route() {
 		}
 		else
 		{
-			load = lessons[lesson].url;
+			if(lessons[lesson] != null)
+				load = lessons[lesson].url;
+			else
+				load = "end";
 		}
 	}
 

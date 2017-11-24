@@ -1,0 +1,23 @@
+<h1>Mini-Boss: Branching</h1>
+
+
+
+<editor editor-id="boolean1" :content="lessonEditorPayloads.boolean1"  disable noloadbutton autoheight></editor>
+
+<p>Booleans are useful because they are easily "flipped" between true or false. 
+
+<script>
+lessonEditorPayloads.boolean1 = "var lightison = true;";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof firstnumber != "number" || typeof secondnumber != "number")
+		return false;
+
+	var matchEditor = new RegExp(/var firstnumber[\S ]+\nvar secondnumber[\S ]+\n[\n[\S ]*print/i);
+	if(matchEditor.test(editor.getValue()) && ($('#output').html().indexOf(String(firstnumber + secondnumber)) > -1) )
+			return true;
+	return false;
+}
+</script>

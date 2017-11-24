@@ -1,0 +1,37 @@
+<h1>End of Chapter Final Boss</h1>
+
+<p>Here is the final test of your grasp of the basics.</p>
+
+<p>You are given the temperature in Fahrenheit, tell the user what the temperature in Celcius is. For example, if:</p>
+
+<editor editor-id="ftoc1" :content="lessonEditorPayloads.ftoc1" disable noloadbutton autoheight></editor>
+
+<p>Print out:</p>
+
+<p><strong>The temperature in Celcius is -5</strong></p>
+
+<p>Here is the formula for Fahrenheit to Celcius: (&deg;F − 32) &times; <sup>5</sup>&frasl;<sub>9</sub> = &deg;C</p>
+
+<p>Sample code has already been loaded for you. Good luck!</p>
+
+<script>
+lessonEditorPayloads.ftoc1 = "var fahrenheit = 23;";
+
+function FtoC(f) 
+{
+  return ((f - 32) * 5 / 9);
+}
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof fahrenheit != 'number')
+		return;
+
+	var matchEditor = new RegExp(/var fahrenheit[\S ]+[\S\\n ]*[3259]+[\S ]*[3259]+[\S ]*[3259]+[\S ]*[3259]+[\S ]*[\S\\n ]*/gi);
+	var matchResult = new RegExp("the temperature in celcius is[\S ]*" + FtoC(fahrenheit), "gi");
+	if(matchEditor.test(JSON.stringify(editor.getValue())) && matchResult.test($('#output').html()))
+		return true;
+	return false;
+}
+</script>
