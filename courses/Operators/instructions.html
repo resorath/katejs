@@ -37,6 +37,12 @@ lessonEditorPayloads.operators6 = "var total = ";
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
+	if(typeof total != number)
+		return false;
+
+	if(total != 5)
+		return false;
+
 	var matchEditor = new RegExp(/[\S ]*var total[\S ]+[1347]{1,2}[\S ]+[1347]{1,2}[\S ]+[1347]{1,2}[\S ]+[\\n]+print\([\S ]*total[\S ]*\)[\S ]*/ig);
 	var matchResult = new RegExp(/[\S ]*5[\S ]*/i);
 	if(matchEditor.test(JSON.stringify(editor.getValue())) && matchResult.test($('#output').html()))
