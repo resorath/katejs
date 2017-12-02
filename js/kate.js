@@ -89,8 +89,6 @@ $(document).ready(function() {
 				break;
 			}
 		}
-
-
 	}
 
 
@@ -369,6 +367,20 @@ function getCookie(key) {
 function canAdvance()
 {
 	$('.exercise').addClass('exercisecomplete');
+
+	// check if there are any weapons to award:
+	var currenturl = lessons[localStorage.lesson].url
+	for(var i=0; i<weapons.length; i++)
+	{
+		if(currenturl == weapons[i].urlComplete)
+		{
+			// do award
+			$('#' + weapons[i].id).css('display', 'inline-block');
+
+
+			toastr["info"]("You've earned a weapon to help you on your journey! It has been added to the Weapon Rack.", "Weapon Earned");
+		}
+	}
 
 
 	window.setTimeout(function() {
