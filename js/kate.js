@@ -20,6 +20,7 @@ var lessons = [
 ]
 
 var weapons = [
+	{ urlComplete: 'StoryTime', id: 'weapon-flail'},
 	{ urlComplete: 'VariableBoss', id: 'weapon-sword'}
 
 ]
@@ -29,7 +30,10 @@ var lessonEditorPayloads = {};
 var editor = null;
 
 var weaponPayloads = {
-	variableSword: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");"
+	flailofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
+	variableSword1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
+	variableSword2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;"
+
 }
 
 
@@ -81,7 +85,7 @@ $(document).ready(function() {
 			if(urlpass == lessons[j].url)
 			{
 				// render it
-				$('#' + weapons[i].id).show();
+				$('#' + weapons[i].id).css('display', 'inline-block');
 				break;
 			}
 		}
@@ -95,7 +99,7 @@ $(document).ready(function() {
 		animation: 'grow',
 		trigger: 'click',
 		interactive: true,
-		theme: 'tooltipster-noir',
+		theme: 'tooltipster-punk',
 		maxWidth: 1000
 
 	});

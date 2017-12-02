@@ -145,7 +145,6 @@ noscript p
 {
 
     list-style: none;
-    display: inline-block;
     margin: 10px;
     display: none;
 
@@ -232,6 +231,21 @@ noscript p
     background-color: #EAEAEA;
     padding: 5px;
     font-family: monospace;
+}
+
+.tooltipster-box
+{
+    background-color: #FFFFFF !important;
+}
+
+.tooltip_weapon
+{
+    color: #000000;
+}
+
+.tooltip_weapon h2
+{
+
 }
 
 .tooltip_templates 
