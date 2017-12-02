@@ -377,8 +377,9 @@ function canAdvance()
 			// do award
 			$('#' + weapons[i].id).css('display', 'inline-block');
 
+			var imgsrc = $('#' + weapons[i].id + " > img").attr("src");
 
-			toastr["info"]("You've earned a weapon to help you on your journey! It has been added to the Weapon Rack.", "Weapon Earned");
+			toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned");
 		}
 	}
 

@@ -151,7 +151,7 @@ noscript p
 }
 
 
-#weapons > li > img
+#weapons > li > img, .award-img
 {
     width: 120px;
     height: 120px;
