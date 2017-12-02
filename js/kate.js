@@ -23,12 +23,27 @@ var lessonEditorPayloads = {};
 
 var editor = null;
 
+var weaponPayloads = {
+	variableSword: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");"
+}
+
+
 $(document).ready(function() {
 
 	// init the editor
 	editor = ace.edit("editor");
 	editor.setTheme("ace/theme/twilight");
 	editor.session.setMode("ace/mode/javascript");
+
+	// init tooltipster
+	$('.tooltip').tooltipster({
+		animation: 'grow',
+		trigger: 'click',
+		interactive: true,
+		theme: 'tooltipster-noir',
+		maxWidth: 1000
+
+	});
 
 	// build the navigation
 	var historylesson = getCookie('lesson') || 0;
@@ -169,7 +184,20 @@ $('#history').click(function() {
 	if($('#drawer').is(":visible"))
 		$('#drawer').hide();
 	else
+	{
 		$('#drawer').show();
+		$('#rack').hide();
+	}
+})
+
+$('#weaponrack').click(function() {
+	if($('#rack').is(":visible"))
+		$('#rack').hide();
+	else
+	{
+		$('#rack').show();
+		$('#drawer').hide();
+	}
 })
 
 // Simple routing
@@ -342,7 +370,6 @@ toastr.options = {
 toastr.options.onclick = function() {
 	advance();
 }
-
 
 // Vue Component
 Vue.component('Editor', {

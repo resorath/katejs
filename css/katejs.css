@@ -108,7 +108,7 @@ noscript p
     right: 0px;
     width: 500px;
     height: 58%;
-    background-color: #ccc;
+    background-color: #ff94da;
     z-index: 10;
     padding: 10px;
     display: none;
@@ -119,6 +119,45 @@ noscript p
     padding: 0px;
     margin: 0px
 }
+
+
+#rack {
+    position: fixed;
+    margin: 0;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 500px;
+    height: 58%;
+    background-color: #5fc35c;
+    z-index: 10;
+    padding: 10px;
+    display: none;
+}
+
+#rack h2
+{
+    padding: 0px;
+    margin: 0px
+}
+
+#weapons > li
+{
+
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+
+}
+
+
+#weapons > li > img
+{
+    width: 120px;
+    height: 120px;
+    border-radius: 25px;
+}
+
 
 .exercise
 {
@@ -192,6 +231,11 @@ noscript p
     background-color: #EAEAEA;
     padding: 5px;
     font-family: monospace;
+}
+
+.tooltip_templates 
+{ 
+    display: none; 
 }
 
 .heighttransition
