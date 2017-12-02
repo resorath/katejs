@@ -147,6 +147,7 @@ noscript p
     list-style: none;
     display: inline-block;
     margin: 10px;
+    display: none;
 
 }
 
@@ -237,6 +238,7 @@ noscript p
 { 
     display: none; 
 }
+
 
 .heighttransition
 {

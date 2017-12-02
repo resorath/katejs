@@ -19,6 +19,11 @@ var lessons = [
 	{ url: 'ThisAndThat', title: "This and That", chapter: 2},
 ]
 
+var weapons = [
+	{ urlComplete: 'VariableBoss', id: 'weapon-sword'}
+
+]
+
 var lessonEditorPayloads = {};
 
 var editor = null;
@@ -35,18 +40,8 @@ $(document).ready(function() {
 	editor.setTheme("ace/theme/twilight");
 	editor.session.setMode("ace/mode/javascript");
 
-	// init tooltipster
-	$('.tooltip').tooltipster({
-		animation: 'grow',
-		trigger: 'click',
-		interactive: true,
-		theme: 'tooltipster-noir',
-		maxWidth: 1000
-
-	});
-
 	// build the navigation
-	var historylesson = getCookie('lesson') || 0;
+	var historylesson = localStorage.lesson || 0;
 	var historyEl = $('#lessonhistory');
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
@@ -76,13 +71,42 @@ $(document).ready(function() {
 		}
 	}
 
+	// build the weapon rack
+	for(var i=0; i<weapons.length; i++)
+	{
+		var urlpass = weapons[i].urlComplete;
+
+		for(var j=0; j<historylesson; j++)
+		{
+			if(urlpass == lessons[j].url)
+			{
+				// render it
+				$('#' + weapons[i].id).show();
+				break;
+			}
+		}
+
+
+	}
+
+
+	// init tooltipster
+	$('.tooltip').tooltipster({
+		animation: 'grow',
+		trigger: 'click',
+		interactive: true,
+		theme: 'tooltipster-noir',
+		maxWidth: 1000
+
+	});
+
 	var isMobile = false;
 	if( $('#mdetect').css('display')=='none') {
         isMobile = true;       
     }
 
     if (isMobile) {
-    	var phoneOkayCookie = getCookie('phoneokay');
+    	var phoneOkayCookie = localStorage.phoneokay;
     	if(phoneOkayCookie == null || (phoneOkayCookie != null && phoneOkayCookie == "false"))
     	{
     		$('#phonebad').show();
@@ -211,7 +235,7 @@ function route() {
 	}
 	else
 	{
-		var lesson = getCookie("lesson");
+		var lesson = localStorage.lesson;
 		if(lesson == null)
 		{
 			lesson = 0;
@@ -264,13 +288,13 @@ route();
 // go to the next lesson
 function advance()
 {
-	var lesson = getCookie("lesson");
+	var lesson = localStorage.lesson;
 	if(lesson == null)
 		lesson = 0;
 
 	lesson++;
 
-	setCookie("lesson", lesson);
+	localStorage.lesson = lesson;
 
 	if(typeof lessons[lesson] == 'undefined')
 		window.location.hash = "#/end";
@@ -281,7 +305,7 @@ function advance()
 
 function recede()
 {
-	var lesson = getCookie("lesson");
+	var lesson = localStorage.lesson;
 	if(lesson == null)
 		lesson = 1;
 
@@ -290,14 +314,14 @@ function recede()
 
 	lesson--;
 
-	setCookie("lesson", lesson);
+	localStorage.lesson = lesson;
 
 	window.location.hash = "#/" + lessons[lesson].url;
 }
 
 function restart()
 {
-	setCookie('lesson', 0);
+	localStorage.lesson = 0;
 	window.location.hash = "#/" + lessons[0].url;
 }
 
@@ -308,7 +332,7 @@ function cleareditor()
 
 function phoneokay()
 {
-	setCookie('phoneokay', true);
+	localStorage.phoneokay = true;
 	$('#phonebad').hide();
 	alert('If you can turn your device horizontally, that would help.');
 }
