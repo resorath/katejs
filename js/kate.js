@@ -294,9 +294,16 @@ function advance()
 	if(lesson == null)
 		lesson = 0;
 
-	lesson++;
-
-	localStorage.lesson = lesson;
+	// check if we are on the current lesson before incrementing the advance
+	if(lesson == getCurrentIndex())
+	{
+		lesson++;
+		localStorage.lesson = lesson;
+	}
+	else
+	{
+		lesson = getCurrentIndex() + 1;
+	}
 
 	if(typeof lessons[lesson] == 'undefined')
 		window.location.hash = "#/end";
