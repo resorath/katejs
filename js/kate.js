@@ -17,11 +17,13 @@ var lessons = [
 	{ url: 'IfElse', title: "If...Else", chapter: 2},
 	{ url: 'IfElseIfElse', title: "If...Else If...Else", chapter: 2},
 	{ url: 'ThisAndThat', title: "This and That", chapter: 2},
+	{ url: 'BranchingBoss', title: "Mini-Boss: Branching", chapter: 2},
 ]
 
 var weapons = [
 	{ urlComplete: 'StoryTime', id: 'weapon-flail'},
-	{ urlComplete: 'VariableBoss', id: 'weapon-sword'}
+	{ urlComplete: 'VariableBoss', id: 'weapon-sword'},
+	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
 
 ]
 
@@ -32,7 +34,10 @@ var editor = null;
 var weaponPayloads = {
 	flailofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
 	variableSword1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
-	variableSword2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;"
+	variableSword2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
+	branchingTrident1: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}",
+	branchingTrident2: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse\n{\n\tprint(\"The water is not frozen.\");\n}",
+	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}"
 
 }
 

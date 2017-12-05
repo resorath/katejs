@@ -56,8 +56,9 @@
     <div style="overflow-y: scroll; height: 100%">
       <h2>Weapon Rack</h2>
       <ul id="weapons">
-        <li id="weapon-flail"><img src="images/sword.png" class="tooltip" data-tooltip-content="#tooltip_flailofIO"></li>
+        <li id="weapon-flail"><img src="images/flail.png" class="tooltip" data-tooltip-content="#tooltip_flailofIO"></li>
         <li id="weapon-sword"><img src="images/sword.png" class="tooltip" data-tooltip-content="#tooltip_variableSword"></li>
+        <li id="weapon-trident"><img src="images/trident.png" class="tooltip" data-tooltip-content="#tooltip_branchingTrident"></li>
 
       </ul>
     </div>
@@ -82,6 +83,23 @@
             <p>Examples of using variables:</p>
 
             <editor editor-id="weapons-variableSword2" :content="weaponPayloads.variableSword2" disable noloadbutton autoheight></editor>
+        </div>
+
+        <div id="tooltip_branchingTrident" class="tooltip_weapon">
+            <h2>The Branching Trident!</h2>
+            <p>You can compare variables to things, including other variables. When the comparison is true, the code inside the "if" statement is used, otherwise it is not. "else" can be used when the original comparison was not true. 
+
+            <p>Examples of comparing with "if":</p>
+
+            <editor editor-id="weapons-branchingTrident1" :content="weaponPayloads.branchingTrident1" disable noloadbutton autoheight></editor>
+
+            <p>Examples of comparing with "if" and "else":</p>
+
+            <editor editor-id="weapons-branchingTrident2" :content="weaponPayloads.branchingTrident2" disable noloadbutton autoheight></editor>
+
+            <p>Examples of comparing with "if", "else", and "else if" with an "and":</p>
+
+            <editor editor-id="weapons-branchingTrident3" :content="weaponPayloads.branchingTrident3" disable noloadbutton autoheight></editor>
         </div>
     </div>
   </div>
