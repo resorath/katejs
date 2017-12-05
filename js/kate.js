@@ -220,11 +220,14 @@ $('#weaponrack').click(function() {
 	if($('#rack').is(":visible"))
 		$('#rack').hide();
 	else
-	{
-		$('#rack').show();
-		$('#drawer').hide();
-	}
-})
+		showRack();
+});
+
+function showRack()
+{
+	$('#rack').show();
+	$('#drawer').hide();
+}
 
 // Simple routing
 function route() {
@@ -398,7 +401,7 @@ function canAdvance()
 
 	if(lesson != null)
 	{
-		var currenturl = lessons.url;
+		var currenturl = lessons[lesson].url;
 		for(var i=0; i<weapons.length; i++)
 		{
 			if(currenturl == weapons[i].urlComplete)
@@ -408,7 +411,11 @@ function canAdvance()
 
 				var imgsrc = $('#' + weapons[i].id + " > img").attr("src");
 
-				toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned");
+				toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned", {
+					onclick: function() {
+						showRack();
+					}
+				});
 			}
 		}
 	}
