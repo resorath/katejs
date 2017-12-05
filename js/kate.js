@@ -318,10 +318,10 @@ function recede()
 {
 	var lesson = getPersistent("lesson");
 	if(lesson == null)
-		lesson = 1;
+		lesson = 0;
 
 	if(lesson != null && lesson <= 0)
-		lesson = 1;
+		lesson = 0;
 
 	lesson--;
 
