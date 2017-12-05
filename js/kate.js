@@ -45,7 +45,7 @@ $(document).ready(function() {
 	editor.session.setMode("ace/mode/javascript");
 
 	// build the navigation
-	var historylesson = localStorage.lesson || 0;
+	var historylesson = getPersistent("lesson") || 0;
 	var historyEl = $('#lessonhistory');
 	var currentlesson = getCurrentIndex();
 	for(var i=0; i<lessons.length; i++)
@@ -108,7 +108,7 @@ $(document).ready(function() {
     }
 
     if (isMobile) {
-    	var phoneOkayCookie = localStorage.phoneokay;
+    	var phoneOkayCookie = getPersistent("phoneokay");
     	if(phoneOkayCookie == null || (phoneOkayCookie != null && phoneOkayCookie == "false"))
     	{
     		$('#phonebad').show();
@@ -237,7 +237,7 @@ function route() {
 	}
 	else
 	{
-		var lesson = localStorage.lesson;
+		var lesson = getPersistent("lesson");
 		if(lesson == null)
 		{
 			lesson = 0;
@@ -290,7 +290,7 @@ route();
 // go to the next lesson
 function advance()
 {
-	var lesson = localStorage.lesson;
+	var lesson = getPersistent("lesson");
 	if(lesson == null)
 		lesson = 0;
 
@@ -298,7 +298,7 @@ function advance()
 	if(lesson == getCurrentIndex())
 	{
 		lesson++;
-		localStorage.lesson = lesson;
+		setPersistent("lesson", lesson);
 	}
 	else
 	{
@@ -314,7 +314,7 @@ function advance()
 
 function recede()
 {
-	var lesson = localStorage.lesson;
+	var lesson = getPersistent("lesson");
 	if(lesson == null)
 		lesson = 1;
 
@@ -323,14 +323,14 @@ function recede()
 
 	lesson--;
 
-	localStorage.lesson = lesson;
+	setPersistent("lesson", lesson)
 
 	window.location.hash = "#/" + lessons[lesson].url;
 }
 
 function restart()
 {
-	localStorage.lesson = 0;
+	setPersistent("lesson", 0)
 	window.location.hash = "#/" + lessons[0].url;
 }
 
@@ -341,9 +341,25 @@ function cleareditor()
 
 function phoneokay()
 {
-	localStorage.phoneokay = true;
+	setPersistent("lesson", true);
 	$('#phonebad').hide();
 	alert('If you can turn your device horizontally, that would help.');
+}
+
+function setPersistent(key, value)
+{
+	if(Storage !== void(0))
+		localStorage.setItem(key, value);
+	else
+		setCookie(key, value);
+}
+
+function getPersistent(key)
+{
+	if(Storage !== void(0))
+		return localStorage.getItem(key);
+	else
+		return getCookie(key);
 }
 
 function setCookie(key, value)
@@ -376,17 +392,22 @@ function canAdvance()
 	$('.exercise').addClass('exercisecomplete');
 
 	// check if there are any weapons to award:
-	var currenturl = lessons[localStorage.lesson].url
-	for(var i=0; i<weapons.length; i++)
+	var lesson = getPersistent("lesson");
+
+	if(lesson != null)
 	{
-		if(currenturl == weapons[i].urlComplete)
+		var currenturl = lessons.url;
+		for(var i=0; i<weapons.length; i++)
 		{
-			// do award
-			$('#' + weapons[i].id).css('display', 'inline-block');
+			if(currenturl == weapons[i].urlComplete)
+			{
+				// do award
+				$('#' + weapons[i].id).css('display', 'inline-block');
 
-			var imgsrc = $('#' + weapons[i].id + " > img").attr("src");
+				var imgsrc = $('#' + weapons[i].id + " > img").attr("src");
 
-			toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned");
+				toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned");
+			}
 		}
 	}
 
