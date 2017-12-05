@@ -276,7 +276,9 @@ function route() {
 		async: true,
 		dataType: "text",
 		success: function(data) {
-			editor.setValue(data, 1);
+			$(document).ready(function() {
+				editor.setValue(data, 1);
+			});
 		}
 	});
 };
