@@ -41,6 +41,8 @@ var weaponPayloads = {
 
 }
 
+var hasCleared = false;
+
 
 $(document).ready(function() {
 
@@ -420,11 +422,14 @@ function canAdvance()
 
 				var imgsrc = $('#' + weapons[i].id + " > img").attr("src");
 
-				toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned", {
-					onclick: function() {
-						showRack();
-					}
-				});
+				if(!hasCleared)
+				{
+					toastr["info"]("<p>You've earned a weapon to help you on your journey!</p><img class=\"award-img\" src=\"" + imgsrc + "\"><p>It has been added to the Weapon Rack.</p>", "Weapon Earned", {
+						onclick: function() {
+							showRack();
+						},
+					});
+				}
 			}
 		}
 	}
@@ -432,7 +437,11 @@ function canAdvance()
 
 	window.setTimeout(function() {
 
-		toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
+		if(!hasCleared)
+		{
+			toastr["success"]("Great! To move to the next lesson, click here.", "Lesson Complete!");
+			hasCleared = true;
+		}
 
 	}, 200);
 }
@@ -444,6 +453,7 @@ toastr.options = {
   "progressBar": false,
   "positionClass": "toast-top-right",
   "preventDuplicates": true,
+  "preventOpenDuplicates": true,
   "showDuration": "300",
   "hideDuration": "1000",
   "timeOut": "0",
