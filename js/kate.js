@@ -125,6 +125,10 @@ $(document).ready(function() {
 function getCurrentIndex()
 {
 	var hash = window.location.hash.substr(2);
+	if(hash === "")
+	{
+		return getPersistent("lesson") || 0;
+	}
 	for(var i=0; i<lessons.length; i++)
 	{
 		if(lessons[i].url.toLowerCase() == hash.toLowerCase())
@@ -305,7 +309,7 @@ function advance()
 		lesson = 0;
 
 	// check if we are on the current lesson before incrementing the advance
-	if(lesson == getCurrentIndex())
+	if(lesson == getCurrentIndex() || getCurrentIndex() == null)
 	{
 		lesson++;
 		setPersistent("lesson", lesson);
