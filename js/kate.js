@@ -453,7 +453,6 @@ toastr.options = {
   "progressBar": false,
   "positionClass": "toast-top-right",
   "preventDuplicates": true,
-  "preventOpenDuplicates": true,
   "showDuration": "300",
   "hideDuration": "1000",
   "timeOut": "0",
