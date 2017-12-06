@@ -379,7 +379,7 @@ noscript p
     right: 0;
 
     min-width: 100px;
-    background: #00cc00;
+    background: #009933;
     border: none;
     outline: none;
     color: white;
@@ -387,15 +387,16 @@ noscript p
     font-weight: 400;
     font-size: 20px;
     border-radius: 3px;
-    box-shadow: 0 5px 0px #00cc00;
-    border-bottom: 2px solid #00bd00;
+    box-shadow: 0 5px 0px #009933;
+    border-bottom: 2px solid #008a2e;
 }
 
 .controlbutton:hover {
-    background: #00b300;
-    box-shadow: 0 4px 1px #00b300;
-    border-bottom: 2px solid #00a300;
+    background: #00802b;
+    box-shadow: 0 4px 1px #00802b;
+    border-bottom: 2px solid #007025;
     transition: all 0.1s ease-in;
+    transform: translateY(1px);
 }
 .controlbutton:active {
     transform: translateY(4px);
