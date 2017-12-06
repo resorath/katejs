@@ -40,7 +40,7 @@ h1, h2, h3 {
     height: 40%;
     z-index: 20;
 
-    border-top: 4px solid #fff;
+    /*border-top: 4px solid #fff;*/
 }
 
 #outputarea {
@@ -56,7 +56,7 @@ h1, h2, h3 {
     z-index: 20;
 
 
-    border-top: 4px solid #fff;
+    /*border-top: 4px solid #fff;*/
 } 
 /* ENDS Structural bigwigs */
 
@@ -111,7 +111,9 @@ noscript p
     right: 0px;
     width: 500px;
     height: 58%;
-    background-color: #ff94da;
+    background-color: #d9d9d9;
+    background-repeat: repeat;
+    background-image: url('../images/clothbg.png');
     z-index: 10;
     padding: 10px;
     display: none;
@@ -132,10 +134,18 @@ noscript p
     right: 0px;
     width: 500px;
     height: 58%;
-    background-color: #5fc35c;
     z-index: 10;
     padding: 10px;
     display: none;
+    background: #e9dfc4;
+    background: -moz-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #e9dfc4), color-stop(1%, #e9dfc4), color-stop(2%, #ede3c8), color-stop(24%, #ede3c8), color-stop(25%, #ebddc3), color-stop(48%, #e9dfc4), color-stop(49%, #ebddc3), color-stop(52%, #e6d8bd), color-stop(53%, #e6d8bd), color-stop(54%, #e9dbc0), color-stop(55%, #e6d8bd), color-stop(56%, #e6d8bd), color-stop(57%, #e9dbc0), color-stop(58%, #e6d8bd), color-stop(73%, #e6d8bd), color-stop(74%, #e9dbc0), color-stop(98%, #e9dbc0), color-stop(100%, #ebddc3));
+    background: -webkit-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+    background: -o-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+    background: -ms-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+    background: linear-gradient(to right, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+    background-size: 120px;
+    background-repeat: repeat;
 }
 
 #rack h2
@@ -358,6 +368,62 @@ noscript p
     height: 10%;
 }
 
+.controlbutton
+{
+    background-color: #55aa00;
+    margin: 0;
+    position: absolute;
+    top: -5px;
+    bottom: 0;
+    width: 23%;
+    height: 100%;
+    right: 0;
+
+    min-width: 100px;
+    background: #348AA7;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 3px;
+    box-shadow: 0 5px 0px #348aa7;
+    border-bottom: 2px solid #30809b;
+}
+
+.controlbutton:hover {
+  background: #2e7a94;
+  box-shadow: 0 4px 1px #2e7a94;
+  border-bottom: 2px solid #2a7088;
+  transition: all 0.1s ease-in;
+}
+.controlbutton:active {
+  transform: translateY(4px);
+  border-bottom-width: 2px;
+  box-shadow: none;
+}
+
+#run
+{
+    left: 1%;
+}
+
+#clear
+{
+    left: 25%;
+}
+
+#history
+{
+    left: 49%;
+}
+
+#weaponrack
+{
+    left: 73%;
+}
+
 
 #topheader
 {
@@ -376,57 +442,6 @@ noscript p
     margin-left: 20px;
 }
 
-#run
-{
-    margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 25%;
-    height: 100%;
-    background-color: #55aa00;
-}
-
-#clear
-{
-    margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 25%;
-    right: 0;
-    width: 25%;
-    height: 100%;
-    background-color: #55aa00;
-}
-
-#weaponrack
-{
-    margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 75%;
-    right: 0;
-    width: 25%;
-    height: 100%;
-    background-color: #55aa00;
-}
-
-#history
-{
-    margin: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    width: 25%;
-    height: 100%;
-    background-color: #55aa00;
-}
 
 #output
 {
