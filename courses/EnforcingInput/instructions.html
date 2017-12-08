@@ -23,51 +23,11 @@ $('#enforcinginputs-currentyear').html((new Date()).getFullYear());
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	if(typeof factor != "number")
-		return false;
-
-	// number is user defined
-	var f = fac(number);
-
-	if(!(f != null && f === factor))
-		return false;
-
 	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
-	var t = new RegExp(/factor[\s]*=[\s]*factor[\s]*\*[\s]*counter/ig);
+	var t = new RegExp('while\\([ ]*yearofbirth[ ]*\\<[ ]*1900[ ]*\\|\\|[ ]*yearofbirth[ ]*\\>[ ]*' + (new Date()).getFullYear() + '[ ]*\\)', 'ig');
 
-	if(t.test(e))
-		return true;
+	return t.test(e);
 
-	t = new RegExp(/factor[\s]*=[\s]*counter[\s]*\*[\s]*factor/ig);
-
-	if(t.test(e))
-		return true;
-
-	return false;
-}
-
-function fac(n)
-{
-	try
-	{
-		numberInt = parseInt(n);
-	}
-	catch(e)
-	{
-		return null;
-	}
-
-	if(n == 0 || n == 1)
-		return 1;
-
-	if(n < 0)
-		return null;
-
-	var fac = 1;
-	for(var i = 1; i <= n; i++)
-		fac *= i;
-
-	return fac;
 }
 </script>
