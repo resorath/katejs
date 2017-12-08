@@ -29,7 +29,19 @@ var matchToAdvance = function() {
 	// number is user defined
 	var f = fac(number);
 
-	if(f != null && f === factor)
+	if(!(f != null && f === factor))
+		return false;
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	var t = new RegExp(/factor[\s]*=[\s]*factor[\s]*\*[\s]*counter/ig);
+
+	if(t.test(e))
+		return true;
+
+	t = new RegExp(/factor[\s]*=[\s]*counter[\s]*\*[\s]*factor/ig);
+
+	if(t.test(e))
 		return true;
 
 	return false;
