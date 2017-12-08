@@ -20,13 +20,13 @@ var lessons = [
 	{ url: 'BranchingBoss', title: "Chapter Boss: Branching", chapter: 2},
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
-	{ url: 'Factorial', title: "Factorial", chapter: 3},
-	{ url: 'EnforcingInput', title: "Enforcing Inputs", chapter: 3},
+	{ url: 'Factorial', title: "Looping Practice: Factorials", chapter: 3},
+	{ url: 'EnforcingInput', title: "Looping Practice: Enforcing Inputs", chapter: 3},
 ]
 
 var weapons = [
 	{ urlComplete: 'StoryTime', id: 'weapon-mace'},
-	{ urlComplete: 'VariableBoss', id: 'weapon-sword'},
+	{ urlComplete: 'VariableBoss', id: 'weapon-dagger'},
 	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
 
 ]
@@ -37,8 +37,8 @@ var editor = null;
 
 var weaponPayloads = {
 	maceofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
-	variableSword1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
-	variableSword2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
+	variableDagger1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
+	variableDagger2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
 	branchingTrident1: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}",
 	branchingTrident2: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse\n{\n\tprint(\"The water is not frozen.\");\n}",
 	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}"
