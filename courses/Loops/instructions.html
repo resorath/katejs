@@ -1,0 +1,23 @@
+<h1>Loops</h1>
+
+<p>Loops allow us to run the same code over and over again. A loop can be thought of as a <span class="code">if statement</span> that runs again, as long as it is true.</p>
+
+<p>There are different styles of loops, here is a simple one called <span class="code">while</span>:</p>
+
+<editor editor-id="loops1" :content="lessonEditorPayloads.loops1"></editor>
+
+<p>Press "Copy into editor", then "Run" to see what happens.</p>
+
+<p class="exercise">Make the while loop run 10 times instead of 5:</p>
+
+<script>
+lessonEditorPayloads.loops1 = "var counter = 1;\nwhile(counter <= 5)\n{\n\tprint(\"Counter is \" + counter);\n\tcounter = counter + 1;\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	var t = new RegExp(/while\(counter <= 10\)/i);
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	return t.test(e);
+}
+</script>

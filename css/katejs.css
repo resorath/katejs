@@ -395,10 +395,11 @@ noscript p
     background: #00802b;
     box-shadow: 0 4px 1px #00802b;
     border-bottom: 2px solid #007025;
-    transition: all 0.1s ease-in;
+    transition: all 0.01s ease-in;
     transform: translateY(1px);
 }
 .controlbutton:active {
+    transition: all 0.01s ease-in;
     transform: translateY(4px);
     border-bottom-width: 2px;
     box-shadow: none;

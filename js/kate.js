@@ -17,7 +17,9 @@ var lessons = [
 	{ url: 'IfElse', title: "If...Else", chapter: 2},
 	{ url: 'IfElseIfElse', title: "If...Else If...Else", chapter: 2},
 	{ url: 'ThisAndThat', title: "This and That", chapter: 2},
-	{ url: 'BranchingBoss', title: "Mini-Boss: Branching", chapter: 2},
+	{ url: 'BranchingBoss', title: "Chapter Boss: Branching", chapter: 2},
+
+	{ url: 'Loops', title: "Loops", chapter: 3},
 ]
 
 var weapons = [
@@ -143,13 +145,13 @@ function getCurrentIndex()
 }
 
 // Capture the console
-(function(){
+/*(function(){
     var oldLog = console.log;
     console.log = function (message) {
         $('#output').append(JSON.stringify(message) + "\n");
     };
 })();
-
+*/
 
 $('#run').click(function() {
 
@@ -172,7 +174,7 @@ $('#run').click(function() {
 	if(result != undefined)
 	{
 		var stringy = JSON.stringify(result);	
-		$('#output').append(stringy + '\n');
+		//$('#output').append(stringy + '\n');
 	}
 
 	// CHECK
@@ -572,6 +574,6 @@ function print(s)
 	}
 	else
 	{
-		console.log(s);
+		$('#output').append(s + "\n");
 	}
 }
