@@ -7,12 +7,19 @@
 
 <editor editor-id="enforcinginputs1" :content="lessonEditorPayloads.enforcinginputs1" extrawide></editor>
 
-<p class="exercise">Expand on the above code so that it prints out the factorial of a positive whole number that a user enters.</p>
+<p>Test it out in the editor. Notice that if you enter a number less than 1900, it will ask you again. In fact, it will keep asking you forever until you enter a year bigger than 1900.</p>
 
-<p><strong>Hint:</strong> Every time the loop runs, the value of counter is increased by one. You can use the counter to calculate the factorial.</p>
+<p class="exercise">Change the while loop in the above example to check that the number entered is between 1900 and <span id="enforcinginputs-currentyear"></span>.</p>
+
+<p><strong>Hint:</strong> Use OR (<span class="code">||</span>) when comparing two things where either can be true. Example <span class="code">if</span> statement using OR:</p>
+
+<editor editor-id="enforcinginputs2" :content="lessonEditorPayloads.enforcinginputs2" autoheight disable noloadbutton></editor>
 
 <script>
 lessonEditorPayloads.enforcinginputs1 = "var yearofbirth = 0;\nwhile(yearofbirth < 1900)\n{\n\tyearofbirth = prompt(\"What year were you born?\");\n}\nprint(\"You are approximately \" + (" + (new Date()).getFullYear() + " - yearofbirth) + \" years old\");";
+lessonEditorPayloads.enforcinginputs2 = "var temperature = 20;\nif(temperature < -30 || temperature > 40)\n{\n\tprint(\"Don't go outside!\");\n}";
+
+$('#enforcinginputs-currentyear').html((new Date()).getFullYear());
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
