@@ -1,0 +1,61 @@
+<h1>Looping Practice: Factorials</h1>
+
+<p>Lets look a practical use of loops: calculating factorial.</p>
+
+<p>In math, a factorial, denoated by n!, is the product of all positive integers from 1 to n. For example:</p>
+
+<p class="code">5! = 5 &times; 4 &times; 3 &times; 2 &times; 1 = 120</p>
+
+<p>or</p>
+
+<p class="code">5! = 1 &times; 2 &times; 3 &times; 4 &times; 5 = 120</p>
+
+<p>Consider the following loop, how can you modify it to calculate a factorial the user enters?</p>
+
+<editor editor-id="factorials1" :content="lessonEditorPayloads.factorials1" autoheight></editor>
+
+<p class="exercise">Expand on the above code so that it prints out the factorial of a positive whole number that a user enters.</p>
+
+<p><strong>Hint:</strong> Every time the loop runs, the value of counter is increased by one. You can use the counter to calculate the factorial.</p>
+
+<script>
+lessonEditorPayloads.factorials1 = "var number = prompt(\"Enter a number to calculate the factorial\");\nvar factor = 1;\nvar counter = 1;\nwhile(counter <= number)\n{\n\t\n\tcounter = counter + 1;\n}\nprint(\"The factor is \" + factor);";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof factor != "number")
+		return false;
+
+	// number is user defined
+	var f = fac(number);
+
+	if(f != null && f === factor)
+		return true;
+
+	return false;
+}
+
+function fac(n)
+{
+	try
+	{
+		numberInt = parseInt(n);
+	}
+	catch(e)
+	{
+		return null;
+	}
+
+	if(n == 0 || n == 1)
+		return 1;
+
+	if(n < 0)
+		return null;
+
+	var fac = 1;
+	for(var i = 1; i <= n; i++)
+		fac *= i;
+
+	return fac;
+}
+</script>
