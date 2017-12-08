@@ -21,6 +21,7 @@ var lessons = [
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
 	{ url: 'Factorial', title: "Factorial", chapter: 3},
+	{ url: 'EnforcingInputs', title: "Enforcing Inputs", chapter: 3},
 ]
 
 var weapons = [
@@ -479,6 +480,7 @@ Vue.component('Editor', {
   	'lang': String,
   	'theme': String, 
   	'autoheight': Boolean,
+  	'extrawide': Boolean,
   	'noloadbutton': Boolean,
   	'canwrite': Boolean,
   	'noselect': Boolean,
@@ -503,6 +505,7 @@ Vue.component('Editor', {
   	const lang = this.lang || 'javascript'
     var theme = this.theme || 'twilight'
     const height = this.height || 200;
+    const width = this.width || 600;
 
     if(this.disable)
     {
@@ -527,6 +530,12 @@ Vue.component('Editor', {
     {
     	this.editor.setAutoScrollEditorIntoView(true);
     	this.editor.setOption("maxLines", 20);
+    }
+
+    if(this.extrawide)
+    {
+    	$('#' + this.editorId).css('width', '800px');
+    	$('#' + this.editorId).parent().find('.loadButton').find('button').css('width', '800px');
     }
 
     if(this.noselect)

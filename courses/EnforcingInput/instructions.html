@@ -1,0 +1,66 @@
+<h1>Looping Practice: Enforcing Inputs</h1>
+
+<p>Another use for <span class="code">while</span> loops is to ask a user question with a limited set of answers. Remember that a <span class="code">while</span> loop works similar to an <span class="code">if</span> statement.</p>
+
+<p>For example, it is reasonable that when we ask someone the year they were born, that they were born after the year 1900. If they enter a year before that, we will ask them again - and keep asking them until they give us an answer we expect. 
+
+
+<editor editor-id="enforcinginputs1" :content="lessonEditorPayloads.enforcinginputs1" extrawide></editor>
+
+<p class="exercise">Expand on the above code so that it prints out the factorial of a positive whole number that a user enters.</p>
+
+<p><strong>Hint:</strong> Every time the loop runs, the value of counter is increased by one. You can use the counter to calculate the factorial.</p>
+
+<script>
+lessonEditorPayloads.enforcinginputs1 = "var yearofbirth = 0;\nwhile(yearofbirth < 1900)\n{\n\tyearofbirth = prompt(\"What year were you born?\");\n}\nprint(\"You are approximately \" + (" + (new Date()).getFullYear() + " - yearofbirth) + \" years old\");";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof factor != "number")
+		return false;
+
+	// number is user defined
+	var f = fac(number);
+
+	if(!(f != null && f === factor))
+		return false;
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	var t = new RegExp(/factor[\s]*=[\s]*factor[\s]*\*[\s]*counter/ig);
+
+	if(t.test(e))
+		return true;
+
+	t = new RegExp(/factor[\s]*=[\s]*counter[\s]*\*[\s]*factor/ig);
+
+	if(t.test(e))
+		return true;
+
+	return false;
+}
+
+function fac(n)
+{
+	try
+	{
+		numberInt = parseInt(n);
+	}
+	catch(e)
+	{
+		return null;
+	}
+
+	if(n == 0 || n == 1)
+		return 1;
+
+	if(n < 0)
+		return null;
+
+	var fac = 1;
+	for(var i = 1; i <= n; i++)
+		fac *= i;
+
+	return fac;
+}
+</script>
