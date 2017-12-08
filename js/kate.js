@@ -20,6 +20,7 @@ var lessons = [
 	{ url: 'BranchingBoss', title: "Chapter Boss: Branching", chapter: 2},
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
+	{ url: 'Factorial', title: "Factorial", chapter: 3},
 ]
 
 var weapons = [
