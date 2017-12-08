@@ -25,7 +25,7 @@ var lessons = [
 ]
 
 var weapons = [
-	{ urlComplete: 'StoryTime', id: 'weapon-flail'},
+	{ urlComplete: 'StoryTime', id: 'weapon-mace'},
 	{ urlComplete: 'VariableBoss', id: 'weapon-sword'},
 	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
 
@@ -36,7 +36,7 @@ var lessonEditorPayloads = {};
 var editor = null;
 
 var weaponPayloads = {
-	flailofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
+	maceofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
 	variableSword1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
 	variableSword2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
 	branchingTrident1: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}",
