@@ -21,7 +21,7 @@ var lessons = [
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
 	{ url: 'Factorial', title: "Factorial", chapter: 3},
-	{ url: 'EnforcingInputs', title: "Enforcing Inputs", chapter: 3},
+	{ url: 'EnforcingInput', title: "Enforcing Inputs", chapter: 3},
 ]
 
 var weapons = [
