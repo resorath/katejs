@@ -1,1 +1,0 @@
-var fahrenheit = 50;

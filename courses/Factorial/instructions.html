@@ -1,6 +1,6 @@
 <h1>Looping Practice: Factorials</h1>
 
-<p>Lets look a practical use of loops: calculating factorial.</p>
+<p>Lets look a practical use of <span class="code">for</span> loops: calculating factorial.</p>
 
 <p>In math, a factorial (which is represented by n!), is the product of all whole positive numbers from 1 to n. For example:</p>
 
@@ -19,7 +19,7 @@
 <p><strong>Hint:</strong> Every time the loop runs, the value of counter is increased by one. You can use the counter to calculate the factorial.</p>
 
 <script>
-lessonEditorPayloads.factorials1 = "var number = prompt(\"Enter a number to calculate the factorial\");\nvar factor = 1;\nvar counter = 1;\nwhile(counter <= number)\n{\n\t\n\tcounter = counter + 1;\n}\nprint(\"The factor is \" + factor);";
+lessonEditorPayloads.factorials1 = "var number = prompt(\"Enter a number to calculate the factorial\");\nvar factor = 1;\nfor(counter = 1; counter <= number; counter++)\n{\n\t\n}\nprint(\"The factor is \" + factor);";
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
