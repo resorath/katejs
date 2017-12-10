@@ -1,0 +1,41 @@
+<h1>For Loops</h1>
+
+<p>There is another type of loop that works very similarly, called a <span class="code">for</span> loop. These loops work great when counting up (or down) from a number.</p>
+
+<p>Here is an example:</p>
+
+<editor editor-id="forloops1" :content="lessonEditorPayloads.forloops1"></editor>
+
+<p>The above <span class="code">for</span> loop is identical to a <span class="code">while</span> loop written like this:</p>
+
+<editor editor-id="forloops4" :content="lessonEditorPayloads.forloops4"></editor>
+
+<p>Note, this line:</p>
+
+<editor editor-id="forloops2" :content="lessonEditorPayloads.forloops2" autoheight disable noloadbutton></editor>
+
+<p>Is the same as this:</p>
+
+<editor editor-id="forloops3" :content="lessonEditorPayloads.forloops3" autoheight disable noloadbutton></editor>
+
+<p>We often use "short hand" for code that is often repeated, such as <span class="code">counter++</span>. A <span class="code">for</span> loop is a short hand version of a while loop because we often create loops of this style.</p>
+
+<p class="exercise">Take the above <span class="code">for</span> loop, and have it count from 5 to 10.</p>
+
+<script>
+lessonEditorPayloads.forloops1 = "for(var counter = 1; counter <= 5; counter++)\n{\n\tprint(\"The value of counter is \" + counter);\n}";
+lessonEditorPayloads.forloops2 = "counter = counter + 1;";
+lessonEditorPayloads.forloops3 = "counter++;"
+lessonEditorPayloads.forloops4 = "var counter = 1;\nwhile(counter <= 5)\n{\n\tprint(\"The value of counter is \" + counter);\n\tcounter++;\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	t = new RegExp(/for\(var counter = 5; counter \<\= 10; counter\+\+\)/ig);
+
+	if(t.test(e))
+		return true;
+}
+</script>

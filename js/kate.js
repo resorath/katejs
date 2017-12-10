@@ -21,7 +21,7 @@ var lessons = [
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
 	{ url: 'EnforcingInput', title: "Looping Practice: Enforcing Inputs", chapter: 3},
-	
+	{ url: 'ForLoop', title: "For Loops", chapter: 3},
 	{ url: 'Factorial', title: "Looping Practice: Factorials", chapter: 3},
 ]
 
