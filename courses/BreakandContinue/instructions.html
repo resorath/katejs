@@ -1,0 +1,36 @@
+<h1>Breaking and Continuing</h1>
+
+<p>While we go around and around in a loop, we can use the keywords <span class="code">break</span> and <span class="code">continue</span> to change how the loop works.</p>
+
+<p><span class="code">break</span> leaves the loop as soon as it is seen. We usually use <span class="code">break</span> in combination with an <span class="code">if</span> statement. Example:</p>
+
+<editor editor-id="breakcontinue1" :content="lessonEditorPayloads.breakcontinue1"></editor>
+
+<p>Notice that even though the <span class="code">for</span> loop should go from 1 to 10, it stops at 4.</p>
+
+<p><span class="code">continue</span> immediately goes to the start of the loop and continues on. In this example, we can "skip" the number 4:</p>
+
+<editor editor-id="breakcontinue2" :content="lessonEditorPayloads.breakcontinue2"></editor>
+
+<p class="exercise">Use the follow sample code, and print all even numbers from 1 to 10.</p>
+
+<editor editor-id="breakcontinue3" :content="lessonEditorPayloads.breakcontinue3"></editor>
+
+<p><strong>Hint:</strong> the comparison <span class="code">counter % 2 == 0</span> is true when <span class="code">counter</span> is even.</p>
+
+<script>
+lessonEditorPayloads.breakcontinue1 = "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(\"The value of counter is \" + counter);\n\tif(counter == 4)\n\t{\n\t\tbreak;\n\t}\n}";
+lessonEditorPayloads.breakcontinue2 = "for(var counter = 1; counter <= 10; counter++)\n{\n\tif(counter == 4)\n\t{\n\t\tcontinue;\n\t}\n\tprint(\"The value of counter is \" + counter);\n}";
+lessonEditorPayloads.breakcontinue3 = "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(counter);\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	t = new RegExp(/for\(var counter = 5; counter \<\= 10; counter\+\+\)/ig);
+
+	if(t.test(e))
+		return true;
+}
+</script>
