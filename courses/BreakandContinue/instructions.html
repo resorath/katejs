@@ -25,10 +25,9 @@ lessonEditorPayloads.breakcontinue3 = "for(var counter = 1; counter <= 10; count
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-
 	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
-	t = new RegExp(/for\(var counter = 5; counter \<\= 10; counter\+\+\)/ig);
+	t = new RegExp(/if\(counter[ ]*%[ ]*2[ ]*==[=]*[ ]*0\)[\s\n\r\t]*[{]*[\s\n\r\t]*continue/ig);
 
 	if(t.test(e))
 		return true;
