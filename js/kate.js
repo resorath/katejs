@@ -47,7 +47,7 @@ var weaponPayloads = {
 	branchingTrident2: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse\n{\n\tprint(\"The water is not frozen.\");\n}",
 	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}",
 	loopScythe1: "var counter = 1;\nwhile(counter <= 10)\n{\n\tprint(\"The value of counter is \" + counter);\n\tcounter++;\n}",
-	loopScythe2: "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(\"The value of counter is \" counter);\n}",
+	loopScythe2: "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(\"The value of counter is \" + counter);\n}",
 }
 
 var hasCleared = false;

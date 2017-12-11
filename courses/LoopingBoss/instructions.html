@@ -2,29 +2,94 @@
 
 <p>Loops are useful for determining if a number is prime.</p>
 
-<p>A whole number is prime when there are no two whole numbers which can be multiplied together to form that number, other than 1 and itself.</p>
+<p>A whole number is prime when there are no two whole numbers which can be multiplied together to form that number, other than 1 and itself. If a number is not prime, it is called composite.</p>
 
 <p>Here are the first prime numbers up to 100 to test with:</p>
 
 <p class="code">2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97</p>
 
-<p>Write a program using a loop to determine if a number is prime.</p>
+<p>Write a program using a loop to determine if a number is prime. Print either:</p>
+
+<p><strong>The number is prime</strong></p>
+
+<p><strong>The number is composite</strong></p>
 
 <p><strong>Hint:</strong> Remember, you can test if a number is divisible by another number by using modulus (<span class="code">%</span>). Numbers are divisible when modulus is zero, example: <span class="code">4 % 2 = 0</span>.</p>
+
+<p><strong>Hint:</strong> Set the "isprime" variable to "0" in your loop if the number is composite, and then look at the variable outside the loop with an <span class="code">if</span> statement to print if the number was prime or not. 
 
 <p>Sample code has been loaded for you already, good luck!</p>
 
 
 <script>
 
+function isPrime(n)
+{
+    for(let i = 2, s = Math.sqrt(n); i <= s; i++)
+        if(n % i === 0) return false; 
+    return n !== 1;
+}
+
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
-	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+	var output = $('#output').html();
+	$('#output').html('');
 
-	t = new RegExp(/for\(var counter = 5; counter \<\= 10; counter\+\+\)/ig);
+	// load user code (except prompt line, we will put a harness on that)
+	var code = editor.getValue().substring(editor.getValue().indexOf('\n'));
 
-	if(t.test(e))
-		return true;
+	var primetest = new RegExp("The number is prime", "i");
+	var compositetest = new RegExp("The number is composite", "i");
+
+	var result = true;
+
+	for(var i = 2; i <= 100; i++)
+	{
+		result = true;
+		$('#output').html('');
+		var number = i;
+		eval(code);
+		var newoutput = $('#output').html();
+
+		if(isPrime(i))
+		{
+			if(!(primetest.test(newoutput) && !compositetest.test(newoutput)))
+			{
+				result = false;
+			}
+		}
+		else
+		{
+			if(!(compositetest.test(newoutput) && !primetest.test(newoutput)))
+			{
+				result = false;
+			}
+		}
+	}
+
+	$('#output').html(output);
+
+	return result;
 }
+
+/*
+var number = prompt("Enter a whole number greater than 1");
+var isprime = 1;
+for(var counter = 2; counter < number; counter++)
+{
+    if(number % counter == 0)
+    {
+        isprime = 0;
+    }
+}
+if(isprime == 0)
+{
+    print("The number is composite");
+}
+else
+{
+    print("The number is prime");
+}
+*/
 </script>
