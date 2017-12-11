@@ -1,0 +1,30 @@
+<h1>Chapter Boss: Prime Numbers</h1>
+
+<p>Loops are useful for determining if a number is prime.</p>
+
+<p>A whole number is prime when there are no two whole numbers which can be multiplied together to form that number, other than 1 and itself.</p>
+
+<p>Here are the first prime numbers up to 100 to test with:</p>
+
+<p class="code">2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97</p>
+
+<p>Write a program using a loop to determine if a number is prime.</p>
+
+<p><strong>Hint:</strong> Remember, you can test if a number is divisible by another number by using modulus (<span class="code">%</span>). Numbers are divisible when modulus is zero, example: <span class="code">4 % 2 = 0</span>.</p>
+
+<p>Sample code has been loaded for you already, good luck!</p>
+
+
+<script>
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	t = new RegExp(/for\(var counter = 5; counter \<\= 10; counter\+\+\)/ig);
+
+	if(t.test(e))
+		return true;
+}
+</script>

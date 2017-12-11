@@ -17,19 +17,21 @@ var lessons = [
 	{ url: 'IfElse', title: "If...Else", chapter: 2},
 	{ url: 'IfElseIfElse', title: "If...Else If...Else", chapter: 2},
 	{ url: 'ThisAndThat', title: "This and That", chapter: 2},
-	{ url: 'BranchingBoss', title: "Chapter Boss: Branching", chapter: 2},
+	{ url: 'BranchingBoss', title: "Chapter Boss: Divisibility", chapter: 2},
 
 	{ url: 'Loops', title: "Loops", chapter: 3},
 	{ url: 'EnforcingInput', title: "Looping Practice: Enforcing Inputs", chapter: 3},
 	{ url: 'ForLoops', title: "For Loops", chapter: 3},
 	{ url: 'Factorial', title: "Looping Practice: Factorials", chapter: 3},
 	{ url: 'BreakandContinue', title: "Breaking and Continue", chapter: 3},
+	{ url: 'LoopingBoss', title: "Chapter Boss: Prime Numbers", chapter: 3},
 ]
 
 var weapons = [
 	{ urlComplete: 'StoryTime', id: 'weapon-mace'},
 	{ urlComplete: 'VariableBoss', id: 'weapon-dagger'},
 	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
+	{ urlComplete: 'LoopingBoss', id: 'weapon-scythe'},
 
 ]
 
@@ -43,8 +45,9 @@ var weaponPayloads = {
 	variableDagger2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
 	branchingTrident1: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}",
 	branchingTrident2: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse\n{\n\tprint(\"The water is not frozen.\");\n}",
-	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}"
-
+	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}",
+	loopScythe1: "var counter = 1;\nwhile(counter <= 10)\n{\n\tprint(\"The value of counter is \" + counter);\n\tcounter++;\n}",
+	loopScythe2: "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(\"The value of counter is \" counter);\n}",
 }
 
 var hasCleared = false;
