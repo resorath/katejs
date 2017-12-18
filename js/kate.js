@@ -25,6 +25,9 @@ var lessons = [
 	{ url: 'Factorial', title: "Looping Practice: Factorials", chapter: 3},
 	{ url: 'BreakandContinue', title: "Breaking and Continue", chapter: 3},
 	{ url: 'LoopingBoss', title: "Chapter Boss: Prime Numbers", chapter: 3},
+
+	{ url: "Arrays", title: "Arrays", chapter: 4},
+	{ url: "ArrayPush", title: "Expanding on Arrays", chapter: 4},
 ]
 
 var weapons = [
@@ -160,6 +163,74 @@ function getCurrentIndex()
 })();
 */
 
+// hijack eval
+function kateEval(code) {
+	var nc = addInfiniteLoopProtection(code);
+	return eval(nc);
+}
+
+function tookTooLong()
+{
+	$('#output').html('&#x221e; Your loop took too long, it might be an infinite loop so we stopped it. Change your code and try again!');
+}
+
+function addInfiniteLoopProtection(code) {
+		var loopId = 1;
+		var patches = [];
+		var varPrefix = '_wmloopvar';
+		var varStr = 'var %d = Date.now();\n';
+		var checkStr =
+			'\nif (Date.now() - %d > 3000) { tookTooLong(); break;}\n';
+
+		esprima.parse(code, { tolerant: true, range: true, jsx: true }, function(
+			node
+		) {
+			switch (node.type) {
+				case 'DoWhileStatement':
+				case 'ForStatement':
+				case 'ForInStatement':
+				case 'ForOfStatement':
+				case 'WhileStatement':
+					var start = 1 + node.body.range[0];
+					var end = node.body.range[1];
+					var prolog = checkStr.replace('%d', varPrefix + loopId);
+					var epilog = '';
+
+					if (node.body.type !== 'BlockStatement') {
+						// `while(1) doThat()` becomes `while(1) {doThat()}`
+						prolog = '{' + prolog;
+						epilog = '}';
+						--start;
+					}
+
+					patches.push({ pos: start, str: prolog });
+					patches.push({ pos: end, str: epilog });
+					patches.push({
+						pos: node.range[0],
+						str: varStr.replace('%d', varPrefix + loopId)
+					});
+					++loopId;
+					break;
+
+				default:
+					break;
+			}
+		});
+
+		/* eslint-disable no-param-reassign */
+		patches
+			.sort(function(a, b) {
+				return b.pos - a.pos;
+			})
+			.forEach(function(patch) {
+				code = code.slice(0, patch.pos) + patch.str + code.slice(patch.pos);
+			});
+
+		/* eslint-disable no-param-reassign */
+		return code;
+	}
+
+
 $('#run').click(function() {
 
 	var result;
@@ -169,7 +240,7 @@ $('#run').click(function() {
 
 	try
 	{
-		result = window.eval(editor.getValue());
+		result = kateEval(editor.getValue());
 	}
 	catch(e)
 	{

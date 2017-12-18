@@ -37,9 +37,7 @@ lessonEditorPayloads.arrays5 = "var friends = [\"Emily\", \"Hannah\", \"Madison\
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	var t = new RegExp(/if[ ]*\([ ]*temperature[ ]*<=[ ]*0[ ]*\)\{[\S ]*print\([\S ]+\}/ig);
-	var e = editor.getValue().replace(/\n/g, '').replace(/\r/g, '').replace(/\t/g, '');
-
-	return t.test(e);
+	if(typeof friends !== 'undefined' && friends != null && friends.length >= 6)
+		return true;
 }
 </script>

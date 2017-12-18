@@ -1,0 +1,29 @@
+<h1>Expanding on Arrays</h1>
+
+<p>Lets look at the previous example, here we know ahead of time what is in the array:</p>
+
+<editor editor-id="arraypush1" :content="lessonEditorPayloads.arraypush1"></editor>
+
+<p>What if we don't know what is in the array? We can use <span class="code">push()</span> to add values:</p>
+<editor editor-id="arraypush2" :content="lessonEditorPayloads.arraypush2"></editor>
+
+<p><span class="code">push()</span> adds an array element (in this case, a name) to the end of the array.</p>
+
+<p class="exercise">Using the following code, how can you add the user to add names to the end of the array?</p>
+
+<editor editor-id="arraypush3" :content="lessonEditorPayloads.arraypush2"></editor>
+
+<p><strong>Hint:</strong> <span class="code">prompt()</span> sets the variable to <span class="code">null</span> (no quotes) when the user presses "cancel" on the prompt.
+
+
+
+<script>
+lessonEditorPayloads.arraypush1 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\r\nfor(var counter = 0; counter < friends.length; counter++)\r\n{\r\n\tprint(\"Hello \" + friends[counter]);\r\n}";
+lessonEditorPayloads.arraypush2 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\r\nfriends.push(\"Sarah\");\r\nfriends.push(\"Corey\");\r\nfor(var counter = 0; counter < friends.length; counter++)\r\n{\r\n\tprint(\"Hello \" + friends[counter]);\r\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof friends !== 'undefined' && friends != null && friends.length >= 6)
+		return true;
+}
+</script>
