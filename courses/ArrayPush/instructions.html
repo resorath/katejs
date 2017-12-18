@@ -24,7 +24,19 @@ lessonEditorPayloads.arraypush3 = "var friends = [\"Emily\", \"Hannah\", \"Madis
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	if(typeof friends !== 'undefined' && friends != null && friends.length >= 6)
-		return true;
+	
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	t = new RegExp(/addfriend[ ]*=[ ]*prompt/ig);
+
+	if(!t.test(e))
+		return false;
+
+	t = new RegExp(/friends\.push\(addfriend\)\;/ig);
+
+	if(!t.test(e))
+		return false;
+
+	return true;
 }
 </script>
