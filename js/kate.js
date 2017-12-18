@@ -166,7 +166,7 @@ function getCurrentIndex()
 // hijack eval
 function kateEval(code) {
 	var nc = addInfiniteLoopProtection(code);
-	return eval(nc);
+	return window.eval(nc);
 }
 
 function tookTooLong()
