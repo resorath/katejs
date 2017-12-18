@@ -171,16 +171,23 @@ function kateEval(code) {
 
 function tookTooLong()
 {
-	$('#output').append('<span class="error">Oops! &#x221e! Your loop took too long, it might be an infinite loop so we stopped it. Change your code and try again!</span>\n');
+	$('#output').append('<span class="error">Oops! &#x221e! Your loop might be infinite. Change your code and try again!</span>\n');
 }
 
+// https://github.com/chinchang/web-maker/blob/master/src/utils.js
 function addInfiniteLoopProtection(code) {
 		var loopId = 1;
 		var patches = [];
 		var varPrefix = '_wmloopvar';
+		/*
+		//old implementation, time based
 		var varStr = 'var %d = Date.now();\n';
 		var checkStr =
-			'\nif (Date.now() - %d > 2000) { tookTooLong(); break;}\n';
+			'\nif (Date.now() - %d > 1000) { tookTooLong(); break;}\n';
+	    */
+		var varStr = 'window.%d = 0;\n';
+		var checkStr =
+			'\nwindow.%d++; if (window.%d > 100000) { tookTooLong(); break;}\n';
 
 		esprima.parse(code, { tolerant: true, range: true, jsx: true }, function(
 			node
@@ -193,7 +200,7 @@ function addInfiniteLoopProtection(code) {
 				case 'WhileStatement':
 					var start = 1 + node.body.range[0];
 					var end = node.body.range[1];
-					var prolog = checkStr.replace('%d', varPrefix + loopId);
+					var prolog = checkStr.replace(/\%d/g, varPrefix + loopId);
 					var epilog = '';
 
 					if (node.body.type !== 'BlockStatement') {
@@ -207,7 +214,7 @@ function addInfiniteLoopProtection(code) {
 					patches.push({ pos: end, str: epilog });
 					patches.push({
 						pos: node.range[0],
-						str: varStr.replace('%d', varPrefix + loopId)
+						str: varStr.replace(/\%d/g, varPrefix + loopId)
 					});
 					++loopId;
 					break;
