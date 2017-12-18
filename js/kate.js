@@ -171,7 +171,7 @@ function kateEval(code) {
 
 function tookTooLong()
 {
-	$('#output').html('&#x221e; Your loop took too long, it might be an infinite loop so we stopped it. Change your code and try again!');
+	$('#output').append('<span class="error">Oops! &#x221e! Your loop took too long, it might be an infinite loop so we stopped it. Change your code and try again!</span>\n');
 }
 
 function addInfiniteLoopProtection(code) {
@@ -180,7 +180,7 @@ function addInfiniteLoopProtection(code) {
 		var varPrefix = '_wmloopvar';
 		var varStr = 'var %d = Date.now();\n';
 		var checkStr =
-			'\nif (Date.now() - %d > 3000) { tookTooLong(); break;}\n';
+			'\nif (Date.now() - %d > 2000) { tookTooLong(); break;}\n';
 
 		esprima.parse(code, { tolerant: true, range: true, jsx: true }, function(
 			node
@@ -245,7 +245,7 @@ $('#run').click(function() {
 	catch(e)
 	{
 		var stringy = "Oops! Code problem:  " + e.name + ": " + e.message;
-		$('#output').append(stringy + '\n');
+		$('#output').append('<span class="error">' + stringy + '</span>\n');
 		codeok = false;
 	}
 

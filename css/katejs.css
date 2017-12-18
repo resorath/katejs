@@ -125,6 +125,11 @@ noscript p
     margin: 0px
 }
 
+.error
+{
+    font-weight: bold;
+    color: #EE3233;
+}
 
 #rack {
     position: fixed;
