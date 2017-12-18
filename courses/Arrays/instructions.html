@@ -1,0 +1,45 @@
+<h1>Arrays</h1>
+
+<p>We can have variables store more complicated data for us. If we want to remember large amounts of things that are related to each other, we can use arrays. </p>
+
+<p>Consider you wanted to remember the name of three of your friends, we can store them like this:</p>
+
+<editor editor-id="arrays1" :content="lessonEditorPayloads.arrays1"></editor>
+
+<p>Notice that this sort of looks like a <span class="code">string</span> variable, however there is some extra structure to it. Each string is seperated by a comma, and the whole thing is enclosed in square brackets. This is the basic structure of how we can create arrays. We can use our print statement to view it:</p>
+
+<editor editor-id="arrays2" :content="lessonEditorPayloads.arrays2"></editor>
+
+<p>We can also print individual parts of the array by using their <span class="code">index</span>. The <span class="code">index</span> is a number, starting from 0, which counts up for each value in the array. Example:</p>
+
+<editor editor-id="arrays3" :content="lessonEditorPayloads.arrays3"></editor>
+
+<p>How is this better than just using a variable for each name? Consider using a loop to do some of the work for us:</p>
+
+<editor editor-id="arrays4" :content="lessonEditorPayloads.arrays4"></editor>
+
+<p>You'll notice we stopped the array at "3", because there was three elements (names) in the array. We can make this more general so we aren't hand counting the names in the array by using the "length" property of the array. We will talk more about properties later:</p>
+
+<editor editor-id="arrays5" :content="lessonEditorPayloads.arrays5"></editor>
+
+<p class="exercise">Add at least three more names to the friends array of the last example.</p>
+
+
+<script>
+lessonEditorPayloads.arrays1 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];";
+lessonEditorPayloads.arrays2 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\nprint(friends);";
+lessonEditorPayloads.arrays3 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\nprint(\"Hello \" + friends[0]);\nprint(\"Hello \" + friends[1]);\nprint(\"Hello \" + friends[2]);\n";
+lessonEditorPayloads.arrays3 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\nprint(\"Hello \" + friends[0]);\nprint(\"Hello \" + friends[1]);\nprint(\"Hello \" + friends[2]);\n";
+
+lessonEditorPayloads.arrays4 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\r\nfor(var counter = 0; counter < 3; counter++)\r\n{\r\n\tprint(\"Hello \" + friends[counter]);\r\n}";
+
+lessonEditorPayloads.arrays5 = "var friends = [\"Emily\", \"Hannah\", \"Madison\"];\r\nfor(var counter = 0; counter < friends.length; counter++)\r\n{\r\n\tprint(\"Hello \" + friends[counter]);\r\n}";
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	var t = new RegExp(/if[ ]*\([ ]*temperature[ ]*<=[ ]*0[ ]*\)\{[\S ]*print\([\S ]+\}/ig);
+	var e = editor.getValue().replace(/\n/g, '').replace(/\r/g, '').replace(/\t/g, '');
+
+	return t.test(e);
+}
+</script>
