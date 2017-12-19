@@ -437,6 +437,13 @@ function restart()
 	window.location.hash = "#/" + lessons[0].url;
 }
 
+function completeAll()
+{
+	setPersistent("lesson", lessons.length - 1);
+	window.location.hash = "#/";
+	return "okay";
+}
+
 function cleareditor()
 {
 	editor.setValue('', 1);
