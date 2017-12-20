@@ -1,0 +1,57 @@
+<h1>Multiple Properties of an Object</h1>
+
+<p>Objects are great for storing data. What we've calling indexes for objects actually have a special name called properties. Lets look at a slimmed down example from before:</p>
+
+<editor editor-id="objectproperties1" :content="lessonEditorPayloads.objectproperties1" extrawide></editor>
+
+<p>Lets change this around so that instead of having a list of favourite colours, we have a list of people.</p>
+
+<editor editor-id="objectproperties2" :content="lessonEditorPayloads.objectproperties2" extrawide></editor>
+
+<p>Oops! We are repeating code again. Let's improve by putting everything in an another object:</p>
+
+<editor editor-id="objectproperties3" :content="lessonEditorPayloads.objectproperties3" extrawide autoheight></editor>
+
+<p>Notice that we spread out one line into 5 lines to make it more readable. The semi-colon still represents the end of that line of code. We can dig into the object inside the object like this:</p>
+
+<editor editor-id="objectproperties4" :content="lessonEditorPayloads.objectproperties4" extrawide autoheight></editor>
+
+<p>Why would we do this? Well, what if we also wanted to record the age of each of our friends. We can do this by adding another property:</p>
+
+<editor editor-id="objectproperties5" :content="lessonEditorPayloads.objectproperties5" extrawide autoheight></editor>
+
+<p class="exercise">Make the last example generalized by converting lines 7, 8, and 9 into a <span class="code">for..in</span> loop.</p>
+
+<script>
+lessonEditorPayloads.objectproperties1 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\nprint(favouriteColour)';
+
+lessonEditorPayloads.objectproperties2 = 'var emily = { "favouriteColour": "Red" };\nvar hannah = { "favouriteColour": "Orange" };\nvar madison = { "favouriteColour": "Pink" };\n\nprint("Emily\'s favourite colour is: " + emily["favouriteColour"]);\nprint("Hannah\'s favourite colour is: " + hannah["favouriteColour"]);\nprint("Madison\'s favourite colour is: " + madison["favouriteColour"]);';
+
+lessonEditorPayloads.objectproperties3 = 'var people = {\n\t"emily": { "favouriteColour": "Red" },\n\t"hannah": { "favouriteColour": "Orange" },\n\t"madison": { "favouriteColour": "Pink" }\n};\nprint(people);'
+
+lessonEditorPayloads.objectproperties4 = 'var people = {\n\t"emily": { "favouriteColour": "Red" },\n\t"hannah": { "favouriteColour": "Orange" },\n\t"madison": { "favouriteColour": "Pink" }\n};\n\nprint("Emily\'s favourite colour is: " + people["emily"]["favouriteColour"]);\nprint("Hannah\'s favourite colour is: " + people["hannah"]["favouriteColour"]);\nprint("Madison\'s favourite colour is: " + people["madison"]["favouriteColour"]);'
+
+lessonEditorPayloads.objectproperties5 = 'var people = {\n\t"emily": { "favouriteColour": "Red", "age": 13 },\n\t"hannah": { "favouriteColour": "Orange", "age": 15 },\n\t"madison": { "favouriteColour": "Pink", "age": 14 }\n};\n\nprint("Emily\'s favourite colour is " + people["emily"]["favouriteColour"] + " and she is " + people["emily"]["age"] + " years old.");\nprint("Hannah\'s favourite colour is " + people["hannah"]["favouriteColour"] + " and she is " + people["hannah"]["age"] + " years old.");\nprint("Madison\'s favourite colour is " + people["madison"]["favouriteColour"] + " and she is " + people["madison"]["age"] + " years old.");'
+
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	var t = new RegExp(/for\(var [\S]+ in brands\)/ig);
+
+	if(!t.test(e))
+		return false;
+
+	var o = $('#output').html();
+
+	t = new RegExp(/Ford\nHonda\nVolvo\nJeep/ig);
+
+	if(!t.test(o))
+		return false;
+
+	return true;
+}
+</script>
