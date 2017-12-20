@@ -662,6 +662,26 @@ const app = new Vue({
 });
 
 
+function hasOwnPropertyCaseInsensitive(obj, property) 
+{
+    var props = [];
+    for (var i in obj) if (obj.hasOwnProperty(i)) props.push(i);
+    var prop;
+    while (prop = props.pop()) if (prop.toLowerCase() === property.toLowerCase()) return true;
+    return false;
+}
+
+function getPropertyCaseInsensitive(obj, property)
+{
+	var props = [];
+    for (var i in obj)
+    {
+    	if(obj.hasOwnProperty(i))
+    		if(i.toLowerCase() === property.toLowerCase())
+    			return obj[i];
+	}
+}
+
 // Lets register some helpful functions
 
 // print is mostly an alias to console.log
@@ -671,6 +691,10 @@ function print(s)
 	if(typeof s == "string")
 	{
 		$('#output').append(s + "\n");
+	}
+	else if(typeof s == "object")
+	{
+		$('#output').append(JSON.stringify(s) + "\n");
 	}
 	else
 	{

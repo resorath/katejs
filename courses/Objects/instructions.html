@@ -1,0 +1,48 @@
+<h1>Simple Objects</h1>
+
+<p>So far we have been working with arrays that use numbers as their index. As a reminder, the index refers to which part of the array we want to use. By default indexes start at 0:</p>
+
+<editor editor-id="objects1" :content="lessonEditorPayloads.objects1" autoheight></editor>
+
+<p>Note that we can start with an empty array, and assign values this way:</p>
+
+<editor editor-id="objects2" :content="lessonEditorPayloads.objects2" autoheight></editor>
+
+<p>However, we can also use <span class="code">strings</span> as indexes. In JavaScript these are called objects (they are also called associative arrays, dictionaries, or hash maps). We are going to change our square brackets (for arrays) into curley braces (for objects):</p>
+
+<editor editor-id="objects3" :content="lessonEditorPayloads.objects3" autoheight></editor>
+
+<p>Notice when you print out an object, it uses the curley braces. We can also create objects like that, just like arrays. However this time the <span class="code">index</span> goes in quotes and a colon before the value:</p>
+
+<editor editor-id="objects4" :content="lessonEditorPayloads.objects4" extrawide></editor>
+
+<p class="exercise">Victor's favourite colour is silver. Add Victor to the object in the last example, and give him a print statement. </p>
+<script>
+lessonEditorPayloads.objects1 = 'var friends = ["Emily", "Hannah", "Madison"];\nprint(friends[0]);\nprint(friends[1]);\nprint(friends[2]);';
+lessonEditorPayloads.objects2 = 'var friends = [];\nfriends[0] = "Emily"\nfriends[1] = "Hannah"\nfriends[2] = "Madison";\nprint(friends);';
+lessonEditorPayloads.objects3 = 'var favouriteColour = {};\nfavouriteColour["Emily"] = "Red";\nfavouriteColour["Hannah"] = "Orange";\nfavouriteColour["Madison"] = "Pink";\nprint(favouriteColour);';
+lessonEditorPayloads.objects4 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\nprint(favouriteColour);\n\nprint("Emily\'s favourite colour is: " + favouriteColour["Emily"]);\nprint("Hannah\'s favourite colour is: " + favouriteColour["Hannah"]);\nprint("Madison\'s favourite colour is: " + favouriteColour["Madison"]);';
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(
+		(typeof favouriteColour === "object") 
+		&& (hasOwnPropertyCaseInsensitive(favouriteColour, 'victor'))
+		&& (typeof getPropertyCaseInsensitive(favouriteColour, 'victor') === "string") 
+		&& (getPropertyCaseInsensitive(favouriteColour, 'victor').toLowerCase() == "silver")
+	)
+	{
+		var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+		t = new RegExp(/print\(\"Victor[']+s favo[u]+rite colo[u]+r is\:[ ]*\"[ ]*\+[ ]*favouriteColour\[\"victor\"\]\)/ig);
+
+		if(t.test(e))
+			return true;
+	}
+	
+
+
+	return false;
+}
+</script>
