@@ -30,7 +30,8 @@ var lessons = [
 	{ url: "ArrayPush", title: "Expanding on Arrays", chapter: 4},
 	{ url: "Objects", title: "Objects", chapter: 4},
 	{ url: "ForIn", title: "For Loops and Objects", chapter: 4},
-	
+	{ url: "ObjectProperties", title: "Properties of an Object", chapter: 4},
+
 ]
 
 var weapons = [
