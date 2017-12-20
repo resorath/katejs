@@ -1,0 +1,32 @@
+<h1>For Loops and Objects</h1>
+
+<p>Whenever we see code do things repetitively, it is an opportunity to improve on it. We call this generalizing. Consider the previous example:</p>
+
+<editor editor-id="forin1" :content="lessonEditorPayloads.forin1" extrawide></editor>
+
+<p>There is a lot of repetition there. What happens if we add 5 more friends, or 500?. Loops are good for this, we just haven't seen a loop yet that works on objects. There is a type of <span class="code">for loop</span> called a <span class="code">for..in loop</span>. It looks like this:</p>
+
+<editor editor-id="forin2" :content="lessonEditorPayloads.forin2" extrawide></editor>
+
+<p>Here we create a variable called <span class="code">friend</span> and go through each index in the object. Each time we go through the loop, the <span class="code">friend</span> variable changes to the next index in our object. We can then print out the index value, and then the value in the object at that index.</p>
+
+<p><span class="code">for..in</span> loops also work for arrays if we wanted to use them like that.</p>
+
+<p class="exercise">Use a <span clas="code">for..in</span> loop to print out the values of this array:</p>
+
+<editor editor-id="forin3" :content="lessonEditorPayloads.forin3"></editor>
+
+<script>
+lessonEditorPayloads.forin1 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\nprint(favouriteColour);\n\nprint("Emily\'s favourite colour is: " + favouriteColour["Emily"]);\nprint("Hannah\'s favourite colour is: " + favouriteColour["Hannah"]);\nprint("Madison\'s favourite colour is: " + favouriteColour["Madison"]);';
+
+lessonEditorPayloads.forin2 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\nprint(favouriteColour);\n\nfor(var friend in favouriteColour)\n{\n\tprint(friend + "\'s favourite colour is " + favouriteColour[friend]);\n}';
+
+lessonEditorPayloads.forin3 = 'var brands = ["Ford", "Honda", "Volvo", "Jeep"];\n'
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+
+	return false;
+}
+</script>
