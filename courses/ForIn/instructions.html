@@ -26,7 +26,20 @@ lessonEditorPayloads.forin3 = 'var brands = ["Ford", "Honda", "Volvo", "Jeep"];\
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
-	return false;
+	var t = new RegExp(/for\(var [\S]+ in brands\)/ig);
+
+	if(!t.test(e))
+		return false;
+
+	var o = $('#output').html();
+
+	t = new RegExp(/Ford\nHonda\nVolvo\nJeep/ig);
+
+	if(!t.test(o))
+		return false;
+
+	return true;
 }
 </script>
