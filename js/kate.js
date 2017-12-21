@@ -31,6 +31,7 @@ var lessons = [
 	{ url: "Objects", title: "Objects", chapter: 4},
 	{ url: "ForIn", title: "For Loops and Objects", chapter: 4},
 	{ url: "ObjectProperties", title: "Properties of an Object", chapter: 4},
+	{ url: "DotNotation", title: "The Dot Notation", chapter: 4},
 
 ]
 
@@ -579,7 +580,8 @@ Vue.component('Editor', {
   	'canwrite': Boolean,
   	'noselect': Boolean,
   	'disable': Boolean,
-  	'nowarn': Boolean
+  	'nowarn': Boolean,
+  	'wordwrap': Boolean,
 
   },
   data () {
@@ -640,6 +642,12 @@ Vue.component('Editor', {
 			if(!thiseditor.getSelection().isEmpty())
 		    	thiseditor.getSession().selection.clearSelection();
 		});
+    }
+
+    if(this.wordwrap)
+    {
+    	var thiseditor = this.editor;
+    	thiseditor.getSession().setUseWrapMode(true);
     }
 
     this.editor.on('change', () => {

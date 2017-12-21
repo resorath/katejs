@@ -18,11 +18,11 @@
 
 <p>Why would we do this? Well, what if we also wanted to record the age of each of our friends. We can do this by adding another property:</p>
 
-<editor editor-id="objectproperties5" :content="lessonEditorPayloads.objectproperties5" extrawide autoheight></editor>
+<editor editor-id="objectproperties5" :content="lessonEditorPayloads.objectproperties5" extrawide autoheight wordwrap></editor>
 
 <p class="exercise">Make the last example generalized by converting lines 7, 8, and 9 into a <span class="code">for..in</span> loop.</p>
 
-<p><strong>Hint:</strong> when naming variables in a <span class="code">for..in</span> loop, use the singular version of the array. E.g. <span class="code">for(var friend in friends)</span>. Avoid using the word <span class="code">name</span> for a variable, as it is reserved in JavaScript and shouldn't be used. 
+<p><strong>Hint:</strong> when naming variables in a <span class="code">for..in</span> loop, use the singular version of the array. E.g. <span class="code">for(var friendname in friends)</span>. Avoid using the word <span class="code">name</span> for a variable, as it is reserved in JavaScript and shouldn't be used. 
 
 <script>
 lessonEditorPayloads.objectproperties1 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\n\nprint("Emily\'s favourite colour is: " + favouriteColour["Emily"]);\nprint("Hannah\'s favourite colour is: " + favouriteColour["Hannah"]);\nprint("Madison\'s favourite colour is: " + favouriteColour["Madison"]);';
@@ -43,7 +43,7 @@ var matchToAdvance = function() {
 	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
 	// capture what variable they set, and check that variable is consistent in the props
-	var t = new RegExp(/for\(var ([\S]+) in friends\)[\s]*\{[\s]*print\([\S\"\+\s]*friends\[\1\]\["favouriteColour\"\][\S\"\+\s]*friends\[\1\]\[\"age\"\]/ig);
+	var t = new RegExp(/for\(var ([\S]+) in friends\)[\s]*\{[\s]*print\([\S\"\+\s]*friends\[\1\]\[\"favouriteColour\"\][\S\"\+\s]*friends\[\1\]\[\"age\"\]/ig);
 
 	if(t.test(e))
 		return true;
