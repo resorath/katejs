@@ -16,6 +16,10 @@
 
 <editor editor-id="dotnotation4" :content="lessonEditorPayloads.dotnotation4" extrawide wordwrap autoheight></editor>
 
+<p><strong>Hint:</strong> Property names are case sensitive.</p>
+
+<p><strong>Note:</strong> Did you notice that <span class="code">cars.length</span> is in dot notation? Length is a property of all arrays and objects that is always available for you to use. The value is always the amount of things (elements) in the array or object.</p>
+
 <script>
 lessonEditorPayloads.dotnotation1 = 'var emily = { "favouriteColour": "Red", age: 13 }\n\nprint("Emily\'s favourite colour is: " + emily["favouriteColour"]);\nprint("Emily is " + emily["age"] + " years old.");';
 
@@ -23,15 +27,14 @@ lessonEditorPayloads.dotnotation2 = 'var emily = { "favouriteColour": "Red", age
 
 lessonEditorPayloads.dotnotation3 = 'var friends = {\n\t"emily": { "favouriteColour": "Red", "age": 13 },\n\t"hannah": { "favouriteColour": "Orange", "age": 15 },\n\t"madison": { "favouriteColour": "Pink", "age": 14 }\n};\nfor(var friendname in friends)\n{\n\tprint(friendname + "\'s favourite colour is " + friends[friendname].favouriteColour + " and is " + friends[friendname].age + " years old.");\n}';
 
-lessonEditorPayloads.dotnotation4 = 'var cars = [\n\t{"Make": "Ford", "Model": "Focus", "Year": 2002},\n\t{"Make": "Honda", "Model": "Civic", "Year": 2014},\n\t{"Make": "Acura", "Model": "MDX", "Year": 2013},\n\t{"Make": "Jeep", "Model": "Grand Cherokee", "Year": 2006}\n]\n\nfor(var counter = 0; counter < cars.length; counter++)\n{\n\tprint("Make: " + cars[counter]["Make"] + ", Model: " + cars[counter]["Model"] + ", Year: " + cars[counter]["Year"]);\n}'
+lessonEditorPayloads.dotnotation4 = 'var cars = [\n\t{"Make": "Ford", "Model": "Focus", "Year": 2002},\n\t{"Make": "Honda", "Model": "Civic", "Year": 2014},\n\t{"Make": "Acura", "Model": "MDX", "Year": 2013},\n\t{"Make": "Jeep", "Model": "Grand Cherokee", "Year": 2006}\n];\n\nfor(var counter = 0; counter < cars.length; counter++)\n{\n\tprint("Make: " + cars[counter]["Make"] + ", Model: " + cars[counter]["Model"] + ", Year: " + cars[counter]["Year"]);\n}'
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
 	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
-	// capture what variable they set, and check that variable is consistent in the props
-	var t = new RegExp(/for\(var ([\S]+) in friends\)[\s]*\{[\s]*print\([\S\"\+\s]*friends\[\1\]\[\"favouriteColour\"\][\S\"\+\s]*friends\[\1\]\[\"age\"\]/ig);
+	var t = new RegExp(/print\(\"Make: \"[ ]*\+[ ]*cars\[counter\].Make[ ]*\+[ ]*\",[ ]*Model:[ ]*\"[ ]*\+[ ]*cars\[counter\].Model[ ]*\+[ ]*\",[ ]*Year:[ ]*\"[ ]*\+[ ]*cars\[counter\].Year[ ]*\)/ig);
 
 	if(t.test(e))
 		return true;
