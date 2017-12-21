@@ -22,8 +22,10 @@
 
 <p class="exercise">Make the last example generalized by converting lines 7, 8, and 9 into a <span class="code">for..in</span> loop.</p>
 
+<p><strong>Hint:</strong> when naming variables in a <span class="code">for..in</span> loop, use the singular version of the array. E.g. <span class="code">for(var friend in friends)</span>. Avoid using the word <span class="code">name</span> for a variable, as it is reserved in JavaScript and shouldn't be used. 
+
 <script>
-lessonEditorPayloads.objectproperties1 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\n\nprint("Emily\'s favourite colour is: " + favouriteColour["Emily"]);\nprint("Hannah\'s favourite colour is: " + favouriteColour["hannah"]);\nprint("Madison\'s favourite colour is: " + favouriteColour["madison"]);';
+lessonEditorPayloads.objectproperties1 = 'var favouriteColour = {"Emily":"Red", "Hannah":"Orange", "Madison":"Pink"};\n\nprint("Emily\'s favourite colour is: " + favouriteColour["Emily"]);\nprint("Hannah\'s favourite colour is: " + favouriteColour["Hannah"]);\nprint("Madison\'s favourite colour is: " + favouriteColour["Madison"]);';
 
 lessonEditorPayloads.objectproperties2 = 'var emily = { "favouriteColour": "Red" };\nvar hannah = { "favouriteColour": "Orange" };\nvar madison = { "favouriteColour": "Pink" };\n\nprint("Emily\'s favourite colour is: " + emily["favouriteColour"]);\nprint("Hannah\'s favourite colour is: " + hannah["favouriteColour"]);\nprint("Madison\'s favourite colour is: " + madison["favouriteColour"]);';
 
@@ -40,18 +42,12 @@ var matchToAdvance = function() {
 
 	var e = editor.getValue().replace(/\n|\r|\t/g, '');
 
-	var t = new RegExp(/for\(var [\S]+ in brands\)/ig);
+	// capture what variable they set, and check that variable is consistent in the props
+	var t = new RegExp(/for\(var ([\S]+) in friends\)[\s]*\{[\s]*print\([\S\"\+\s]*friends\[\1\]\["favouriteColour\"\][\S\"\+\s]*friends\[\1\]\[\"age\"\]/ig);
 
-	if(!t.test(e))
-		return false;
+	if(t.test(e))
+		return true;
 
-	var o = $('#output').html();
-
-	t = new RegExp(/Ford\nHonda\nVolvo\nJeep/ig);
-
-	if(!t.test(o))
-		return false;
-
-	return true;
+	return false
 }
 </script>
