@@ -1,0 +1,34 @@
+<h1>Chapter Boss: Arrays and Objects</h1>
+
+<p>Build an object that represents a pet cat. The cat should have the following attributes:</p>
+
+<ul>
+	<li>The cat is named "Mittens".</li>
+	<li>The cat is 3 years old.</li>
+	<li>The cat's favourite foods are:
+		<ul>
+			<li>Tuna</li>
+			<li>Chicken</li>
+			<li>Fancy Feast</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Sample code has already been loaded for you. Good luck!</p>
+
+<script>
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+
+	var t = new RegExp(/print\(\"Make: \"[ ]*\+[ ]*cars\[counter\].Make[ ]*\+[ ]*\",[ ]*Model:[ ]*\"[ ]*\+[ ]*cars\[counter\].Model[ ]*\+[ ]*\",[ ]*Year:[ ]*\"[ ]*\+[ ]*cars\[counter\].Year[ ]*\)/ig);
+
+	if(t.test(e))
+		return true;
+
+	return false
+}
+</script>
