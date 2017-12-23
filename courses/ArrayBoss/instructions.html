@@ -35,12 +35,19 @@ var matchToAdvance = function() {
 				if(i == 0)
 				{
 					if(typeof cat[prop] !== "string")
+						return false; 
+
+					if(cat[prop].toLowerCase() != "mittens")
 						return false;
 				}
+
 				// age
 				if(i == 1)
 				{
 					if(typeof cat[prop] !== "number")
+						return false;
+
+					if(cat[prop] != 3)
 						return false;
 				}
 				// favourite foods
@@ -54,12 +61,21 @@ var matchToAdvance = function() {
 
 					if(cat[prop].length != 3)
 						return false;
+
+					for(var j = 0; j < cat[prop].length; j++)
+					{
+						if(typeof cat[prop][j] !== "string")
+							return false;
+					}
+
+					if(cat[prop][0].toLowerCase() != "tuna" || cat[prop][1].toLowerCase() != "chicken" || cat[prop][2].toLowerCase() != "fancy feast")
+						return false;
+
 				}
 			}
 			i++;
 
 		}
-
 		if(i != 3)
 			return false;
 	}
