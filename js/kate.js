@@ -41,6 +41,7 @@ var weapons = [
 	{ urlComplete: 'VariableBoss', id: 'weapon-dagger'},
 	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
 	{ urlComplete: 'LoopingBoss', id: 'weapon-scythe'},
+	{ urlComplete: 'ArrayBoss', id: 'weapon-nunchakus'}
 
 ]
 
@@ -57,6 +58,10 @@ var weaponPayloads = {
 	branchingTrident3: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}\nelse if(temperature >= 0 && temperature < 100)\n{\n\tprint(\"The water is liquid.\");\n}\nelse\n{\n\tprint(\"The water is steam.\");\n}",
 	loopScythe1: "var counter = 1;\nwhile(counter <= 10)\n{\n\tprint(\"The value of counter is \" + counter);\n\tcounter++;\n}",
 	loopScythe2: "for(var counter = 1; counter <= 10; counter++)\n{\n\tprint(\"The value of counter is \" + counter);\n}",
+	arrayNunchakus1: 'var cars = ["Ford Focus", "Honda Civic", "Nissan Sentra", "Volkswagen Beetle"];\n\nvar primeNumbers = [1, 2, 3, 5, 7, 11, 13];',
+	arrayNunchakus2: 'var cat = {"name": "Mittens", "Age": 3, "Weight": 5}',
+	arrayNunchakus3: 'var cars = [\n\t{"Make": "Ford", "Model": "Focus", "Year": 2002},\n\t{"Make": "Honda", "Model": "Civic", "Year": 2014},\n\t{"Make": "Nissan", "Model": "Sentra", "Year": 2006},\n\t{"Make": "Volkswagen", "Model": "Beetle", "Year": 2017}\n];'
+
 }
 
 var hasCleared = false;

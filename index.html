@@ -60,6 +60,7 @@
         <li id="weapon-dagger"><img src="images/dagger.png" class="tooltip" data-tooltip-content="#tooltip_variableDagger"></li>
         <li id="weapon-trident"><img src="images/trident.png" class="tooltip" data-tooltip-content="#tooltip_branchingTrident"></li>
         <li id="weapon-scythe"><img src="images/scythe.png" class="tooltip" data-tooltip-content="#tooltip_loopScythe"></li>
+        <li id="weapon-nunchakus"><img src="images/nunchakus.png" class="tooltip" data-tooltip-content="#tooltip_arrayNunchakus"></li>
 
       </ul>
     </div>
@@ -105,13 +106,27 @@
 
         <div id="tooltip_loopScythe" class="tooltip_weapon">
             <h2>The Looping Scythe!</h2>
-            <p>Loops run the same code over and over again until a condition is met, like an <span class="code">if</span> statement that runs when true, then starts over and checks again.
+            <p>Loops run the same code over and over again until a condition is met, like an <span class="code">if</span> statement that runs when true, then starts over and checks again.</p>
 
             <p>Example of while loop:</p>
             <editor editor-id="weapons-loopScythe1" :content="weaponPayloads.loopScythe1" disable noloadbutton autoheight></editor>
 
             <p>Example of for loop:</p>
             <editor editor-id="weapons-loopScythe2" :content="weaponPayloads.loopScythe2" disable noloadbutton autoheight></editor>
+        </div>
+
+        <div id="tooltip_arrayNunchakus" class="tooltip_weapon">
+            <h2>The Nunchakus of Arrays!</h2>
+            <p>Arrays and simple objects are complex variables that can store multiple pieces of information. An array is a series of related variables, while an object contains key-value pairs of variables.</p>
+
+            <p>Examples of an array:</p>
+            <editor editor-id="weapons-arrayNunchakus1" :content="weaponPayloads.arrayNunchakus1" disable noloadbutton autoheight></editor>
+
+            <p>Example of an object:</p>
+            <editor editor-id="weapons-arrayNunchakus2" :content="weaponPayloads.arrayNunchakus2" disable noloadbutton autoheight></editor> 
+
+            <p>Example of an array of objects:</p>
+            <editor editor-id="weapons-arrayNunchakus3" :content="weaponPayloads.arrayNunchakus3" disable noloadbutton autoheight></editor> 
         </div>
     </div>
   </div>
