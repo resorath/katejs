@@ -22,13 +22,48 @@
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
 
-	var e = editor.getValue().replace(/\n|\r|\t/g, '');
+	if(cat != null && typeof cat === "object")
+	{
 
-	var t = new RegExp(/print\(\"Make: \"[ ]*\+[ ]*cars\[counter\].Make[ ]*\+[ ]*\",[ ]*Model:[ ]*\"[ ]*\+[ ]*cars\[counter\].Model[ ]*\+[ ]*\",[ ]*Year:[ ]*\"[ ]*\+[ ]*cars\[counter\].Year[ ]*\)/ig);
+		// check each prop
+		var i = 0;
+		for(var prop in cat)
+		{
+			if(cat.hasOwnProperty(prop))
+			{
+				// name
+				if(i == 0)
+				{
+					if(typeof cat[prop] !== "string")
+						return false;
+				}
+				// age
+				if(i == 1)
+				{
+					if(typeof cat[prop] !== "number")
+						return false;
+				}
+				// favourite foods
+				if(i == 2)
+				{
+					if(typeof cat[prop] !== "object")
+						return false;
 
-	if(t.test(e))
-		return true;
+					if(!Array.isArray(cat[prop]))
+						return false
 
-	return false
+					if(cat[prop].length != 3)
+						return false;
+				}
+			}
+			i++;
+
+		}
+
+		if(i != 3)
+			return false;
+	}
+
+	return true;
 }
 </script>

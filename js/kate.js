@@ -32,6 +32,7 @@ var lessons = [
 	{ url: "ForIn", title: "For Loops and Objects", chapter: 4},
 	{ url: "ObjectProperties", title: "Properties of an Object", chapter: 4},
 	{ url: "DotNotation", title: "The Dot Notation", chapter: 4},
+	{ url: "ArrayBoss", title: "Chapter Boss: Arrays and Objects", chapter: 4},
 
 ]
 
