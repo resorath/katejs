@@ -1,0 +1,17 @@
+<h1>Comments</h1>
+
+<p>You can write text in your code that doesn't do anything. These are called comments, and are useful for making notes on what your code does. You can write anything you want in a comment. Comments start with two slashes <span class="code">//</span>.</p>
+
+<editor editor-id="comments1" :content="lessonEditorPayloads.comments1"  disable noloadbutton autoheight></editor>
+
+<p class="exercise">Write a comment that describes what this code does.</p>
+
+<editor editor-id="comments2" :content="lessonEditorPayloads.comments2"></editor>
+
+<script>
+lessonEditorPayloads.comments1 = '// This line is a comment, it doesn\'t do anything\nprint("This line is not a comment.");';
+lessonEditorPayloads.comments2 = '\nprint("Hello, World!");'
+
+var matchToAdvance = new RegExp(/\/\/[\S\s]+/i);
+var matchMode = "editor"; // either editor or output
+</script>

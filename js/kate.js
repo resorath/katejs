@@ -5,6 +5,7 @@ var lessons = [
 	{ url: 'Intro', title: "Using the editor", chapter: 1 },
 	{ url: 'HelloWorld', title: "Hello World!", chapter: 1 },
 	{ url: 'StoryTime', title: "Story Time", chapter: 1 },
+	{ url: 'Comments', title: "Comments", chapter: 1 },
 	{ url: 'Variables', title: "Variables", chapter: 1 },
 	{ url: 'Greetings', title: "Greetings", chapter: 1 },
 	{ url: 'Strings', title: "Strings", chapter: 1 },
@@ -37,7 +38,7 @@ var lessons = [
 ]
 
 var weapons = [
-	{ urlComplete: 'StoryTime', id: 'weapon-mace'},
+	{ urlComplete: 'Comments', id: 'weapon-mace'},
 	{ urlComplete: 'VariableBoss', id: 'weapon-dagger'},
 	{ urlComplete: 'BranchingBoss', id: 'weapon-trident'},
 	{ urlComplete: 'LoopingBoss', id: 'weapon-scythe'},
@@ -50,7 +51,8 @@ var lessonEditorPayloads = {};
 var editor = null;
 
 var weaponPayloads = {
-	maceofio: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
+	maceofio1: "print(\"Hello, world!\");\nprint(\"This line is printed second.\");\nprint(\"This line is printed last.\");",
+	maceofio2: "// This line is a comment.",
 	variableDagger1: "var myname = \"Kate\";\nvar age = 14;\nvar favcolour = prompt(\"What is your favourite colour?\");",
 	variableDagger2: "print(myname);\nprint(\"Hello, my name is \" + myname);\nvar myAgeNextYear = age + 1;",
 	branchingTrident1: "var temperature = -4;\nif(temperature < 0)\n{\n\tprint(\"The water is frozen!\");\n}",
