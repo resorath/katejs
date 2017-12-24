@@ -1,3 +1,3 @@
-var cat = {}
+var cat = {};
 
 print(cat);
