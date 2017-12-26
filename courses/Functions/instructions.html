@@ -1,0 +1,54 @@
+<h1>Functions</h1>
+
+<p>If we have a block of code that we want to use often, we can use functions. Functions let us re-use code wherever we need to. Unlike loops, functions can be placed anywhere, and can run any number of times. We have used functions quite a bit already without talking about it, lets create our own now.</p>
+
+<p>Here is an example of a function which prints "Hello, World!" to the screen whenever it is called:</p>
+
+<editor editor-id="functions1" :content="lessonEditorPayloads.functions1"></editor>
+
+<p>When you try running it, notice it doesn't print anything to the screen. To use a function, we have to call it by its name:</p>
+
+<editor editor-id="functions2" :content="lessonEditorPayloads.functions2"></editor>
+
+<p>If we call it multiple times, the code runs over and over again.</p>
+
+<editor editor-id="functions3" :content="lessonEditorPayloads.functions3"></editor>
+
+<p class="exercise">Write another function that prints out your name, and call that. Call the function sayMyName(). Here is a template that already calls the function for you, you just have to write the function itself:</p>
+
+<editor editor-id="functions4" :content="lessonEditorPayloads.functions4"></editor>
+
+<script>
+
+lessonEditorPayloads.functions1 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}';
+lessonEditorPayloads.functions2 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}\n\nsayHello();';
+lessonEditorPayloads.functions3 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}\n\nsayHello();\nsayHello();\nsayHello();';
+lessonEditorPayloads.functions4 = '\n\n\n\nsayMyName();';
+
+
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof sayMyName === 'function')
+	{
+		var o = $('#output').html();
+		$('#output').html('');
+
+		sayMyName();	
+
+		t = new RegExp(/hello[,]*[\s\S]+/ig);
+
+		var okay = false;
+
+		$('#output').html(o);
+
+		if(t.test(e))
+			okay = true;
+
+		return okay;
+	}
+
+	return false;
+}
+</script>
