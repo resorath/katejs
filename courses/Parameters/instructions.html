@@ -25,7 +25,7 @@
 lessonEditorPayloads.parameters1 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n}\n\nsayHello("Kate");\nsayHello("Jane");';
 lessonEditorPayloads.parameters2 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n\tmyname = "John";\n}\n\nvar testname = "Kate";\nsayHello(testname);\nsayHello(testname);';
 lessonEditorPayloads.parameters3 = 'function add(number1, number2)\n{\n\tprint(number1 + number2);\n}\n\nadd(4, 7);'
-lessonEditorPayloads.parameters4 = '\n\nprintIfLarger(2, 5); // prints 5\nprintIfLarger(4, 2); // doesn\'t print anything\nprintIfLarger(50, 100); // prints 100'
+lessonEditorPayloads.parameters4 = '\n\nshowIfLarger(2, 5); // prints 5\nshowIfLarger(4, 2); // doesn\'t print anything\nshowIfLarger(50, 100); // prints 100'
 
 
 
@@ -33,16 +33,16 @@ lessonEditorPayloads.parameters4 = '\n\nprintIfLarger(2, 5); // prints 5\nprintI
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	if(typeof printIfLarger === 'function')
+	if(typeof showIfLarger === 'function')
 	{
 		var o = $('#output').html();
 		$('#output').html('');
 
-		printIfLarger(2, 5);
-		printIfLarger(4, 2);
-		printIfLarger(50, 100);
-		printIfLarger(25, -25);
-		printIfLarger(-25, 25);
+		showIfLarger(2, 5);
+		showIfLarger(4, 2);
+		showIfLarger(50, 100);
+		showIfLarger(25, -25);
+		showIfLarger(-25, 25);
 
 		t = new RegExp(/5\n100\n25/ig);
 
