@@ -35,6 +35,8 @@ var lessons = [
 	{ url: "DotNotation", title: "The Dot Notation", chapter: 4},
 	{ url: "ArrayBoss", title: "Chapter Boss: Arrays and Objects", chapter: 4},
 
+	{ url: "Functions", title: "Functions", chapter: 5},
+
 ]
 
 var weapons = [

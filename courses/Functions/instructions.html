@@ -23,7 +23,7 @@
 lessonEditorPayloads.functions1 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}';
 lessonEditorPayloads.functions2 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}\n\nsayHello();';
 lessonEditorPayloads.functions3 = 'function sayHello()\n{\n\tprint("Hello, World!");\n}\n\nsayHello();\nsayHello();\nsayHello();';
-lessonEditorPayloads.functions4 = '\n\n\n\nsayMyName();';
+lessonEditorPayloads.functions4 = '\n\nsayMyName();';
 
 
 
@@ -35,15 +35,17 @@ var matchToAdvance = function() {
 		var o = $('#output').html();
 		$('#output').html('');
 
-		sayMyName();	
+		sayMyName();
 
 		t = new RegExp(/hello[,]*[\s\S]+/ig);
+
+		var newo = $('#output').html();
 
 		var okay = false;
 
 		$('#output').html(o);
 
-		if(t.test(e))
+		if(t.test(newo))
 			okay = true;
 
 		return okay;
