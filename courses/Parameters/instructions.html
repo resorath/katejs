@@ -1,0 +1,54 @@
+<h1>Function Parameters</h1>
+
+<p>We can make functions do different things with parameters. Parameters are variables that are set when the function is called.</p>
+
+<p>In this example, our parameter is named <span class="code">myname</span>. It is a variable that is first created on line 1, and then used in line 3. We can set the value of <span class="code">myname</span> when we call the function on lines 6 and 7:</p>
+
+<editor editor-id="parameters1" :content="lessonEditorPayloads.parameters1"></editor>
+
+<p>It is important to note that the variable <span class="code">myname</span> is discarded at the end of the function. You can't use it outside the function.</p>
+
+<p>Even when using a variable to supply the value to the function, the value is "copied" into the function:</p>
+
+<editor editor-id="parameters2" :content="lessonEditorPayloads.parameters2" autoheight></editor>
+
+<p>You can have multiple parameters like this, the parameters are used in order when called:</p>
+
+<editor editor-id="parameters3" :content="lessonEditorPayloads.parameters3" autoheight></editor>
+
+<script>
+
+lessonEditorPayloads.parameters1 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n}\n\nsayHello("Kate");\nsayHello("Jane");';
+lessonEditorPayloads.parameters2 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n\tmyname = "John";\n}\n\nvar testname = "Kate";\nsayHello(testname);\nsayHello(testname);';
+lessonEditorPayloads.parameters3 = 'function add(number1, number2)\n{\n\tprint(number1 + number2);\n}\n\nadd(4, 7);'
+
+
+
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof sayMyName === 'function')
+	{
+		var o = $('#output').html();
+		$('#output').html('');
+
+		sayMyName();
+
+		t = new RegExp(/hello[,]*[\s\S]+/ig);
+
+		var newo = $('#output').html();
+
+		var okay = false;
+
+		$('#output').html(o);
+
+		if(t.test(newo))
+			okay = true;
+
+		return okay;
+	}
+
+	return false;
+}
+</script>
