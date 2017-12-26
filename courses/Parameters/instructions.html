@@ -16,11 +16,16 @@
 
 <editor editor-id="parameters3" :content="lessonEditorPayloads.parameters3" autoheight></editor>
 
+<p class="exercise">Create a function that prints out the second number given if it is larger than the first number. Use the following starter code for some test cases:</p>
+
+<editor editor-id="parameters4" :content="lessonEditorPayloads.parameters4" autoheight></editor>
+
 <script>
 
 lessonEditorPayloads.parameters1 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n}\n\nsayHello("Kate");\nsayHello("Jane");';
 lessonEditorPayloads.parameters2 = 'function sayHello(myname)\n{\n\tprint("Hello, " + myname);\n\tmyname = "John";\n}\n\nvar testname = "Kate";\nsayHello(testname);\nsayHello(testname);';
 lessonEditorPayloads.parameters3 = 'function add(number1, number2)\n{\n\tprint(number1 + number2);\n}\n\nadd(4, 7);'
+lessonEditorPayloads.parameters4 = '\n\nprintIfLarger(2, 5); // prints 5\nprintIfLarger(4, 2); // doesn\'t print anything\nprintIfLarger(50, 100); // prints 100'
 
 
 
@@ -28,14 +33,18 @@ lessonEditorPayloads.parameters3 = 'function add(number1, number2)\n{\n\tprint(n
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	if(typeof sayMyName === 'function')
+	if(typeof printIfLarger === 'function')
 	{
 		var o = $('#output').html();
 		$('#output').html('');
 
-		sayMyName();
+		printIfLarger(2, 5);
+		printIfLarger(4, 2);
+		printIfLarger(50, 100);
+		printIfLarger(25, -25);
+		printIfLarger(-25, 25);
 
-		t = new RegExp(/hello[,]*[\s\S]+/ig);
+		t = new RegExp(/5\n100\n25/ig);
 
 		var newo = $('#output').html();
 
