@@ -33,12 +33,13 @@ var lessons = [
 	{ url: "ForIn", title: "For Loops and Objects", chapter: 4},
 	{ url: "ObjectProperties", title: "Properties of an Object", chapter: 4},
 	{ url: "DotNotation", title: "The Dot Notation", chapter: 4},
-	{ url: "ArrayBoss", title: "Chapter Boss: Arrays and Objects", chapter: 4},
+	{ url: "ArrayBoss", title: "Chapter Boss: Mittens the Cat", chapter: 4},
 
 	{ url: "Functions", title: "Functions", chapter: 5},
 	{ url: "Parameters", title: "Function Parameters", chapter: 5},
 	{ url: "ReturnValues", title: "Function Return Values", chapter: 5},
-	{ url: "FunctionScope", title: "Scope", chapter: 5}
+	{ url: "FunctionScope", title: "Scope", chapter: 5},
+	{ url: "FunctionBoss", title: "Chapter Boss: Counting Vowels", chapter: 5}
 
 ]
 
