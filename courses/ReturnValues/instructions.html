@@ -23,36 +23,31 @@
 lessonEditorPayloads.returnvalues1 = 'function returnMyName()\n{\n\treturn "Kate";\n}\n\nvar myname = returnMyName();\nprint(myname);'
 lessonEditorPayloads.returnvalues2 = 'function FtoC(fahrenheit)\n{\n\treturn ((fahrenheit - 32) * 5 / 9);\n}\n\nprint("41f in Celcius is: " + FtoC(41));\nprint("-13f in Celcius is: " + FtoC(-13));';
 lessonEditorPayloads.returnvalues3 = 'function conditionalPrint(somenumber)\n{\n\t// Quit the function if the somenumber parameter is less than 10\n\tif(somenumber < 10)\n\t{\n\t\treturn;\n\t}\n\tprint("We reached the end of the function with the number: " + somenumber);\n}\n\nconditionalPrint(5);\nconditionalPrint(15);';
-lessonEditorPayloads.returnValues4 = '';
+lessonEditorPayloads.returnvalues4 = '\n\nprint(increaseByOne(5)); // should print 6\nprint(increaseByOne(-1)); // should print 0\nprint(increaseByOne(-12)); // should print -11';
 
 
 
 
 var matchMode = "callback"; // editor, output, or callback
 var matchToAdvance = function() {
-	if(typeof showIfLarger === 'function')
+	if(typeof increaseByOne === 'function')
 	{
-		var o = $('#output').html();
-		$('#output').html('');
+		if(increaseByOne(6) != 7)
+			return false;
 
-		showIfLarger(2, 5);
-		showIfLarger(4, 2);
-		showIfLarger(50, 100);
-		showIfLarger(25, -25);
-		showIfLarger(-25, 25);
+		if(increaseByOne(-1) != 0)
+			return false;
 
-		t = new RegExp(/5\n100\n25/ig);
+		if(increaseByOne(-12) != -11)
+			return false;
 
-		var newo = $('#output').html();
+		if(increaseByOne(100) != 101)
+			return false;
 
-		var okay = false;
+		if(increaseByOne(-100) != -99)
+			return false;
 
-		$('#output').html(o);
-
-		if(t.test(newo))
-			okay = true;
-
-		return okay;
+		return true;
 	}
 
 	return false;
