@@ -61,76 +61,92 @@
         <li id="weapon-trident"><img src="images/trident.png" class="tooltip" data-tooltip-content="#tooltip_branchingTrident"></li>
         <li id="weapon-scythe"><img src="images/scythe.png" class="tooltip" data-tooltip-content="#tooltip_loopScythe"></li>
         <li id="weapon-nunchakus"><img src="images/nunchakus.png" class="tooltip" data-tooltip-content="#tooltip_arrayNunchakus"></li>
+        <li id="weapon-orb"><img src="images/orb.png" class="tooltip" data-tooltip-content="#tooltip_functionOrb"></li>
 
       </ul>
     </div>
     <div class="tooltip_templates">
       <div id="tooltip_maceofIO" class="tooltip_weapon">
-            <h2>The Mace of IO!</h2>
-            <p>You can print information to the screen and ask the user for information. Programs execute commands in order from top to bottom.</p>
+          <h2>The Mace of IO!</h2>
+          <p>You can print information to the screen and ask the user for information. Programs execute commands in order from top to bottom.</p>
 
-            <p>Examples of printing to the screen:</p>
+          <p>Examples of printing to the screen:</p>
 
-            <editor editor-id="weapons-maceofio1" :content="weaponPayloads.maceofio1" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-maceofio1" :content="weaponPayloads.maceofio1" disable noloadbutton autoheight></editor>
 
-            <p>You can document what your code does with comments. Comments are not used by JavaScript.</p>
+          <p>You can document what your code does with comments. Comments are not used by JavaScript.</p>
 
-            <editor editor-id="weapons-maceofio2" :content="weaponPayloads.maceofio2" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-maceofio2" :content="weaponPayloads.maceofio2" disable noloadbutton autoheight></editor>
         </div>
 
         <div id="tooltip_variableDagger" class="tooltip_weapon">
-            <h2>The Variable Dagger!</h2>
-            <p>Variables can be used to remember things for later. You can store strings, numbers, and almost anything in a variable. Variables are forgotten when the program finishes running.</p>
+          <h2>The Variable Dagger!</h2>
+          <p>Variables can be used to remember things for later. You can store strings, numbers, and almost anything in a variable. Variables are forgotten when the program finishes running.</p>
 
-            <p>Examples of setting variables:</p>
+          <p>Examples of setting variables:</p>
 
-            <editor editor-id="weapons-variableDagger1" :content="weaponPayloads.variableDagger1" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-variableDagger1" :content="weaponPayloads.variableDagger1" disable noloadbutton autoheight></editor>
 
-            <p>Examples of using variables:</p>
+          <p>Examples of using variables:</p>
 
-            <editor editor-id="weapons-variableDagger2" :content="weaponPayloads.variableDagger2" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-variableDagger2" :content="weaponPayloads.variableDagger2" disable noloadbutton autoheight></editor>
         </div>
 
         <div id="tooltip_branchingTrident" class="tooltip_weapon">
-            <h2>The Branching Trident!</h2>
-            <p>You can compare variables to things, including other variables. When the comparison is true, the code inside the "if" statement is used, otherwise it is not. "else" can be used when the original comparison was not true. 
+          <h2>The Branching Trident!</h2>
+          <p>You can compare variables to things, including other variables. When the comparison is true, the code inside the "if" statement is used, otherwise it is not. "else" can be used when the original comparison was not true. 
 
-            <p>Examples of comparing with "if":</p>
+          <p>Examples of comparing with "if":</p>
 
-            <editor editor-id="weapons-branchingTrident1" :content="weaponPayloads.branchingTrident1" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-branchingTrident1" :content="weaponPayloads.branchingTrident1" disable noloadbutton autoheight></editor>
 
-            <p>Examples of comparing with "if" and "else":</p>
+          <p>Examples of comparing with "if" and "else":</p>
 
-            <editor editor-id="weapons-branchingTrident2" :content="weaponPayloads.branchingTrident2" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-branchingTrident2" :content="weaponPayloads.branchingTrident2" disable noloadbutton autoheight></editor>
 
-            <p>Examples of comparing with "if", "else", and "else if" with an "and":</p>
+          <p>Examples of comparing with "if", "else", and "else if" with an "and":</p>
 
-            <editor editor-id="weapons-branchingTrident3" :content="weaponPayloads.branchingTrident3" disable noloadbutton autoheight></editor>
+          <editor editor-id="weapons-branchingTrident3" :content="weaponPayloads.branchingTrident3" disable noloadbutton autoheight></editor>
         </div>
 
         <div id="tooltip_loopScythe" class="tooltip_weapon">
-            <h2>The Looping Scythe!</h2>
-            <p>Loops run the same code over and over again until a condition is met, like an <span class="code">if</span> statement that runs when true, then starts over and checks again.</p>
+          <h2>The Looping Scythe!</h2>
+          <p>Loops run the same code over and over again until a condition is met, like an <span class="code">if</span> statement that runs when true, then starts over and checks again.</p>
 
-            <p>Example of while loop:</p>
-            <editor editor-id="weapons-loopScythe1" :content="weaponPayloads.loopScythe1" disable noloadbutton autoheight></editor>
+          <p>Example of while loop:</p>
+          <editor editor-id="weapons-loopScythe1" :content="weaponPayloads.loopScythe1" disable noloadbutton autoheight></editor>
 
-            <p>Example of for loop:</p>
-            <editor editor-id="weapons-loopScythe2" :content="weaponPayloads.loopScythe2" disable noloadbutton autoheight></editor>
+          <p>Example of for loop:</p>
+          <editor editor-id="weapons-loopScythe2" :content="weaponPayloads.loopScythe2" disable noloadbutton autoheight></editor>
         </div>
 
         <div id="tooltip_arrayNunchakus" class="tooltip_weapon">
-            <h2>The Nunchakus of Arrays!</h2>
-            <p>Arrays and simple objects are complex variables that can store multiple pieces of information. An array is a series of related variables, while an object contains key-value pairs of variables.</p>
+          <h2>The Nunchakus of Arrays!</h2>
+          <p>Arrays and simple objects are complex variables that can store multiple pieces of information. An array is a series of related variables, while an object contains key-value pairs of variables.</p>
 
-            <p>Examples of an array:</p>
-            <editor editor-id="weapons-arrayNunchakus1" :content="weaponPayloads.arrayNunchakus1" disable noloadbutton autoheight extrawide></editor>
+          <p>Examples of an array:</p>
+          <editor editor-id="weapons-arrayNunchakus1" :content="weaponPayloads.arrayNunchakus1" disable noloadbutton autoheight extrawide></editor>
 
-            <p>Example of an object:</p>
-            <editor editor-id="weapons-arrayNunchakus2" :content="weaponPayloads.arrayNunchakus2" disable noloadbutton autoheight></editor> 
+          <p>Example of an object:</p>
+          <editor editor-id="weapons-arrayNunchakus2" :content="weaponPayloads.arrayNunchakus2" disable noloadbutton autoheight></editor> 
 
-            <p>Example of an array of objects:</p>
-            <editor editor-id="weapons-arrayNunchakus3" :content="weaponPayloads.arrayNunchakus3" disable noloadbutton autoheight></editor> 
+          <p>Example of an array of objects:</p>
+          <editor editor-id="weapons-arrayNunchakus3" :content="weaponPayloads.arrayNunchakus3" disable noloadbutton autoheight></editor> 
+        </div>
+
+
+        <div id="tooltip_functionOrb" class="tooltip_weapon">
+          <h2>The Orb of Functions!</h2>
+          <p>Functions create blocks of reusable code that can be altered by parameters and can return information back. They are "called" to run the code, passing in different parameters and receiving values back.</p>
+
+          <p>Examples of a simple function:</p>
+          <editor editor-id="weapons-functionOrb1" :content="weaponPayloads.functionOrb1" disable noloadbutton autoheight extrawide></editor>
+
+          <p>Example of a function with parameters:</p>
+          <editor editor-id="weapons-functionOrb2" :content="weaponPayloads.functionOrb2" disable noloadbutton autoheight></editor> 
+
+          <p>Example of a function with parameters and a return value:</p>
+          <editor editor-id="weapons-functionOrb3" :content="weaponPayloads.functionOrb3" disable noloadbutton autoheight></editor> 
         </div>
     </div>
   </div>
