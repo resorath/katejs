@@ -37,7 +37,8 @@ var lessons = [
 
 	{ url: "Functions", title: "Functions", chapter: 5},
 	{ url: "Parameters", title: "Function Parameters", chapter: 5},
-	{ url: "ReturnValues", title: "Function Return Values", chapter: 5}
+	{ url: "ReturnValues", title: "Function Return Values", chapter: 5},
+	{ url: "FunctionScope", title: "Scope", chapter: 5}
 
 ]
 

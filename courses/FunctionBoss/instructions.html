@@ -1,0 +1,59 @@
+<h1>Chapter Boss: Vowel Counter</h1>
+
+<p>Write a function called <span class="code">countVowels</span> that takes a string as a parameter, and returns the number of vowels in the string. We can assume that the string is all lowercase letters, and that vowels are: a, e, i, o, u.</p>
+
+<p><strong>Hint:</strong> You can loop over a string and look at each individual character, just like an array. For example, <span class="code">"cat"[0]</span> is "c". You can also use <span class="code">"cat".length</span> to get the length of a string. This of course also works if the string is in a variable.</p>
+
+<p>Sample code has been loaded for you already, good luck!</p>
+
+
+<script>
+
+function getVowels(str) {
+  var m = str.match(/[aeiou]/gi);
+  return m === null ? 0 : m.length;
+}
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+
+	if(typeof countVowels === 'function')
+	{
+		if(countVowels("tomato") != 3)
+			return false;
+
+		if(countVowels("the quick brown fox jumped over the lazy dog") != 12)
+			return false;
+
+		if(countVowels("zztyp") != 0)
+			return false;
+
+		if(countVowels("black sheep wall") != 4)
+			return false;
+
+		return true;
+	}
+
+	return false;
+}
+
+/*
+var number = prompt("Enter a whole number greater than 1");
+var isprime = 1;
+for(var counter = 2; counter < number; counter++)
+{
+    if(number % counter == 0)
+    {
+        isprime = 0;
+    }
+}
+if(isprime == 0)
+{
+    print("The number is composite");
+}
+else
+{
+    print("The number is prime");
+}
+*/
+</script>

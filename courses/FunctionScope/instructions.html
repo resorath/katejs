@@ -1,0 +1,91 @@
+<h1>Scope</h1>
+
+<p>Variables have scope. Scope means where in our code we can use a variable. So far, for the most part variables we have created can be used anywhere after we create them. However you may have noticed some situations where variables haven't been available to use. Where a variable can be used is called the scope.</p>
+
+<p>Generally, if a variable is first created inside curly braces, from an <span class="code">if</span> statement, <span class="code">while</span> or <span class="code">for</span> loop, or inside of a <span class="code">function</span>, it can't be used outside of the curly braces.</p>
+
+<p>Consider this code, what happens if you run it?:
+
+<editor editor-id="functionscope1" :content="lessonEditorPayloads.functionscope1"></editor>
+
+<p>You'll notice JavaScript could not find the variable <span class="code">myname</span>. That is because it is not in same scope as the print statement that tried to use it. The scope of <span class="code">myname</span> is limited to the function. We can only use that variable inside the function.</p>
+
+<p>If we move the variable declaration outside the function, both the function and our code outside the function can use it:</p>
+
+<editor editor-id="functionscope2" :content="lessonEditorPayloads.functionscope2" autoheight></editor>
+
+<p>This is a bad idea however. Avoid using <strong>global variables</strong> inside functions. <strong>Global variables</strong> are variables that don't exist inside of curly braces. Think of functions as self contained blocks of code, where you pass variables in by parameters, and retrieve information from them by return values.</p>
+
+<p class="exercise">Clean up the following code so the function doesn't need to use a global variable. Use parameters and return statements.</p>
+
+<editor editor-id="functionscope3" :content="lessonEditorPayloads.functionscope3" autoheight></editor>
+
+<p><strong>Hint:</strong> The first three lines of code are global variables, move them below the function so the function can't access them. Then add the parameters to the power() function and add a return statement. Finally, modify the call to power() appropriately.</p>
+
+<script>
+
+lessonEditorPayloads.functionscope1 = 'function myFunction()\n{\n\tvar myname = "Kate";\n}\n\nmyFunction();\n\nprint(myname);';
+lessonEditorPayloads.functionscope2 = 'var myname = "Kate";\n\nfunction myFunction()\n{\n\tprint("My name inside the function is " + myname);\n}\n\nmyFunction();\n\nprint("My name outside the function is " + myname);';
+lessonEditorPayloads.functionscope3 = "var base = 5;\r\nvar exponent = 3;\r\nvar result = 1;\r\n\r\nfunction power()\r\n{\r\n\tfor(var i = 0; i < exponent; i++)\r\n\t{\r\n\t\tresult = result * base;\r\n\t}\r\n}\r\n\r\npower();\r\n\r\nprint(base + \" to the power of \" + exponent + \" is \" + result);";
+
+/*function power(base, exponent)
+{
+	var result = 1;
+
+	for(var i = 0; i < exponent; i++)
+	{
+		result = result * base;
+	}
+
+	return result;
+}
+
+var base = 5;
+var exponent = 3;
+var result = 1;
+
+function power()
+{
+	for(var i = 0; i < exponent; i++)
+	{
+		result = result * base;
+	}
+}
+
+power();
+
+print(base + " to the power of " + exponent + " is " + result);*/
+
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof power === 'function')
+	{
+		var r = power(5, 3);
+
+		if(r != 125)
+			return;
+
+		var o = $('#output').html();
+		$('#output').html('');
+
+		kateEval(editor.getValue());
+
+		t = new RegExp(/5 to the power of 3 is 125/ig);
+
+		var newo = $('#output').html();
+
+		var okay = false;
+
+		$('#output').html(o);
+
+		if(t.test(newo))
+			okay = true;
+
+		return okay;
+	}
+
+	return false;
+}
+</script>
