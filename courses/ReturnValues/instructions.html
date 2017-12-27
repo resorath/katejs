@@ -1,0 +1,60 @@
+<h1>Function Return Values</h1>
+
+<p>Functions can return information at any point in their code. These return values act like variables. We use the keyword <span class="code">return</span> followed by the variable or value we want to return. In this example, we simply return the string "Kate" from a function, and then "catch" it in a variable:</p>
+
+<editor editor-id="returnvalues1" :content="lessonEditorPayloads.returnvalues1"></editor>
+
+<p>You can combine return values and parameters to create useful functions. Remember the Fahrenheit to Celcius converter from before? We can create a function out of that:</p>
+
+<editor editor-id="returnvalues2" :content="lessonEditorPayloads.returnvalues2"></editor>
+
+<p>The <span class="code">return</span> statement stops the function as soon as it is seen. You don't need to "return" anything from a function if you just want to end the function:</p>
+
+<editor editor-id="returnvalues3" :content="lessonEditorPayloads.returnvalues3" extrawide autoheight></editor>
+
+<p>Did you notice that the <span class="code">conditionalPrint(5);</span> didn't print anything? The return value code was run, and exited out of the function before it could print.</p>
+
+<p class="exercise">Create a function that increases the number passed into it by 1. Use the following starter code:</p>
+
+<editor editor-id="returnvalues4" :content="lessonEditorPayloads.returnvalues4" extrawide autoheight></editor>
+
+<script>
+
+lessonEditorPayloads.returnvalues1 = 'function returnMyName()\n{\n\treturn "Kate";\n}\n\nvar myname = returnMyName();\nprint(myname);'
+lessonEditorPayloads.returnvalues2 = 'function FtoC(fahrenheit)\n{\n\treturn ((fahrenheit - 32) * 5 / 9);\n}\n\nprint("41f in Celcius is: " + FtoC(41));\nprint("-13f in Celcius is: " + FtoC(-13));';
+lessonEditorPayloads.returnvalues3 = 'function conditionalPrint(somenumber)\n{\n\t// Quit the function if the somenumber parameter is less than 10\n\tif(somenumber < 10)\n\t{\n\t\treturn;\n\t}\n\tprint("We reached the end of the function with the number: " + somenumber);\n}\n\nconditionalPrint(5);\nconditionalPrint(15);';
+lessonEditorPayloads.returnValues4 = '';
+
+
+
+
+var matchMode = "callback"; // editor, output, or callback
+var matchToAdvance = function() {
+	if(typeof showIfLarger === 'function')
+	{
+		var o = $('#output').html();
+		$('#output').html('');
+
+		showIfLarger(2, 5);
+		showIfLarger(4, 2);
+		showIfLarger(50, 100);
+		showIfLarger(25, -25);
+		showIfLarger(-25, 25);
+
+		t = new RegExp(/5\n100\n25/ig);
+
+		var newo = $('#output').html();
+
+		var okay = false;
+
+		$('#output').html(o);
+
+		if(t.test(newo))
+			okay = true;
+
+		return okay;
+	}
+
+	return false;
+}
+</script>

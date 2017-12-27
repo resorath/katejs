@@ -36,7 +36,8 @@ var lessons = [
 	{ url: "ArrayBoss", title: "Chapter Boss: Arrays and Objects", chapter: 4},
 
 	{ url: "Functions", title: "Functions", chapter: 5},
-	{ url: "Parameters", title: "Function Parameters", chapter: 5}
+	{ url: "Parameters", title: "Function Parameters", chapter: 5},
+	{ url: "ReturnValues", title: "Function Return Values", chapter: 5}
 
 ]
 
