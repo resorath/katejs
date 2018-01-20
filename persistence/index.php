@@ -117,8 +117,6 @@ session_start();
 
 $response = new \stdClass();
 
-print_r(db_create_user("cat", "dog", "cat@catdog.horse", 1));
-
 if(array_key_exists("username", $_GET))
 {
 	if(array_key_exists("username", $_SESSION))
@@ -160,17 +158,63 @@ if(array_key_exists("action", $_POST))
 			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
 			$user = db_get_user_password($username, $password);
+
+			if($user == null)
+			{
+				$response->success = false;
+				$response->reason = "Login failed";
+			}
+			else
+			{
+				$_SESSION['username'] = $user->username;
+				$_SESSION['lesson'] = $user->lesson;
+
+				$response->success = true;
+				$response->username = $user->username;
+				$response->lesson = $user->lesson;
+			}
 		}
 
 	}
 
 	else if($_POST['action'] == "logout")
 	{
-
+		$_SESSION = array();
+		if (ini_get("session.use_cookies")) 
+		{
+		    $params = session_get_cookie_params();
+		    setcookie(session_name(), '', time() - 42000,
+		        $params["path"], $params["domain"],
+		        $params["secure"], $params["httponly"]
+		    );
+		}
+		
+		session_destroy();
+		$response->success = true;
 	}
 
 	else if($_POST['action'] == "register")
 	{
+		if(!array_key_exists("username", $_POST) || !array_key_exists("password", $_POST) || !array_key_exists("lesson", $_POST))
+		{
+			$response->success = false;
+			$response->reason = "Bad syntax";
+		}
+
+		if(!array_key_exists("email", $_POST))
+			$_POST['email'] = null;
+
+		$result = db_create_user($_POST['username'], $_POST['password'], $_POST['email'], $_POST['lesson']);
+
+		if($result === true)
+		{
+			$response->success = true;
+		}
+		else
+		{
+			$response->success = false;
+			$response->reason = $result;
+		}
 
 	}
 
