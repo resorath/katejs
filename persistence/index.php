@@ -1,5 +1,6 @@
 <?php
 
+header('Content-type: application/json');
 
 function db_connect() 
 {
@@ -146,82 +147,79 @@ if(array_key_exists("lesson", $_GET))
 
 if(array_key_exists("action", $_POST))
 {
-	if($_POST['action'] == "login")
+	switch($_POST['action'])
 	{
-		if(!array_key_exists("username", $_POST) || !array_key_exists("password", $_POST))
-		{
-			$response->success = false;
-			$response->reason = "Bad syntax";
-		}
-		else
-		{
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-
-			$user = db_get_user_password($username, $password);
-
-			if($user == null)
+		case "login":
+			if(!array_key_exists("username", $_POST) || !array_key_exists("password", $_POST))
 			{
 				$response->success = false;
-				$response->reason = "Login failed";
+				$response->reason = "Bad syntax";
 			}
 			else
 			{
-				$_SESSION['username'] = $user->username;
-				$_SESSION['lesson'] = $user->lesson;
+				$username = $_POST['username'];
+				$password = $_POST['password'];
 
-				$response->success = true;
-				$response->username = $user->username;
-				$response->lesson = $user->lesson;
+				$user = db_get_user_password($username, $password);
+
+				if($user == null)
+				{
+					$response->success = false;
+					$response->reason = "Login failed";
+				}
+				else
+				{
+					$_SESSION['username'] = $user->username;
+					$_SESSION['lesson'] = $user->lesson;
+
+					$response->success = true;
+					$response->username = $user->username;
+					$response->lesson = $user->lesson;
+				}
 			}
-		}
+			break;
 
-	}
-
-	else if($_POST['action'] == "logout")
-	{
-		$_SESSION = array();
-		if (ini_get("session.use_cookies")) 
-		{
-		    $params = session_get_cookie_params();
-		    setcookie(session_name(), '', time() - 42000,
-		        $params["path"], $params["domain"],
-		        $params["secure"], $params["httponly"]
-		    );
-		}
-		
-		session_destroy();
-		$response->success = true;
-	}
-
-	else if($_POST['action'] == "register")
-	{
-		if(!array_key_exists("username", $_POST) || !array_key_exists("password", $_POST) || !array_key_exists("lesson", $_POST))
-		{
-			$response->success = false;
-			$response->reason = "Bad syntax";
-		}
-
-		if(!array_key_exists("email", $_POST))
-			$_POST['email'] = null;
-
-		$result = db_create_user($_POST['username'], $_POST['password'], $_POST['email'], $_POST['lesson']);
-
-		if($result === true)
-		{
+		case "logout":
+			$_SESSION = array();
+			if (ini_get("session.use_cookies")) 
+			{
+			    $params = session_get_cookie_params();
+			    setcookie(session_name(), '', time() - 42000,
+			        $params["path"], $params["domain"],
+			        $params["secure"], $params["httponly"]
+			    );
+			}
+			
+			session_destroy();
 			$response->success = true;
-		}
-		else
-		{
-			$response->success = false;
-			$response->reason = $result;
-		}
+			break;
 
-	}
+		case "register":
+			if(!array_key_exists("username", $_POST) || !array_key_exists("password", $_POST) || !array_key_exists("lesson", $_POST))
+			{
+				$response->success = false;
+				$response->reason = "Bad syntax";
+			}
 
-	else if($_POST['action'] == "forgot")
-	{
+			if(!array_key_exists("email", $_POST))
+				$_POST['email'] = null;
 
+			$result = db_create_user($_POST['username'], $_POST['password'], $_POST['email'], $_POST['lesson']);
+
+			if($result === true)
+			{
+				$response->success = true;
+				$response->username = $_POST['username'];
+			}
+			else
+			{
+				$response->success = false;
+				$response->reason = $result;
+			}
+			break;
+
+		case "forgot":
+			break;
 	}
 
 

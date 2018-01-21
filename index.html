@@ -31,17 +31,20 @@
       <a onclick="loginregister();" id="loginregister">Log in / Register</a>
 
       <div id="loginregister_screen">
-        <div id="loginregister_login">
+        <div id="loginregister_login" method="POST">
           <span class="loginregister_header">Log in</span>
           <span class="switchregister"><a onclick="switchRegister();">Need an account?</a></span>
-          <form>
+          <form id="login">
+            <input type="hidden" name="action" value="login">
+            <input type="hidden" name="lesson" id="login_lesson">
+
             <label for="username">Username</label>
             <input type="text" name="username">
 
             <label for="username">Password</label>
             <input type="password" name="password">
 
-            <input type="submit" value="Log in" class="btnAction">
+            <input type="submit" value="Log in" class="btnAction" id="loginComplete">
 
           </form>
         </div>
@@ -49,7 +52,10 @@
         <div id="loginregister_register">
           <span class="loginregister_header">Register</span>
           <span class="switchregister"><a onclick="switchRegister();">Have an account?</a></span>
-          <form>
+          <form id="register" method="POST">
+            <input type="hidden" name="action" value="register">
+            <input type="hidden" name="lesson" id="register_lesson">
+
             <label for="username">Username</label>
             <input type="text" name="username">
 
@@ -59,7 +65,7 @@
             <label for="username">E-mail <em>(optional)</em></label>
             <input type="text" name="email">
 
-            <input type="submit" value="Register" class="btnAction">
+            <input type="submit" value="Register" class="btnAction" id="registerComplete">
 
           </form>
         </div>

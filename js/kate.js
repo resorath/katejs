@@ -156,7 +156,70 @@ $(document).ready(function() {
     	}
     }
 
+    // put lesson value value in login/register fields
+    $('#register_lesson').attr('value', historylesson);
+    $('#login_lesson').attr('value', historylesson);
+
+    $('#registerComplete').click(function(e) {
+
+		e.preventDefault();
+
+		console.log($('#register').serialize())
+
+		$.post("persistence/", $('#register').serialize()).done(function(data) {
+
+			if(data.success)
+			{
+				login(data.username);
+			}
+			else
+			{
+				console.log(data);
+				alert(data.reason);
+			}
+
+		} , "json");
+
+	});
+
+	$('#loginComplete').click(function(e) {	
+
+		e.preventDefault();
+
+		console.log($('#login').serialize())
+
+		$.post("persistence/", $('#login').serialize()).done(function(data) {
+
+			if(data.success)
+			{
+				login(data.username);
+				setPersistent("lesson", data.lesson);
+				window.location.hash = "#/" + data.lesson.url;
+			}
+			else
+			{
+				console.log(data);
+				alert(data.reason);
+			}
+
+		} , "json");
+
+	});
+
 });
+
+function login(username)
+{
+	$('#user').html('Hello, ' + username + ' [<a href="javascript:logout();">Log out</a>]');
+	window.user = username;
+}
+
+function logout(username)
+{
+	setPersistent("lesson", 0);
+	window.user = null;
+	restart();
+}
 
 function getCurrentIndex()
 {
@@ -376,6 +439,8 @@ function switchRegister()
 		$('#loginregister_screen').height('260px');
 	}
 }
+
+
 
 // Simple routing
 function route() {
