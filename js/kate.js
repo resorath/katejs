@@ -77,6 +77,15 @@ var weaponPayloads = {
 
 var hasCleared = false;
 
+$('#loginregister').ready(function() {
+	var username = getPersistent("username");
+	console.log(username);
+	if(username != null && username != "null")
+	{
+		login(username);
+	}
+})
+
 
 $(document).ready(function() {
 
@@ -156,9 +165,8 @@ $(document).ready(function() {
     	}
     }
 
-    // put lesson value value in login/register fields
+    // put lesson value in register fields
     $('#register_lesson').attr('value', historylesson);
-    $('#login_lesson').attr('value', historylesson);
 
     $('#registerComplete').click(function(e) {
 
@@ -186,19 +194,16 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		console.log($('#login').serialize())
-
 		$.post("persistence/", $('#login').serialize()).done(function(data) {
 
 			if(data.success)
 			{
 				login(data.username);
 				setPersistent("lesson", data.lesson);
-				window.location.hash = "#/" + data.lesson.url;
+				window.location.hash = "#/" + lessons[data.lesson].url;
 			}
 			else
 			{
-				console.log(data);
 				alert(data.reason);
 			}
 
@@ -210,14 +215,17 @@ $(document).ready(function() {
 
 function login(username)
 {
+	if(username == null)
+		return;
+
 	$('#user').html('Hello, ' + username + ' [<a href="javascript:logout();">Log out</a>]');
-	window.user = username;
+	setPersistent("username", username);
 }
 
 function logout(username)
 {
 	setPersistent("lesson", 0);
-	window.user = null;
+	clearPersistent("username");
 	restart();
 }
 
@@ -587,6 +595,14 @@ function getPersistent(key)
 		return getCookie(key);
 }
 
+function clearPersistent(key)
+{
+	if(Storage !== void(0))
+		localStorage.removeItem(key);
+	else
+		return removeCookie(key);
+}
+
 function setCookie(key, value)
 {
 	var d = new Date();
@@ -609,6 +625,10 @@ function getCookie(key) {
         }
     }
     return null;
+}
+
+function removeCookie(key) {
+	document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 

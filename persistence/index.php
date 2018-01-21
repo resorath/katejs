@@ -41,7 +41,7 @@ function db_get_user_username($username)
 
 		$st->execute();
 
-		$st->bind_result($result->username, $result->email, $result_lesson);
+		$st->bind_result($result->username, $result->email, $result->lesson);
 
 		if($st->fetch() == null)
 			return null;
@@ -78,18 +78,23 @@ function db_get_user_password($username, $password)
 
 	$result = new \stdClass();
 
-	if($st = $connection->prepare("SELECT username, email, lesson FROM users WHERE username=? AND password=?"))
+	if($st = $connection->prepare("SELECT username, password, email, lesson FROM users WHERE username=?"))
 	{
-
-		$pw = password_hash($password, PASSWORD_BCRYPT);
-		$st->bind_param("ss", $username, $password);
+		$st->bind_param("s", $username);
 
 		$st->execute();
 
-		$st->bind_result($result->username, $result->email, $result_lesson);
+		$st->bind_result($result->username, $result->password, $result->email, $result->lesson);
 
 		if($st->fetch() == null)
 			return null;
+
+		if(!password_verify($password, $result->password))
+			return null;
+
+		$result->password = null;
+
+
 	}
 
 	return $result;
