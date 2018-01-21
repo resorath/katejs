@@ -367,11 +367,13 @@ function switchRegister()
 	{
 		$('#loginregister_login').hide();
 		$('#loginregister_register').show();
+		$('#loginregister_screen').height('320px');
 	}
 	else
 	{
 		$('#loginregister_login').show();
 		$('#loginregister_register').hide();
+		$('#loginregister_screen').height('260px');
 	}
 }
 
