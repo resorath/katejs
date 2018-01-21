@@ -10,7 +10,6 @@
   <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
   <link href="css/toastr.css" rel="stylesheet"/>
   <link href="css/katejs.css" rel="stylesheet"/>
-
 </head>
 <body>
 
@@ -63,6 +62,12 @@
 
             <label for="username">E-mail <em>(optional)</em></label>
             <input type="text" name="email">
+
+            <div class="g-recaptcha"
+                  data-sitekey="6LfOxEEUAAAAANEDhMQq9hIG_WipE2J_tSXLys44"
+                  data-callback="checkRecaptchaRegister"
+                  data-size="invisible">
+            </div>
 
             <input type="submit" value="Register" class="btnAction" id="registerComplete">
 
@@ -226,5 +231,6 @@
 <script src="js/esprima.js"></script>
 <script src="js/toastr.min.js"></script>
 <script src="js/kate.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

@@ -2,10 +2,12 @@
 
 header('Content-type: application/json');
 
+$config = parse_ini_file('database.ini'); 
+
 function db_connect() 
 {
 	static $connection;
-	$config = parse_ini_file('database.ini'); 
+	global $config;
 
 	if(isset($connection))
 		return $connection;
@@ -219,7 +221,41 @@ if(array_key_exists("action", $_POST))
 			{
 				$response->success = false;
 				$response->reason = "Bad syntax";
+				break;
 			}
+
+			if(!array_key_exists("g-recaptcha-response", $_POST))
+			{
+				$response->success = false;
+				$response->reason = "Missing recaptcha response";
+				break;
+			}
+
+			$url = 'https://www.google.com/recaptcha/api/siteverify';
+
+			$post_data = http_build_query(
+			    array(
+			        'secret' => $config['secret'],
+			        'response' => $_POST['g-recaptcha-response'],
+			        'remoteip' => $_SERVER['REMOTE_ADDR']
+			    )
+			);
+			$opts = array('http' =>
+			    array(
+			        'method'  => 'POST',
+			        'header'  => 'Content-type: application/x-www-form-urlencoded',
+			        'content' => $post_data
+			    )
+			);
+			$context  = stream_context_create($opts);
+			$res = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+			$result = json_decode($res);
+			if (!$result->success) {
+				$response->success = false;
+				$response->reason = "Recaptcha failure";
+				break;			
+			}
+
 
 			if(!array_key_exists("email", $_POST))
 				$_POST['email'] = null;

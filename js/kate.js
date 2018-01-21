@@ -172,21 +172,7 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		console.log($('#register').serialize())
-
-		$.post("persistence/", $('#register').serialize()).done(function(data) {
-
-			if(data.success)
-			{
-				login(data.username);
-			}
-			else
-			{
-				console.log(data);
-				alert(data.reason);
-			}
-
-		} , "json");
+		grecaptcha.execute();
 
 	});
 
@@ -212,6 +198,25 @@ $(document).ready(function() {
 	});
 
 });
+
+function checkRecaptchaRegister(token)
+{
+	console.log($('#register').serialize())
+
+	$.post("persistence/", $('#register').serialize()).done(function(data) {
+
+		if(data.success)
+		{
+			login(data.username);
+		}
+		else
+		{
+			alert(data.reason);
+		}
+
+	} , "json");
+}
+
 
 function login(username)
 {
@@ -543,21 +548,33 @@ function advance()
 		lesson = getCurrentIndex() + 1;
 	}
 
-	$.post("persistence/", {action: "updatelesson", lesson}).done(function(data) {
+	var username = getPersistent("username");
 
-		if(data.success)
-		{
-			if(typeof lessons[lesson] == 'undefined')
-				window.location.hash = "#/end";
+	if(username != null)
+	{
+		$.post("persistence/", {action: "updatelesson", lesson}).done(function(data) {
+
+			if(data.success)
+			{
+				if(typeof lessons[lesson] == 'undefined')
+					window.location.hash = "#/end";
+				else
+					window.location.hash = "#/" + lessons[lesson].url;
+			}
 			else
-				window.location.hash = "#/" + lessons[lesson].url;
-		}
-		else
-		{
-			alert("Couldn't advance!");
-		}
+			{
+				alert("Couldn't advance!");
+			}
 
-	} , "json");
+		} , "json");
+	}
+	else
+	{
+		if(typeof lessons[lesson] == 'undefined')
+			window.location.hash = "#/end";
+		else
+			window.location.hash = "#/" + lessons[lesson].url;
+	}
 
 }
 
