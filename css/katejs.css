@@ -559,6 +559,11 @@ noscript p
     margin: 40px auto;
 }
 
+#faqbody
+{
+    overflow: inherit;
+}
+
 #backtokatejs
 {
     display: inline-block;
