@@ -463,7 +463,6 @@ noscript p
 {
     cursor: pointer;
     color: blue;
-    text-decoration: underline;
 }
 
 #loginregister_screen
@@ -485,7 +484,6 @@ noscript p
 {
     display: block;
     color: blue;
-    text-decoration: underline;
 }
 
 .switchregister a
