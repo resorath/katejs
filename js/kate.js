@@ -224,9 +224,21 @@ function login(username)
 
 function logout(username)
 {
-	setPersistent("lesson", 0);
-	clearPersistent("username");
-	restart();
+	$.post("persistence/", {action: "logout"}).done(function(data) {
+
+		if(data.success)
+		{
+			setPersistent("lesson", 0);
+			clearPersistent("username");
+			restart();
+		}
+		else
+		{
+			alert("Couldn't logout!");
+		}
+
+	} , "json");
+
 }
 
 function getCurrentIndex()
@@ -531,11 +543,22 @@ function advance()
 		lesson = getCurrentIndex() + 1;
 	}
 
-	if(typeof lessons[lesson] == 'undefined')
-		window.location.hash = "#/end";
-	else
-		window.location.hash = "#/" + lessons[lesson].url;
-	//location.reload();
+	$.post("persistence/", {action: "updatelesson", lesson}).done(function(data) {
+
+		if(data.success)
+		{
+			if(typeof lessons[lesson] == 'undefined')
+				window.location.hash = "#/end";
+			else
+				window.location.hash = "#/" + lessons[lesson].url;
+		}
+		else
+		{
+			alert("Couldn't advance!");
+		}
+
+	} , "json");
+
 }
 
 function recede()
@@ -662,6 +685,7 @@ function canAdvance()
 			}
 		}
 	}
+
 
 
 	window.setTimeout(function() {

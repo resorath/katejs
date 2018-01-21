@@ -120,6 +120,21 @@ function db_create_user($username, $password, $email, $lesson)
 	}	
 }
 
+function db_set_lesson($username, $lesson)
+{
+	if(db_get_user_username($username) == null)
+		return "Username not found";
+
+	$connection = db_connect();
+
+	if($st = $connection->prepare("UPDATE users SET lesson = ? where username = ?"))
+	{
+		$st->bind_param("is", $lesson, $username);
+
+		return $st->execute();
+	}		
+}
+
 session_start();
 
 $response = new \stdClass();
@@ -213,6 +228,9 @@ if(array_key_exists("action", $_POST))
 
 			if($result === true)
 			{
+				$_SESSION['username'] =$_POST['username'];
+				$_SESSION['lesson'] = $_POST['lesson'];
+
 				$response->success = true;
 				$response->username = $_POST['username'];
 			}
@@ -222,6 +240,29 @@ if(array_key_exists("action", $_POST))
 				$response->reason = $result;
 			}
 			break;
+
+		case "updatelesson":
+			if(!array_key_exists("username", $_SESSION))
+			{
+				$response->success = false;
+				$response->reason = "Not logged in";
+			}
+			else if(!array_key_exists("lesson", $_POST))
+			{
+				$response->success = false;
+				$response->reason = "Bad syntax";
+			}
+			else
+			{
+				if(db_set_lesson($_SESSION['username'], $_POST['lesson']))
+					$response->success = true;
+				else
+				{
+					$response->success = false;
+					$response->reason = "Persist error";
+				}
+			}
+
 
 		case "forgot":
 			break;
