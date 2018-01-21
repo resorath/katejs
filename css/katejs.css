@@ -13,6 +13,11 @@ h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+
+    text-decoration: none; 
+}
+
 /* Structural bigwigs */
 #instruction {
     margin: 0;
@@ -451,12 +456,29 @@ noscript p
     width: 50%;
 }
 
+#faqlink
+{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 220px;
+    top: 10px;
+
+    font-size: 0.9em;   
+}
+
 #user
 {
     display: inline-block;
-    width: 45%;
+    width: 200px;
     text-align: right;
-    position: relative;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    font-size: 0.9em;
+
 }
 
 #loginregister
@@ -474,7 +496,7 @@ noscript p
     position: absolute;
     right: 0px;
     top: 50px;
-    z-index: 999;
+    z-index: 500;
     text-align: left;
     padding: 20px;
     display: none;
@@ -512,9 +534,6 @@ noscript p
     margin-top: 20px;
 }
 
-
-
-
 #output
 {
     margin: 0;
@@ -532,4 +551,27 @@ noscript p
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+#aboutcontent
+{
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+#backtokatejs
+{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    font-size: 0.9em;   
+}
+
+.faqsection
+{
+    margin-top: 80px;
 }

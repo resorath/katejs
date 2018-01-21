@@ -172,6 +172,8 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
+		$('#registerComplete').attr('disabled', 'disabled').val("Registering...");
+
 		grecaptcha.execute();
 
 	});
@@ -179,6 +181,8 @@ $(document).ready(function() {
 	$('#loginComplete').click(function(e) {	
 
 		e.preventDefault();
+
+		$('#loginComplete').attr('disabled', 'disabled').val("Logging in...");
 
 		$.post("persistence/", $('#login').serialize()).done(function(data) {
 
@@ -190,6 +194,7 @@ $(document).ready(function() {
 			}
 			else
 			{
+				$('#loginComplete').removeAttr('disabled').val("Log in");
 				alert(data.reason);
 			}
 
@@ -211,6 +216,7 @@ function checkRecaptchaRegister(token)
 		}
 		else
 		{
+			$('#registerComplete').removeAttr('disabled').val("Register");
 			alert(data.reason);
 		}
 
@@ -455,7 +461,7 @@ function switchRegister()
 	{
 		$('#loginregister_login').hide();
 		$('#loginregister_register').show();
-		$('#loginregister_screen').height('320px');
+		$('#loginregister_screen').height('470px');
 	}
 	else
 	{

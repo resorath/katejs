@@ -26,6 +26,9 @@
 
   <div id="topheader">
     <h1>Kate.JS</h1>
+    <span id="faqlink">
+      <a href="about">About Kate.JS</a>
+    </span>
     <span id="user">
       <a onclick="loginregister();" id="loginregister">Log in / Register</a>
 
@@ -50,6 +53,7 @@
         <div id="loginregister_register">
           <span class="loginregister_header">Register</span>
           <span class="switchregister"><a onclick="switchRegister();">Have an account?</a></span>
+          <span id="registernotice">Registration is optional to save your progress between computers. Your progress will be saved on this computer without registering.
           <form id="register" method="POST">
             <input type="hidden" name="action" value="register">
             <input type="hidden" name="lesson" id="register_lesson">
@@ -62,6 +66,8 @@
 
             <label for="username">E-mail <em>(optional)</em></label>
             <input type="email" name="email">
+
+            <p id="emailnotice">Your e-mail is only used if you forget your password.</p>
 
             <div class="g-recaptcha"
                   data-sitekey="6LfOxEEUAAAAANEDhMQq9hIG_WipE2J_tSXLys44"
