@@ -27,6 +27,45 @@
 
   <div id="topheader">
     <h1>Kate.JS</h1>
+    <span id="user">
+      <a onclick="loginregister();" id="loginregister">Log in / Register</a>
+
+      <div id="loginregister_screen">
+        <div id="loginregister_login">
+          <span class="loginregister_header">Log in</span>
+          <span class="switchregister"><a onclick="switchRegister();">Need an account?</a></span>
+          <form>
+            <label for="username">Username</label>
+            <input type="text" name="username">
+
+            <label for="username">Password</label>
+            <input type="password" name="password">
+
+            <input type="submit" value="Log in" class="btnAction">
+
+          </form>
+        </div>
+
+        <div id="loginregister_register">
+          <span class="loginregister_header">Register</span>
+          <span class="switchregister"><a onclick="switchRegister();">Have an account?</a></span>
+          <form>
+            <label for="username">Username</label>
+            <input type="text" name="username">
+
+            <label for="username">Password</label>
+            <input type="password" name="password">
+
+            <label for="username">E-mail <em>(optional)</em></label>
+            <input type="text" name="email">
+
+            <input type="submit" value="Register" class="btnAction">
+
+          </form>
+        </div>
+      </div>
+
+    </span>
   </div>
 
   <div id="content">One moment...</div>

@@ -80,6 +80,7 @@ function db_get_user_password($username, $password)
 	if($st = $connection->prepare("SELECT username, email, lesson FROM users WHERE username=? AND password=?"))
 	{
 
+		$pw = password_hash($password, PASSWORD_BCRYPT);
 		$st->bind_param("ss", $username, $password);
 
 		$st->execute();
@@ -155,7 +156,7 @@ if(array_key_exists("action", $_POST))
 		else
 		{
 			$username = $_POST['username'];
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$password = $_POST['password'];
 
 			$user = db_get_user_password($username, $password);
 

@@ -349,6 +349,32 @@ function showRack()
 	$('#drawer').hide();
 }
 
+function loginregister()
+{
+	if($('#loginregister_screen').is(":visible"))
+	{
+		$('#loginregister_screen').hide();
+	}
+	else
+	{
+		$('#loginregister_screen').show();
+	}
+}
+
+function switchRegister()
+{
+	if($('#loginregister_login').is(":visible"))
+	{
+		$('#loginregister_login').hide();
+		$('#loginregister_register').show();
+	}
+	else
+	{
+		$('#loginregister_login').show();
+		$('#loginregister_register').hide();
+	}
+}
+
 // Simple routing
 function route() {
 
