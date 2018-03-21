@@ -77,6 +77,15 @@ var weaponPayloads = {
 
 var hasCleared = false;
 
+$('#loginregister').ready(function() {
+	var username = getPersistent("username");
+	console.log(username);
+	if(username != null && username != "null")
+	{
+		login(username);
+	}
+})
+
 
 $(document).ready(function() {
 
@@ -156,7 +165,92 @@ $(document).ready(function() {
     	}
     }
 
+    // put lesson value in register fields
+    $('#register_lesson').attr('value', historylesson);
+
+    $('#registerComplete').click(function(e) {
+
+		e.preventDefault();
+
+		$('#registerComplete').attr('disabled', 'disabled').val("Registering...");
+
+		grecaptcha.execute();
+
+	});
+
+	$('#loginComplete').click(function(e) {	
+
+		e.preventDefault();
+
+		$('#loginComplete').attr('disabled', 'disabled').val("Logging in...");
+
+		$.post("persistence/", $('#login').serialize()).done(function(data) {
+
+			if(data.success)
+			{
+				login(data.username);
+				setPersistent("lesson", data.lesson);
+				window.location.hash = "#/" + lessons[data.lesson].url;
+			}
+			else
+			{
+				$('#loginComplete').removeAttr('disabled').val("Log in");
+				alert(data.reason);
+			}
+
+		} , "json");
+
+	});
+
 });
+
+function checkRecaptchaRegister(token)
+{
+	console.log($('#register').serialize())
+
+	$.post("persistence/", $('#register').serialize()).done(function(data) {
+
+		if(data.success)
+		{
+			login(data.username);
+		}
+		else
+		{
+			$('#registerComplete').removeAttr('disabled').val("Register");
+			alert(data.reason);
+		}
+
+	} , "json");
+}
+
+
+function login(username)
+{
+	if(username == null)
+		return;
+
+	$('#user').html('Hello, ' + username + ' [<a href="javascript:logout();">Log out</a>]');
+	setPersistent("username", username);
+}
+
+function logout(username)
+{
+	$.post("persistence/", {action: "logout"}).done(function(data) {
+
+		if(data.success)
+		{
+			setPersistent("lesson", 0);
+			clearPersistent("username");
+			restart();
+		}
+		else
+		{
+			alert("Couldn't logout!");
+		}
+
+	} , "json");
+
+}
 
 function getCurrentIndex()
 {
@@ -349,6 +443,36 @@ function showRack()
 	$('#drawer').hide();
 }
 
+function loginregister()
+{
+	if($('#loginregister_screen').is(":visible"))
+	{
+		$('#loginregister_screen').hide();
+	}
+	else
+	{
+		$('#loginregister_screen').show();
+	}
+}
+
+function switchRegister()
+{
+	if($('#loginregister_login').is(":visible"))
+	{
+		$('#loginregister_login').hide();
+		$('#loginregister_register').show();
+		$('#loginregister_screen').height('470px');
+	}
+	else
+	{
+		$('#loginregister_login').show();
+		$('#loginregister_register').hide();
+		$('#loginregister_screen').height('260px');
+	}
+}
+
+
+
 // Simple routing
 function route() {
 
@@ -430,11 +554,34 @@ function advance()
 		lesson = getCurrentIndex() + 1;
 	}
 
-	if(typeof lessons[lesson] == 'undefined')
-		window.location.hash = "#/end";
+	var username = getPersistent("username");
+
+	if(username != null)
+	{
+		$.post("persistence/", {action: "updatelesson", lesson}).done(function(data) {
+
+			if(data.success)
+			{
+				if(typeof lessons[lesson] == 'undefined')
+					window.location.hash = "#/end";
+				else
+					window.location.hash = "#/" + lessons[lesson].url;
+			}
+			else
+			{
+				alert("Couldn't advance!");
+			}
+
+		} , "json");
+	}
 	else
-		window.location.hash = "#/" + lessons[lesson].url;
-	//location.reload();
+	{
+		if(typeof lessons[lesson] == 'undefined')
+			window.location.hash = "#/end";
+		else
+			window.location.hash = "#/" + lessons[lesson].url;
+	}
+
 }
 
 function recede()
@@ -494,6 +641,14 @@ function getPersistent(key)
 		return getCookie(key);
 }
 
+function clearPersistent(key)
+{
+	if(Storage !== void(0))
+		localStorage.removeItem(key);
+	else
+		return removeCookie(key);
+}
+
 function setCookie(key, value)
 {
 	var d = new Date();
@@ -516,6 +671,10 @@ function getCookie(key) {
         }
     }
     return null;
+}
+
+function removeCookie(key) {
+	document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 
@@ -549,6 +708,7 @@ function canAdvance()
 			}
 		}
 	}
+
 
 
 	window.setTimeout(function() {

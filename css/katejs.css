@@ -13,6 +13,11 @@ h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+
+    text-decoration: none; 
+}
+
 /* Structural bigwigs */
 #instruction {
     margin: 0;
@@ -448,8 +453,86 @@ noscript p
     font-weight: bold;
     margin: 0px;
     margin-left: 20px;
+    width: 50%;
 }
 
+#faqlink
+{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 220px;
+    top: 10px;
+
+    font-size: 0.9em;   
+}
+
+#user
+{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    font-size: 0.9em;
+
+}
+
+#loginregister
+{
+    cursor: pointer;
+    color: blue;
+}
+
+#loginregister_screen
+{
+    width: 300px;
+    height: 260px;
+    background-color: #fff;
+    border: 2px solid #000000;
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    z-index: 500;
+    text-align: left;
+    padding: 20px;
+    display: none;
+}
+
+.switchregister
+{
+    display: block;
+    color: blue;
+}
+
+.switchregister a
+{
+
+    cursor: pointer;
+}
+
+#loginregister_register
+{
+    display: none;
+}
+
+.loginregister_header
+{
+    font-size: 2em;
+}
+
+#loginregister_screen label, input
+{
+    display: block;
+}
+
+#loginregister_screen label, input[type="submit"]
+{
+    margin-top: 20px;
+}
 
 #output
 {
@@ -468,4 +551,32 @@ noscript p
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+#aboutcontent
+{
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+#faqbody
+{
+    overflow: inherit;
+}
+
+#backtokatejs
+{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    font-size: 0.9em;   
+}
+
+.faqsection
+{
+    margin-top: 80px;
 }
